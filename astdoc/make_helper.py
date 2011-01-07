@@ -1,25 +1,73 @@
 """helper for quick cross-platform makefile for sphinx
 
 TODO: this was hacked up really quickly, could use a facelift.
+TODO: document usage
 """
 #===============================================================
 #imports
 #===============================================================
+#core
+import logging; log = logging.getLogger(__name__)
 import os,sys
-from bps import *
 from string import Template
 import subprocess
-def sub(fmt, **kwds):
-	if not kwds:
-			kwds = globals()
-	return Template(fmt).substitute(**kwds)
+#pkg
+#local
 __all__ = [
     "SphinxMaker",
 ]
+
+#===============================================================
+#misc helpers
+#===============================================================
+def sub(fmt, **kwds):
+    if not kwds:
+            kwds = globals()
+    return Template(fmt).substitute(**kwds)
+
+#===============================================================
+#fs helpers
+#===============================================================
+joinpath = os.path.join
+
+def abspath(*args):
+    return os.path.abspath(joinpath(*args))
+
+if hasattr(os.path, "realpath"):
+    def realpath(*args):
+        return os.path.realpath(joinpath(*args))
+else:
+    #probably windows - fake it best we can
+    def realpath(*args):
+        return os.path.normcase(os.path.abspath(joinpath(*args)))
+
+def pathdir(path):
+    return os.path.split(path)[0]
+
+def clearpath(path):
+    "recursively remove all contents of dir, but leave dir"
+    for root, dirs, files in os.walk(path, topdown=False):
+        for name in files:
+            os.remove(joinpath(root, name))
+        for name in dirs:
+            os.rmdir(joinpath(root, name))
+
+def rmpath(path):
+    "drecursively delete path"
+    if os.path.exists(path):
+        if os.path.isdir(path):
+            cleardir(path)
+        os.remove(path)
+
+def ensuredirs(path):
+    "ensure specified directory & all parents exist"
+    if not os.path.isdir(path):
+        os.makedirs(path)
+
 #===============================================================
 #main class
 #===============================================================
-class SphinxMaker(BaseClass):
+class SphinxMaker(object):
     #===============================================================
     #class attrs
     #===============================================================
@@ -46,17 +94,14 @@ class SphinxMaker(BaseClass):
     #===============================================================
     #frontend
     #===============================================================
-    def __init__(self, root=None):
-        if root is None:
-            root = sys.modules[self.__class__.__module__]
-        self.root_dir = filepath(root).abspath.dir
-        self.conf_file = self.root_dir / "conf.py"
-        if self.conf_file.ismissing:
+    def __init__(self, root_dir=None):
+        if root_dir is None:
+            root_dir = joinpath(sys.modules["__main__"].__file__, os.pardir)
+        self.root_dir = abspath(root_dir)
+        self.conf_file = joinpath(self.root_dir, "conf.py")
+        if not os.path.exists(self.conf_file):
             raise RuntimeError, "conf file not found in root: %r" % (self.root_dir)
-        #XXX: load conf file?
-
-        self.BUILD = filepath(self.BUILD)
-        self.STATIC = filepath(self.STATIC)
+        #XXX: load conf file to learn extra params?
 
     @classmethod
     def execute(cls, args=None, **kwds):
@@ -65,7 +110,7 @@ class SphinxMaker(BaseClass):
     def run(self, args=None):
         if args is None:
             args = sys.argv[1:]
-        self.root_dir.chdir() #due to relative paths like self.BUILD
+        os.chdir(self.root_dir) #due to relative paths like self.BUILD
         for arg in args:
             getattr(self,"target_"+arg)()
 
@@ -85,13 +130,11 @@ class SphinxMaker(BaseClass):
 #        print "  linkcheck to check all external links for integrity"
 
     def target_clean(self):
-        BUILD = self.BUILD
-        if BUILD.exists:
-            BUILD.clear()
+        rmpath(self.BUILD)
 
     def target_html(self):
         #just in case htmldev was run
-        (self.BUILD / "html" / "_static" / "default.css").discard()
+        rmpath(joinpath(self.BUILD, "html", "_static", "default.css"))
         self.build("html")
 
     def target_htmlhelp(self):
@@ -99,8 +142,8 @@ class SphinxMaker(BaseClass):
 
     def target_http(self):
         self.target_html()
-        path = self.BUILD.canonpath / "html"
-        path.chdir()
+        path = realpath(self.BUILD, "html")
+        os.chdir(path)
         port = 8000
         print "Serving files from %r on port %r" % (path, port)
         import SimpleHTTPServer as s
@@ -125,8 +168,13 @@ class SphinxMaker(BaseClass):
     def build(self, name):
         BUILD = self.BUILD
         ALLSPHINXOPTS = self.get_sphinx_opts()
-        dt = BUILD / "doctrees"; dt.ensuredirs()
-        target = BUILD/ name; target.ensuredirs()
+        
+        dt = joinpath(BUILD, "doctrees")
+        ensuredirs(dt)
+        
+        target = joinpath(BUILD, name)
+        ensuredirs(target)
+        
         rc = subprocess.call([self.SPHINXBUILD, "-b", name] + ALLSPHINXOPTS + [ target ])
         if rc:
             print "Sphinx-Build returned error, exiting."
