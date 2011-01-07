@@ -56,8 +56,10 @@ def rmpath(path):
     "drecursively delete path"
     if os.path.exists(path):
         if os.path.isdir(path):
-            cleardir(path)
-        os.remove(path)
+            clearpath(path)
+            os.rmdir(path)
+        else:
+            os.remove(path)
 
 def ensuredirs(path):
     "ensure specified directory & all parents exist"
@@ -186,7 +188,7 @@ class SphinxMaker(object):
         return getattr(self,"PAPER_" + self.PAPER, [])
 
     def get_sphinx_opts(self):
-        return ["-d", self.BUILD / "doctrees"] + self.get_paper_opts() + self.SPHINXOPTS + [ "." ]
+        return ["-d", joinpath(self.BUILD, "doctrees")] + self.get_paper_opts() + self.SPHINXOPTS + [ "." ]
 
     #===============================================================
     #eoc
