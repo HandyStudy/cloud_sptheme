@@ -19,8 +19,7 @@ from setuptools import setup, find_packages
 setup(
     #package info
     packages = find_packages(where=lib_path),
-##    package_data = {},
-##    package_dir= { '':  lib_path },
+    include_package_data = True,
 
     # metadata
     name = "astdoc",

@@ -6,9 +6,8 @@ italicized section headers.
 
 TODO: make this more flexible and less hackneyed
 """
-from bps.develop import dbgcon
 import re
-from bps import *
+import logging; log = logging.getLogger(__name__)
 
 def indent_sections(lines, reference_prefix=''):
     "replaces any section headers with indented paragraphs"
@@ -88,8 +87,8 @@ def mangle_docstrings(app, what, name, obj, options, lines):
     elif what in ('attribute',):
         pass
     else:
-        print "unknown what: %r %r" % (what, obj)
-        dbgcon()
+        #FIXME: handle other cases
+        raise NotImplementedError, "unknown node: %r %r" % (what, obj)
 
 def setup(app):
     app.connect('autodoc-process-docstring', mangle_docstrings)

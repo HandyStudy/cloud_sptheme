@@ -8,9 +8,8 @@ based on object type, making things an easier read.
 TODO: could improve style structure to make things more generically useful,
 eg wrapping each entry in an "entry" span, tagged by type.
 """
-from bps.develop import dbgcon
+import logging; log = logging.getLogger(__name__)
 import re
-from bps import *
 from jinja2 import Markup as literal, escape
 
 prefix = r"^(?P<name>.*)\("

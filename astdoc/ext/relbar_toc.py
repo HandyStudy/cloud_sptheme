@@ -2,8 +2,9 @@
 automatically insert a "toc" entry into relbar for all pages
 (ala old python documentation style)
 """
+import os.path
 import re
-from bps import *
+import logging; log = logging.getLogger(__name__)
 
 def insert_toc(app, pagename, templatename, ctx, event_arg):
     links = ctx['rellinks']
@@ -23,7 +24,7 @@ def insert_toc(app, pagename, templatename, ctx, event_arg):
         idx += 1
 
     #insert our toc entry
-    path = filepath(ctx['pathto']("contents")).root
+    path = os.path.splitext(ctx['pathto']("contents"))[0]
     if path == '':
         path = pagename
     links.insert(idx, (path, "Table Of Contents", "C", "toc"))
