@@ -5,4 +5,7 @@ of BPS's own documentation, but some other projects
 use them as well, so they are kept here.
 """
 import os.path
-theme_path = os.path.abspath(os.path.join(__file__,os.path.pardir))
+
+def get_theme_dir():
+    "return path to directory containing sphinx themes in this package"
+    return os.path.abspath(os.path.join(__file__,os.path.pardir, "themes"))
