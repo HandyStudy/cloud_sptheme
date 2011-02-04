@@ -24,9 +24,11 @@ def insert_toc(app, pagename, templatename, ctx, event_arg):
         idx += 1
 
     #insert our toc entry
-    path = os.path.splitext(ctx['pathto']("contents"))[0]
-    if path == '':
-        path = pagename
+    #FIXME: there's probably a MUCH better / less broken way to do this
+    path = os.path.split(os.path.splitext(ctx['pathto']("contents"))[0])[1]
+    ##path = os.path.splitext(ctx['pathto']("contents"))[0]
+    ##if path == '':
+    ##    path = pagename
     links.insert(idx, (path, "Table Of Contents", "C", "toc"))
 
 def setup(app):

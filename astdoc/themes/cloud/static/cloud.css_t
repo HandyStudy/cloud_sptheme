@@ -164,6 +164,16 @@ div#todos div.admonition-todo + p a
 }
 
 /*****************************************************
+ * recolor some things
+ *****************************************************/
+
+tt
+{
+    background-color: {{theme_quotecolor}};
+    padding: 1px 2px;
+}
+
+/*****************************************************
  * add more whitespace to definitions
  *****************************************************/
 dl.function,
@@ -188,9 +198,10 @@ td.field-body > p.first
 td.field-body > ul.first.simple > li > em,
 td.field-body > em
 {
-   border-bottom: 1px solid #DEE6ED;
    padding: 2px 4px;
+/*   border-bottom: 1px solid #DEE6ED;
    background: #ECF0F3;
+   */
 }
 
 /*****************************************************
