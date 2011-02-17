@@ -232,6 +232,7 @@ td.field-body > p:last-child:empty
  *      objects, attributes, data - green
  *****************************************************/
 
+dl.classmethod > dt,
 dl.function > dt,
 dl.method > dt
 {
@@ -259,10 +260,13 @@ table.indextable span.category
 	color: #84ADBE;
 }
 
-table.indextable span.category.function { color: #9AB9CE; }
+table.indextable span.category.function,
+table.indextable span.category.classmethod,
 table.indextable span.category.method { color: #9AB9CE; }
+
 table.indextable span.category.attribute { color: #8BC38B; }
 table.indextable span.category.class { color: #9996c2; }
+
 /*table.indextable span.category.module { color: #8BC38B; }*/
 
 table.indextable span.subject
