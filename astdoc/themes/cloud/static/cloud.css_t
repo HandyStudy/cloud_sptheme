@@ -283,7 +283,42 @@ table.indextable td > dl > dt
  * add pretty background
  *****************************************************/
 
-background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 700, from({{theme_footerbgcolor2}}), to({{theme_footerbgcolor}}));
+/*body {
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 700, from({{theme_footerbgcolor2}}), to({{theme_footerbgcolor}}));
+}*/
+
+/*****************************************************
+ * add styling for toggleable sections
+ *****************************************************/
+
+.html-toggle.collapsed > .html-toggle-button
+{
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+.html-toggle.collapsed > .html-toggle-button:after
+{
+  content: "show \21D3";
+
+  float: right;
+  padding-right: 1em;
+
+  color: {{ theme_linkcolor }};
+  font-size: 70%;
+}
+
+.html-toggle.expanded > .html-toggle-button:after
+{
+  content: "hide \21D1";
+
+  float: right;
+  padding-right: 1em;
+
+  color: {{ theme_linkcolor }};
+  font-size: 70%;
+}
 
 /*****************************************************
  * EOF
