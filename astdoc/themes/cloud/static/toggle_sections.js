@@ -35,6 +35,6 @@ $(document).ready(function (){
     }
   }
 
-  $(".html-toggle.section h2, .html-toggle.section h3, .html-toggle.section h4, .html-toggle.section h5, .html-toggle.section h6").click(toggle).each(init);
+  $(".html-toggle.section > h2, .html-toggle.section > h3, .html-toggle.section > h4, .html-toggle.section > h5, .html-toggle.section > h6").click(toggle).each(init);
 
 });
