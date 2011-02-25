@@ -257,6 +257,17 @@ dl.data > dt
 }
 
 /*****************************************************
+ * footnotes
+ *****************************************************/
+
+a.footnote-reference
+{
+    font-size: 70%;
+    position: relative;
+    top: -.75em;
+}
+
+/*****************************************************
  * css colorization for index page, using styles
  * provided by customize.py extension
  *****************************************************/
