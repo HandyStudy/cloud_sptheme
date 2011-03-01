@@ -87,6 +87,10 @@ div.body h4,
 div.body h5,
 div.body h6
 {
+
+
+  font-family: 'Neuton', sans-serif;
+
   border: 1px solid {{ theme_headtrimcolor }};
   border-bottom: 1px solid {{ theme_headtrimcolor2 }};
 
@@ -108,6 +112,13 @@ div.body h6
  text-shadow: 1px 1px 2px rgba(0,0,0,.1);
 }
 
+div.body h2
+{
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
 div.body h3,
 div.body h4,
 div.body h5,
@@ -125,7 +136,7 @@ div.body h1
  padding: 20px;
  margin-left: -20px;
  margin-right: -20px;
- text-align: center;
+ text-align: left;
     border-radius: 0 0 10px 10px;
     -moz-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
@@ -141,15 +152,19 @@ div.body h1
 /*****************************************************
  * provide styling for TODO
  *****************************************************/
-div.admonition.caution {
-    background-color: #FFF0E4;
-    border: 1px solid #FF9966;
+div.admonition
+{
+    background: #f2f2f2;
+    border: 1px solid rgba(0,0,0,.1);
+    border-width: 1px 0;
+    margin: 1em;
+    padding: .5em;
 }
 
-div.admonition-todo {
-    background-color: #EEE6E0;
-    border: 1px solid #D4CDC7;
-}
+div.admonition.admonition-todo { background-color: #f2f2f2; }
+div.admonition.note { background-color: #E7F0FE; }
+div.admonition.caution { background-color: #FFF0E4; }
+div.admonition.warning { background-color: #FFE4E4; }
 
 div#todos p.admonition-title
 {
@@ -178,8 +193,16 @@ div#todos div.admonition-todo + p a
 
 tt
 {
-    background-color: {{theme_quotecolor}};
-    padding: 1px 2px;
+    background-color: rgba(0,0,0,.1);
+    padding: .1em .2em;
+
+    border-radius: .4em;
+    -moz-border-radius: .4em;
+    -webkit-border-radius: .4em;
+}
+
+div.admonition tt {
+    background-color: rgba(0,0,0,.1);
 }
 
 /*****************************************************
@@ -240,7 +263,7 @@ td.field-body > p:last-child:empty
  *      exceptions - red
  *      objects, attributes, data - green
  *****************************************************/
-
+/*
 dl.classmethod > dt,
 dl.function > dt,
 dl.method > dt
@@ -256,7 +279,7 @@ dl.object > dt,
 dl.data > dt
 {
     background: #E2F2E2;
-}
+}*/
 
 /*****************************************************
  * footnotes

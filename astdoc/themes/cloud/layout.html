@@ -16,6 +16,9 @@
 {# add script file to instrument collapsable sections #}
 {% set script_files = script_files + ['_static/toggle_sections.js'] %}
 
+{# add font stylesheets #}
+{% set css_files = css_files + ['http://fonts.googleapis.com/css?family=Neuton'] %}
+
 {# make root link redirectable #}
 {%- set theme_roottarget = (theme_roottarget == "<master>" and master_doc or theme_roottarget) %}
 {% block rootrellink %}
