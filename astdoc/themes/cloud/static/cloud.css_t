@@ -15,7 +15,8 @@
  * page layout
  *****************************************************/
 
-body {
+body
+{
     font-family: {{ theme_bodyfont }};
     font-size: 100%;
     background-color: {{ theme_footerbgcolor }};
@@ -28,7 +29,8 @@ body {
  * page layout - relbars (top & bottom)
  *****************************************************/
 
-div.related {
+div.related
+{
     margin: 0 auto;
     max-width: {{ theme_docwidth }};
     background-color: {{ theme_relbarbgcolor }};
@@ -52,7 +54,8 @@ div.relbar-bottom div.related
     -webkit-border-radius: 0 0 .7em .7em;
 }
 
-div.related a {
+div.related a
+{
     color: {{ theme_relbarlinkcolor }};
 }
 
@@ -60,22 +63,26 @@ div.related a {
  * page layout - document
  *****************************************************/
 
-div.document {
+div.document
+{
     margin: 0 auto;
     max-width: {{ theme_docwidth }};
     background-color: {{ theme_sidebarbgcolor }};
 }
 
-div.documentwrapper {
+div.documentwrapper
+{
     float: left;
     width: 100%;
 }
 
-div.bodywrapper {
+div.bodywrapper
+{
     margin: 0 0 0 230px;
 }
 
-div.body {
+div.body
+{
     min-height: {{ theme_docheight }};
     /* note: this ^ is just a hack to prevent body from being shorter than sidebar */
 
@@ -103,37 +110,45 @@ div.sphinxsidebar h4
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxsidebar h3 {
+div.sphinxsidebar h3
+{
     font-size: 1.4em;
 }
 
-div.sphinxsidebar h4 {
+div.sphinxsidebar h4
+{
     font-size: 1.3em;
 }
 
-div.sphinxsidebar h3 a {
+div.sphinxsidebar h3 a
+{
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxsidebar p {
+div.sphinxsidebar p
+{
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxsidebar p.topless {
+div.sphinxsidebar p.topless
+{
     margin: 5px 10px 10px 10px;
 }
 
-div.sphinxsidebar ul {
+div.sphinxsidebar ul
+{
     margin: 10px;
     padding: 0;
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxsidebar a {
+div.sphinxsidebar a
+{
     color: {{ theme_sidebarlinkcolor }};
 }
 
-div.sphinxsidebar input {
+div.sphinxsidebar input
+{
     border: 1px solid {{ theme_sidebartrimcolor }};
     font-family: sans-serif;
     font-size: 1em;
@@ -154,7 +169,8 @@ div.sphinxsidebar .searchtip
  * page layout - footer
  *****************************************************/
 
-div.footer {
+div.footer
+{
     color: {{ theme_footertextcolor }};
     width: 100%;
     padding: 9px 0 9px 0;
@@ -162,7 +178,8 @@ div.footer {
     font-size: 75%;
 }
 
-div.footer a {
+div.footer a
+{
     color: {{ theme_footertextcolor }};
     text-decoration: underline;
 }
@@ -171,39 +188,45 @@ div.footer a {
  * document - link styles
  *****************************************************/
 
-a {
+a
+{
     color: {{ theme_linkcolor }};
     text-decoration: none;
 }
 
-a:visited {
+a:visited
+{
     color: {{ theme_visitedlinkcolor }};
     text-decoration: none;
 }
 
-a:hover {
+a:hover
+{
     text-decoration: underline;
 }
 
 {% if theme_externalrefs|tobool %}
-a.external {
+a.external
+{
    text-decoration: none;
    border-bottom: 1px dashed {{ theme_linkcolor }};
 }
 
-a.external:hover {
+a.external:hover
+{
    text-decoration: none;
    border-bottom: none;
 }
 
-a.external:visited {
+a.external:visited
+{
     text-decoration: none;
     border-bottom: 1px dashed {{ theme_visitedlinkcolor }};
 }
 {% endif %}
 
 /*****************************************************
- * document - body styles
+ * document - header styles
  *****************************************************/
 
 div.body h1,
@@ -211,7 +234,8 @@ div.body h2,
 div.body h3,
 div.body h4,
 div.body h5,
-div.body h6 {
+div.body h6
+{
     margin: 1em 0 -.25em;
     padding: 0;
 
@@ -231,21 +255,41 @@ div.body h6 { font-size: 100%; }
     /* get rid of excess margin */
 div.body h1 + div.section > h2 { margin-top: -1em; }
 
-a.headerlink {
+a.headerlink
+{
     color: {{ theme_headlinkcolor }};
     font-size: 0.8em;
     padding: 0 4px 0 4px;
     text-decoration: none;
 }
 
-a.headerlink:hover {
+a.headerlink:hover
+{
     background-color: {{ theme_headlinkcolor }};
     color: white;
 }
 
-div.body p, div.body dd, div.body li {
-    text-align: justify;
-    line-height: 130%;
+/*****************************************************
+ * document - toggleable h1/h2 sections
+ *****************************************************/
+
+.html-toggle.collapsed > .html-toggle-button
+{
+    margin-bottom: .5em;
+}
+
+.html-toggle.collapsed > .html-toggle-button:after
+{
+  content: "[show section]";
+  color: {{ theme_linkcolor }};
+  font-size: 70%;
+}
+
+.html-toggle.expanded > .html-toggle-button:after
+{
+  content: "[hide section]";
+  color: {{ theme_linkcolor }};
+  font-size: 70%;
 }
 
 /*****************************************************
@@ -284,8 +328,46 @@ p.admonition-title + p
     display: inline;
 }
 
-p.admonition-title:after {
+p.admonition-title:after
+{
     content: ":";
+}
+
+/*****************************************************
+ * document - misc body styles
+ *****************************************************/
+
+div.body p,
+div.body dd,
+div.body li
+{
+    text-align: justify;
+    line-height: 130%;
+}
+
+/*dl.function,
+dl.method,
+dl.attribute,
+dl.class,
+dl.exception,
+dl.data */
+
+dl
+{
+    margin-bottom: 1.5em;
+}
+
+
+a.footnote-reference
+{
+    font-size: 70%;
+    position: relative;
+    top: -.75em;
+}
+
+table.docutils.footnote
+{
+    margin: 1em 0 0 1em;
 }
 
 /*****************************************************
@@ -297,7 +379,8 @@ div.highlight-python
     margin: 1em;
 }
 
-pre {
+pre
+{
     padding: 5px;
 
     background-color: {{ theme_codebgcolor }};
@@ -308,7 +391,8 @@ pre {
     line-height: 120%;
 }
 
-tt {
+tt
+{
     font-size: 0.95em;
 }
 
@@ -322,6 +406,7 @@ tt.literal
     -webkit-border-radius: .4em;*/
 }
 
+div.sidebar tt.literal,
 a.reference tt.literal,
 tt.literal.xref
 {
@@ -329,25 +414,57 @@ tt.literal.xref
     padding: 0;
 }
 
-/*div.admonition tt.literal {
-    background-color: rgba(0,0,0,.05);
-}*/
-
-th {
+th
+{
     background-color: #ede;
 }
 
-.viewcode-back {
+.viewcode-back
+{
     font-family: {{ theme_bodyfont }};
 }
 
-div.viewcode-block:target {
+div.viewcode-block:target
+{
     background-color: #f4debf;
     border-top: 1px solid #ac9;
     border-bottom: 1px solid #ac9;
 }
 
-/*#################################################################*/
+/*****************************************************
+ * index page - category colorization
+ * (requires css classes set by astdoc.ext.index_styles extension)
+ *****************************************************/
+
+table.indextable span.category
+{
+	font-size: 80%;
+	color: #84ADBE;
+}
+
+table.indextable span.category.function,
+table.indextable span.category.classmethod,
+table.indextable span.category.method
+{ color: #9AB9CE; }
+
+table.indextable span.category.attribute { color: #8BC38B; }
+table.indextable span.category.class { color: #9996c2; }
+
+/*table.indextable span.category.module { color: #8BC38B; }*/
+
+table.indextable span.subject
+{
+	font-weight: bold;
+}
+
+table.indextable td > dl > dt
+{
+	margin-bottom: .5em;
+}
+
+/*#################################################################
+    unorganized code
+  #################################################################*/
 
 
 /*****************************************************
@@ -373,23 +490,6 @@ div#todos div.admonition-todo + p
 div#todos div.admonition-todo + p a
 {
     font-size: 130%;
-}
-
-/*****************************************************
- * recolor some things
- *****************************************************/
-
-/*****************************************************
- * add more whitespace to definitions
- *****************************************************/
-dl.function,
-dl.method,
-dl.attribute,
-dl.class,
-dl.exception,
-dl.data
-{
-    margin-bottom: 1.5em;
 }
 
 /*****************************************************
@@ -456,47 +556,6 @@ dl.data > dt
 }*/
 
 /*****************************************************
- * footnotes
- *****************************************************/
-
-a.footnote-reference
-{
-    font-size: 70%;
-    position: relative;
-    top: -.75em;
-}
-
-/*****************************************************
- * css colorization for index page, using styles
- * provided by customize.py extension
- *****************************************************/
-
-table.indextable span.category
-{
-	font-size: 80%;
-	color: #84ADBE;
-}
-
-table.indextable span.category.function,
-table.indextable span.category.classmethod,
-table.indextable span.category.method { color: #9AB9CE; }
-
-table.indextable span.category.attribute { color: #8BC38B; }
-table.indextable span.category.class { color: #9996c2; }
-
-/*table.indextable span.category.module { color: #8BC38B; }*/
-
-table.indextable span.subject
-{
-	font-weight: bold;
-}
-
-table.indextable td > dl > dt
-{
-	margin-bottom: .5em;
-}
-
-/*****************************************************
  * add pretty background
  *****************************************************/
 
@@ -504,28 +563,6 @@ table.indextable td > dl > dt
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 700, from({{theme_footerbgcolor2}}), to({{theme_footerbgcolor}}));
 }*/
 
-/*****************************************************
- * document - toggleable h1/h2 sections
- *****************************************************/
-
-.html-toggle.collapsed > .html-toggle-button
-{
-    margin-bottom: .5em;
-}
-
-.html-toggle.collapsed > .html-toggle-button:after
-{
-  content: "[show section]";
-  color: {{ theme_linkcolor }};
-  font-size: 70%;
-}
-
-.html-toggle.expanded > .html-toggle-button:after
-{
-  content: "[hide section]";
-  color: {{ theme_linkcolor }};
-  font-size: 70%;
-}
 
 /*****************************************************
  * EOF
