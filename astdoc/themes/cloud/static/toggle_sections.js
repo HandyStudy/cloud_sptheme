@@ -5,10 +5,10 @@
  * Sphinx JavaScript helper for collapsible sections.
  * looks for sections with css class "html-toggle", with optional addtional classes "expanded" or "collapsed" (defaults to "collapsed")
  *
- * :copyright: Copyright 2011 Assurance Technologies
+ * :copyright: Copyright 2011 by Assurance Technologies
  * :license: BSD
  *
- * NOTE: while this provides full javascript instrumentation, css styling should be applied to .html-toggle > .html-toggle-button 
+ * NOTE: while this provides full javascript instrumentation, css styling should be applied to .html-toggle > .html-toggle-button
  */
 
 $(document).ready(function (){

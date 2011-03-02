@@ -398,7 +398,7 @@ tt
 
 tt.literal
 {
-    background-color: rgba(0,0,0,.05);
+    background-color: {{ theme_quotebgcolor }};
     padding: .1em .3em;
 
 /*    border-radius: .4em;
@@ -553,14 +553,6 @@ dl.object > dt,
 dl.data > dt
 {
     background: #E2F2E2;
-}*/
-
-/*****************************************************
- * add pretty background
- *****************************************************/
-
-/*body {
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 700, from({{theme_footerbgcolor2}}), to({{theme_footerbgcolor}}));
 }*/
 
 
