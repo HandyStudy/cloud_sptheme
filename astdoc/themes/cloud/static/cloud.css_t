@@ -391,19 +391,30 @@ tt
 tt.literal
 {
     background-color: {{ theme_quotebgcolor }};
-    padding: .1em .3em;
+    border: 1px solid {{ theme_quotetrimcolor }};
+    padding: 1px 2px;
+    margin: 0 1px;
 
-/*    border-radius: .4em;
-    -moz-border-radius: .4em;
-    -webkit-border-radius: .4em;*/
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
 }
 
-div.sidebar tt.literal,
+tt.samp.literal > em
+{
+    font-family: {{ theme_codevarfont }};
+    font-size: 1.05em;
+    padding: 0 1px;
+}
+
+div.sphinxsidebar tt.literal,
 a.reference tt.literal,
 tt.literal.xref
 {
     background-color: transparent;
+    border: none;
     padding: 0;
+    margin: 0;
 }
 
 th
