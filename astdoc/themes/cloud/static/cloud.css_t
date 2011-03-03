@@ -21,7 +21,7 @@ body
     font-size: 100%;
     background-color: {{ theme_footerbgcolor }};
     color: #000;
-    margin: 0;
+    margin: 1em 1em 0 1em;
     padding: 0;
 }
 
@@ -40,8 +40,6 @@ div.related
 
 div.relbar-top div.related
 {
-    margin-top: 1em;
-
     border-radius: .7em .7em 0 0;
     -moz-border-radius: .7em .7em 0 0;
     -webkit-border-radius: .7em .7em 0 0;
@@ -208,7 +206,7 @@ a:hover
 {% if theme_externalrefs|tobool %}
 a.external:before
 {
-    content: "\27A6";
+    content: {{ theme_externalicon }};
     padding-right: .1em;
 }
 {% endif %}
