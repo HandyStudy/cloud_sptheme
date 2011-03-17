@@ -18,8 +18,12 @@ def indent_sections(lines, reference_prefix=''):
     indent_char = ' ' * 4
     indent_level = 0
     SCHARS = '#*=-^"'
+    section_chars = [""] #map of section char -> level (built up as scan progresses)
     def get_level(c):
-        return SCHARS.index(c)
+        sc = section_chars[0]
+        if c not in sc:
+            sc = section_chars[0] = (sc+c)
+        return sc.index(c)
     #FIXME: this doesn't detect double-barred sections
     def detect_section(idx):
         if idx == end:
@@ -50,12 +54,11 @@ def indent_sections(lines, reference_prefix=''):
                 sections.append(new_level)
             name = line.lower().strip().replace(" ", "-").replace("--", "-")
             indent = indent_char * (indent_level-1)
-            #TODO: would be nice to add a special directive instead of **%s**,
-            # so that we could render appropriate html styling to the section header
             out.extend([
                 indent + ".. _%s:" % (reference_prefix + name),
+                indent + ".. rst-class:: nested-section nested-section-%d" % (new_level+1,),
                 "",
-                indent + "**%s**\n" % line.rstrip(),
+                indent + "%s\n" % line.rstrip(),
                 ])
             idx += 2 #skip section header
             indent_level = max(0, len(sections))

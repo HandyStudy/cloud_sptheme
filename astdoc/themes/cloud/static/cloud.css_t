@@ -435,6 +435,24 @@ div.viewcode-block:target
 }
 
 /*****************************************************
+ * nested sections -
+ * (requires css classes set by astdoc.ext.nested_sections extension)
+ *****************************************************/
+
+dl.nested-section > dt
+{
+    color: {{ theme_headtextcolor }};
+
+    font-family: {{ theme_headfont }};
+    font-weight: normal;
+    font-size: 100%;
+}
+
+dl.nested-section-1 > dt { font-size: 140%; }
+dl.nested-section-2 > dt { font-size: 120%; }
+dl.nested-section-3 > dt { font-size: 110%; }
+
+/*****************************************************
  * index page - category colorization
  * (requires css classes set by astdoc.ext.index_styles extension)
  *****************************************************/
