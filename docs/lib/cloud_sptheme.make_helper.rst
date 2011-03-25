@@ -1,8 +1,8 @@
 =============================================================
-:mod:`astdoc.make_helper` - sphinx-build Makefile replacement
+:mod:`cloud_sptheme.make_helper` - sphinx-build Makefile replacement
 =============================================================
 
-.. module:: astdoc.make_helper
+.. module:: cloud_sptheme.make_helper
     :synopsis: sphinx-build Makefile replacement
 
 This module was written to solve one specific task:
@@ -18,16 +18,16 @@ as the file ``make.py``::
 
     "Makefile for Sphinx documentation, adapted to python"
     import os
-    from astdoc.make_helper import SphinxMaker
+    from cloud_sptheme.make_helper import SphinxMaker
     if __name__ == "__main__":
         SphinxMaker.execute(root_dir=os.path.join(__file__,os.pardir))
 
 Once done, this script can be invoked via :samp:`python docs/make.py {options}`.
 
-Any new features added to SphinxMaker via astdoc will automatically become
+Any new features added to SphinxMaker via cloud_sptheme will automatically become
 available to all packages using this stub.
 
-.. class:: astdoc.make_helper.SphinxMaker(root_dir=None)
+.. class:: cloud_sptheme.make_helper.SphinxMaker(root_dir=None)
 
     :param root_dir:
         absolute path pointing to documentation source directory.

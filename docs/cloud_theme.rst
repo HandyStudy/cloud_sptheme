@@ -4,7 +4,7 @@
 
 About
 =====
-:mod:`astdoc` provides a theme called "Cloud", used to generate this documentation.
+:mod:`cloud_sptheme` provides a theme called "Cloud", used to generate this documentation.
 Aside from being just another sphinx theme, it has a few features:
 
 * You can mark sections with ``.. rst-class:: html-toggle``,
@@ -43,10 +43,23 @@ List of Options
 ``docheight``
     sets the minimum height of the page body. defaults to ``6in``.
 
-See ``astdoc/themes/cloud/theme.conf`` for more details.
+See ``cloud_sptheme/themes/cloud/theme.conf`` for a complete list of options.
 
 Usage
 =====
-In conf.py, just set ``html_theme="cloud"``;
-and set ``html_theme_path = [astdoc.get_theme_dir()]``,
-which will automatically insert the appropriate installation path.
+Within your documentation's ``conf.py`` file, make the following changes::
+
+    # import Cloud
+    import cloud_sptheme as csp
+
+    #... contents omitted...
+
+    #set the html theme
+    html_theme = "cloud"
+
+    #... contents omitted...
+
+    #set the theme path to point to cloud's theme data
+    html_theme_path = [csp.get_theme_dir()]
+
+Additionaly you will probably want to set some of the theme options listed above.

@@ -1,5 +1,5 @@
 """
-astdoc setup script
+cloud_sptheme setup script
 """
 #=========================================================
 #init script env
@@ -22,16 +22,25 @@ setup(
     include_package_data = True,
 
     # metadata
-    name = "astdoc",
+    name = "cloud_sptheme",
     version = "1.0",
     author = "Eli Collins",
-    author_email = "elic@astllc.org",
-    description = "some useful sphinx extensions and additional themes used by Assurance Technologies",
+    author_email = "elic@assurancetechnologies.com",
+    description = "a nice sphinx theme, and some related extensions",
     license = "BSD",
     keywords = "sphinx extension theme",
-    url = "http://www.astllc.org/software/astdoc",
-    # could also include long_description, download_url, classifiers, etc.
+    url = "https://bitbucket.org/ecollins/cloud_sptheme",
     zip_safe=False,
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        #there should be a Framework::Sphinx::Extension classifier :)
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Documentation',
+        'Topic :: Software Development :: Documentation',
+    ]
 )
 #=========================================================
 #EOF

@@ -1,6 +1,6 @@
 """
 ============================================================================
-:mod:`astdoc.ext.autodoc_sections` - support for ReST sections in docstrings
+:mod:`cloud_sptheme.ext.autodoc_sections` - support for ReST sections in docstrings
 ============================================================================
 
 This Sphinx extension should be used in conjunction with the Autodoc extension.

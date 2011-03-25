@@ -1,6 +1,6 @@
 """
 ==========================================================
-:mod:`astdoc.index_styling` - adds css styling to genindex
+:mod:`cloud_sptheme.index_styling` - adds css styling to genindex
 ==========================================================
 
 This sphinx extension intercepts & modifies the general index data

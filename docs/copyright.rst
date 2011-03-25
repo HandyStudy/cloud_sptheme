@@ -1,10 +1,10 @@
 Copyright & License
 ===================
 
-Astdoc is released under the BSD license,
+cloud_sptheme is released under the BSD license,
 and is (c) `Assurance Technologies <http://www.assurancetechnologies.com>`_::
 
-    The "astdoc" python package is
+    The "cloud_sptheme" python package is
     Copyright (c) 2010-2011 by Assurance Technologies, LLC.
     All rights reserved.
 

@@ -1,0 +1,5 @@
+recursive-include docs *
+include LICENSE README cloud_sptheme/themes *
+prune docs/_build
+
+

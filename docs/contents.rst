@@ -9,10 +9,10 @@ Table Of Contents
 
     cloud_theme
 
-    lib/astdoc.ext.index_styling
-    lib/astdoc.ext.autodoc_sections
-    lib/astdoc.ext.relbar_toc
+    lib/cloud_sptheme.ext.index_styling
+    lib/cloud_sptheme.ext.autodoc_sections
+    lib/cloud_sptheme.ext.relbar_toc
 
-    lib/astdoc.make_helper
+    lib/cloud_sptheme.make_helper
 
     copyright

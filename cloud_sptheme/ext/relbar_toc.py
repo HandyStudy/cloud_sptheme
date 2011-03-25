@@ -1,6 +1,6 @@
 """
 ==========================================================
-:mod:`astdoc.ext.relbar_toc` - adds TOC entry to relbar
+:mod:`cloud_sptheme.ext.relbar_toc` - adds TOC entry to relbar
 ==========================================================
 
 This sphinx extension automatically inserts a table-of-contents
