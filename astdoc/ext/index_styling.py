@@ -1,12 +1,19 @@
 """
-sphinx extension which intercepts & modifies the index page html.
-all entries are wrapped in <span> elements
-with class tags set to "category method" "category class", etc,
-as appropriate for each entry. This allows colorization of the index
-based on object type, making things an easier read.
+==========================================================
+:mod:`astdoc.index_styling` - adds css styling to genindex
+==========================================================
 
-TODO: could improve style structure to make things more generically useful,
-eg wrapping each entry in an "entry" span, tagged by type.
+This sphinx extension intercepts & modifies the general index data
+before it is rendered to html; and does the following:
+
+All index entries are wrapped in ``<span>`` elements,
+where each element has the format :samp:`<span class="category {type}">`.
+:samp:`{type}` in turn is one of ``attribute``, ``method``, ``class``, ``function``, ``module``.
+The name of the entry itself is wrapped in an addtional ``<span class="subject">`` element.
+Entries which don't fit into one of the above categories are not modified.
+
+The purpose of this class solely to allow themes (such as the :doc:`/cloud_theme`)
+to provide addtional per-type styling for index entries.
 """
 import logging; log = logging.getLogger(__name__)
 import re

@@ -1,2 +1,3 @@
 glob:*.pyc
 glob:*.pyo
+glob:docs/_build
