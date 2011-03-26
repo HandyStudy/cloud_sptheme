@@ -23,5 +23,5 @@ Utilities
 Online Resources
 ================
 * **Homepage & Source:** `<https://bitbucket.org/ecollins/cloud_sptheme>`_
-* **Docs:** `<https://packages.python.org/cloud_sptheme>`_
-* **Download & PyPI:** `<http://pypi.python.org/cloud_sptheme>`_
+* **Docs:** `<http://packages.python.org/cloud_sptheme>`_
+* **Download & PyPI:** `<http://pypi.python.org/pypi/cloud_sptheme>`_
