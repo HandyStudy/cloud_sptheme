@@ -95,6 +95,12 @@ div.body
  * page layout - sidebar
  *****************************************************/
 
+div.sphinxsidebar
+{
+   /* it's nasty sometimes, but looks prettier than letting too-long module names break into document body*/
+   overflow: hidden;
+}
+
 div.sphinxsidebar h3,
 div.sphinxsidebar h4
 {
