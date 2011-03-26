@@ -189,6 +189,37 @@ div.footer a
 }
 
 /*****************************************************
+ * adaptive page layout - if too small, hide some things
+ *****************************************************/
+
+@media only screen and (max-width: {{ theme_smallwidth }}),
+       only screen and (max-device-width: {{ theme_smallwidth }})
+{
+      body {
+         margin: 0;
+      }
+
+      div.relbar-top div.related,
+      div.relbar-bottom div.related
+      {
+          border-radius: 0;
+          -moz-border-radius: 0;
+          -webkit-border-radius: 0;
+      }
+
+      div.sphinxsidebar
+      {
+         display: none;
+      }
+
+      div.bodywrapper
+      {
+         margin-left: 0;
+      }
+}
+
+
+/*****************************************************
  * document - link styles
  *****************************************************/
 
