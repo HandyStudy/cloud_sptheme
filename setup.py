@@ -30,6 +30,12 @@ setup(
     author = "Eli Collins",
     author_email = "elic@assurancetechnologies.com",
     description = "a nice sphinx theme named 'Cloud', and some related extensions",
+    long_description="""\
+This is a small package containing a Sphinx theme named "Cloud",
+along with some related Sphinx extensions. To see an example
+of the theme in action, check out it's documentation
+at `<http://packages.python.org/cloud_sptheme>`_.
+    """,
     license = "BSD",
     keywords = "sphinx extension theme",
     url = "https://bitbucket.org/ecollins/cloud_sptheme",
