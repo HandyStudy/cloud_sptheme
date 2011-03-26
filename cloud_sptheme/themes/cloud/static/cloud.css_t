@@ -489,6 +489,12 @@ table.indextable td > dl > dt
 	margin-bottom: .5em;
 }
 
+table.indextable td > dl > dd > dl
+{
+    margin-top: -.5em;
+    margin-bottom: .5em;
+}
+
 /*#################################################################
     unorganized code
   #################################################################*/
