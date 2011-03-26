@@ -64,6 +64,7 @@ copyright = u'2010-2011, Assurance Technologies, LLC'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
+
 # version: The short X.Y version.
 # release: The full version, including alpha/beta/rc tags.
 from astdoc import __version__ as release
@@ -198,7 +199,7 @@ htmlhelp_basename = project + 'Doc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'astdoc.tex', u'astdoc Documentation',
+  (index_doc, project + '.tex', project + u' Documentation',
    u'Assurance Technologies, LLC', 'manual'),
 ]
 
@@ -231,7 +232,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'astdoc', u'astdoc Documentation',
+    (index_doc, project, project + u' Documentation',
      [u'Assurance Technologies, LLC'], 1)
 ]
 
