@@ -1,7 +1,7 @@
 """
-==========================================================
+=================================================================
 :mod:`cloud_sptheme.ext.relbar_toc` - adds TOC entry to relbar
-==========================================================
+=================================================================
 
 This sphinx extension automatically inserts a table-of-contents
 entry into the relbar for all pages; similar to the old python documentation format.

@@ -1,5 +1,5 @@
 recursive-include docs *
-include LICENSE README cloud_sptheme/themes *
+recursive-include cloud_sptheme/themes *
+include LICENSE README
 prune docs/_build
-
-
+exclude .hgignore *.komodoproject

@@ -5,7 +5,7 @@
 About
 =====
 :mod:`cloud_sptheme` provides a theme called "Cloud", used to generate this documentation.
-Aside from being just another sphinx theme, it has a few features:
+Aside from being another sphinx theme, it has a few special features:
 
 * You can mark sections with ``.. rst-class:: html-toggle``,
   which will make the section default to being collapsed under html,
@@ -47,7 +47,7 @@ See ``cloud_sptheme/themes/cloud/theme.conf`` for a complete list of options.
 
 Usage
 =====
-Within your documentation's ``conf.py`` file, make the following changes::
+To use the cloud theme, open your documentation's ``conf.py`` file, make the following changes::
 
     # import Cloud
     import cloud_sptheme as csp

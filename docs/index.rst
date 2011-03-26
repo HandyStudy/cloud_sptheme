@@ -1,8 +1,10 @@
-Welcome to the documentation for *cloud_sptheme* |release|
-=====================================================
+===============================================
+Welcome to the "Cloud" Sphinx Theme v |release|
+===============================================
 
-This is a small package containing some helpers
-for generating Sphinx documentation.
+This is a small package containing a Sphinx theme named "cloud",
+along with some related Sphinx extensions.
+See next page for :doc:`installation instructions <install>`.
 
 Themes
 ------
@@ -22,4 +24,4 @@ Online Resources
 ================
 * **Homepage & Source:** `<https://bitbucket.org/ecollins/cloud_sptheme>`_
 * **Docs:** `<https://packages.python.org/cloud_sptheme>`_
-* **PyPI:** `<http://pypi.python.org/cloud_sptheme>`_
+* **Download & PyPI:** `<http://pypi.python.org/cloud_sptheme>`_

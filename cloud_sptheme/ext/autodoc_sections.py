@@ -1,7 +1,7 @@
 """
-============================================================================
+===================================================================================
 :mod:`cloud_sptheme.ext.autodoc_sections` - support for ReST sections in docstrings
-============================================================================
+===================================================================================
 
 This Sphinx extension should be used in conjunction with the Autodoc extension.
 This extension allows docstrings (module, class, function, etc) to include

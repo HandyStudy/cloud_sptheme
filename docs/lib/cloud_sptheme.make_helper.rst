@@ -1,6 +1,6 @@
-=============================================================
+====================================================================
 :mod:`cloud_sptheme.make_helper` - sphinx-build Makefile replacement
-=============================================================
+====================================================================
 
 .. module:: cloud_sptheme.make_helper
     :synopsis: sphinx-build Makefile replacement
@@ -13,8 +13,10 @@ and don't find the need to update the makefile once set up. However,
 for the small subset of projects this doesn't include, this class
 provides an easy pure-python way to make a cross-platform build script.
 
-Within the documentation's source directory, just include the following fragment
-as the file ``make.py``::
+Usage
+=====
+In order to use this script, go to your documentation's source directory,
+and include the following fragment as the file ``make.py``::
 
     "Makefile for Sphinx documentation, adapted to python"
     import os
@@ -22,12 +24,16 @@ as the file ``make.py``::
     if __name__ == "__main__":
         SphinxMaker.execute(root_dir=os.path.join(__file__,os.pardir))
 
-Once done, this script can be invoked via :samp:`python docs/make.py {options}`.
+Once done, this script can be invoked via :samp:`python docs/make.py {options}`,
+in the same manner as the Sphinx Makefile and make.bat script.
 
 Any new features added to SphinxMaker via cloud_sptheme will automatically become
 available to all packages using this stub.
 
-.. class:: cloud_sptheme.make_helper.SphinxMaker(root_dir=None)
+Interface
+=========
+
+.. class:: SphinxMaker(root_dir=None)
 
     :param root_dir:
         absolute path pointing to documentation source directory.

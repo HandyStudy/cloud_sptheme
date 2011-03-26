@@ -1,7 +1,7 @@
 """
-==========================================================
+=================================================================
 :mod:`cloud_sptheme.index_styling` - adds css styling to genindex
-==========================================================
+=================================================================
 
 This sphinx extension intercepts & modifies the general index data
 before it is rendered to html; and does the following:
@@ -12,7 +12,7 @@ where each element has the format :samp:`<span class="category {type}">`.
 The name of the entry itself is wrapped in an addtional ``<span class="subject">`` element.
 Entries which don't fit into one of the above categories are not modified.
 
-The purpose of this class solely to allow themes (such as the :doc:`/cloud_theme`)
+The purpose of this class is solely to allow themes (such as the :doc:`/cloud_theme`)
 to provide addtional per-type styling for index entries.
 """
 import logging; log = logging.getLogger(__name__)

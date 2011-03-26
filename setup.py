@@ -19,18 +19,21 @@ from setuptools import setup, find_packages
 setup(
     #package info
     packages = find_packages(where=lib_path),
-    include_package_data = True,
+    package_data = { "cloud_sptheme": ["themes/*/*.*", "themes/*/static/*.*"] },
+    zip_safe=False,
+
+    install_requires=[ "sphinx>=1.0"],
 
     # metadata
     name = "cloud_sptheme",
     version = "1.0",
     author = "Eli Collins",
     author_email = "elic@assurancetechnologies.com",
-    description = "a nice sphinx theme, and some related extensions",
+    description = "a nice sphinx theme named 'Cloud', and some related extensions",
     license = "BSD",
     keywords = "sphinx extension theme",
     url = "https://bitbucket.org/ecollins/cloud_sptheme",
-    zip_safe=False,
+    download_url = "http://pypi.python.org/pypi/cloud_sptheme",
     classifiers=[
         'Development Status :: 4 - Beta',
         #there should be a Framework::Sphinx::Extension classifier :)
