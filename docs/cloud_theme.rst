@@ -43,6 +43,13 @@ List of Options
 ``docheight``
     sets the minimum height of the page body. defaults to ``6in``.
 
+``smallwidth``
+    defaults to 700px.
+    if width of device or browser page falls below this threshold,
+    cloud is displayed in "minimal" mode, which hides the sidebar
+    and eliminates some decorative margins. this is mainly
+    intended to ease viewing on smartphones. 
+
 See ``cloud_sptheme/themes/cloud/theme.conf`` for a complete list of options.
 
 Usage
