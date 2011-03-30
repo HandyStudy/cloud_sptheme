@@ -97,8 +97,8 @@ div.body
 
 div.sphinxsidebar
 {
-   /* it's nasty sometimes, but looks prettier than letting too-long module names break into document body*/
-   overflow: hidden;
+    /* it's nasty sometimes, but looks prettier than letting too-long module names break into document body*/
+    overflow: hidden;
 }
 
 div.sphinxsidebar h3,
@@ -195,27 +195,27 @@ div.footer a
 @media only screen and (max-width: {{ theme_smallwidth }}),
        only screen and (max-device-width: {{ theme_smallwidth }})
 {
-      body {
-         margin: 0;
-      }
+    body {
+        margin: 0;
+    }
 
-      div.relbar-top div.related,
-      div.relbar-bottom div.related
-      {
-          border-radius: 0;
-          -moz-border-radius: 0;
-          -webkit-border-radius: 0;
-      }
+    div.relbar-top div.related,
+    div.relbar-bottom div.related
+    {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+    }
 
-      div.sphinxsidebar
-      {
-         display: none;
-      }
+    div.sphinxsidebar
+    {
+        display: none;
+    }
 
-      div.bodywrapper
-      {
-         margin-left: 0;
-      }
+    div.bodywrapper
+    {
+        margin-left: 0;
+    }
 
     /* hide all lefthand links but first one, to save space*/
     div.related > ul > li:not(.right) + li
@@ -310,16 +310,16 @@ a.headerlink:hover
 
 .html-toggle.collapsed > .html-toggle-button:after
 {
-  content: "[show section]";
-  color: {{ theme_linkcolor }};
-  font-size: 70%;
+    content: "[show section]";
+    color: {{ theme_linkcolor }};
+    font-size: 70%;
 }
 
 .html-toggle.expanded > .html-toggle-button:after
 {
-  content: "[hide section]";
-  color: {{ theme_linkcolor }};
-  font-size: 70%;
+    content: "[hide section]";
+    color: {{ theme_linkcolor }};
+    font-size: 70%;
 }
 
 /*****************************************************
@@ -503,8 +503,8 @@ dl.nested-section-3 > dt { font-size: 110%; }
 
 table.indextable span.category
 {
-	font-size: 80%;
-	color: #84ADBE;
+    font-size: 80%;
+    color: #84ADBE;
 }
 
 table.indextable span.category.function,
@@ -519,12 +519,12 @@ table.indextable span.category.class { color: #9996c2; }
 
 table.indextable span.subject
 {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 table.indextable td > dl > dt
 {
-	margin-bottom: .5em;
+    margin-bottom: .5em;
 }
 
 table.indextable td > dl > dd > dl
@@ -586,17 +586,17 @@ td.field-body > em
  *****************************************************/
 
 th {
-   background: inherit;
+    background: inherit;
 }
 
 td.field-body > p.first:empty
 {
-   display: none;
+    display: none;
 }
 
 td.field-body > p:last-child:empty
 {
-   margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 /*****************************************************
