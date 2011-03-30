@@ -216,6 +216,13 @@ div.footer a
       {
          margin-left: 0;
       }
+
+    /* hide all lefthand links but first one, to save space*/
+    div.related > ul > li:not(.right) + li
+    {
+        display: none;
+    }
+
 }
 
 
