@@ -56,10 +56,12 @@ def indent_sections(lines, reference_prefix=''):
                 return c
         return None
     idx = 0
+    lss = False #set to true last non-empty line was a section heading
     while idx <= end:
         line = lines[idx].rstrip()
         if not line:
-            out.append("")
+            if not lss:
+                out.append("")
             idx += 1
             continue
         new_char = detect_section(idx)
@@ -79,7 +81,9 @@ def indent_sections(lines, reference_prefix=''):
                 ])
             idx += 2 #skip section header
             indent_level = max(0, len(sections))
+            lss = True
             continue
+        lss = False
         indent = indent_char * indent_level
         out.append(indent + line)
         idx += 1
