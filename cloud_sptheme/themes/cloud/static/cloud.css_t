@@ -362,6 +362,12 @@ p.admonition-title:after
     content: ":";
 }
 
+/* don't indent admonitions inside definitions */
+dl div.admonition
+{
+  margin-left: 0;
+}
+
 /*****************************************************
  * document - misc body styles
  *****************************************************/
@@ -488,6 +494,12 @@ dl.nested-section > dt
 dl.nested-section-1 > dt { font-size: 140%; }
 dl.nested-section-2 > dt { font-size: 120%; }
 dl.nested-section-3 > dt { font-size: 110%; }
+
+dl.nested-section > dd
+{
+    margin-left: 2em;
+    margin-top: 1em;
+}
 
 /*****************************************************
  * index page - category colorization
