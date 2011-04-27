@@ -416,9 +416,14 @@ table.docutils.footnote
  * document - quoted text
  *****************************************************/
 
-div.highlight-python
+div.highlight
 {
     margin: 1em;
+}
+
+.highlight .c
+{
+    font-size: 90%;
 }
 
 pre
