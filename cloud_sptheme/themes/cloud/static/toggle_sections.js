@@ -3,38 +3,60 @@
  * ~~~~~~~~~~~~~~
  *
  * Sphinx JavaScript helper for collapsible sections.
- * looks for sections with css class "html-toggle", with optional addtional classes "expanded" or "collapsed" (defaults to "collapsed")
+ * looks for sections with css class "html-toggle",
+ * with optional additional classes "expanded" or "collapsed"
+ * (defaults to "collapsed")
  *
  * :copyright: Copyright 2011 by Assurance Technologies
  * :license: BSD
  *
- * NOTE: while this provides full javascript instrumentation, css styling should be applied to .html-toggle > .html-toggle-button
+ * NOTE: while this provides full javascript instrumentation,
+ * css styling should be applied to .html-toggle > .html-toggle-button
  */
 
 $(document).ready(function (){
   function init(){
     var jobj = $(this);
-    var parent = jobj.parent();
-    if(!parent.hasClass("expanded")){
-      parent.addClass("collapsed").children().hide();
-      jobj.show();
-    }
+    var parent = jobj.parent()
+
+    /* add class for styling purposes */
     jobj.addClass("html-toggle-button");
+
+    /* initialize state */
+    _setState(jobj, parent.hasClass("expanded") || _containsHash(parent));
+
+    /* bind toggle callback */
+    jobj.click(function (){
+      _setState(jobj, !parent.hasClass("expanded"));
+    });
+
+    /* check for hash changes - older browsers may not have this evt */
+    $(window).bind("hashchange", function () {
+      if(_containsHash(parent))
+        _setState(jobj, true);
+    });
   }
 
-  function toggle(){
-    var jobj = $(this);
+  function _containsHash(parent){
+    var hash = document.location.hash;
+    if (hash && (parent[0].id == hash.substr(1) || parent.children(hash).length>0))
+      return true;
+    return false;
+  }
+
+  function _setState(jobj, expanded){
     var parent = jobj.parent();
-    if(parent.hasClass("collapsed")){
+    if(expanded){
       parent.addClass("expanded").removeClass("collapsed");
       parent.children().show();
     }else{
-      parent.children().hide();
-      jobj.show();
       parent.addClass("collapsed").removeClass("expanded");
+      parent.children().hide();
+      parent.children("span:first-child:empty").show(); /* for :ref: span tag */
+      jobj.show();
     }
   }
 
-  $(".html-toggle.section > h2, .html-toggle.section > h3, .html-toggle.section > h4, .html-toggle.section > h5, .html-toggle.section > h6").click(toggle).each(init);
+  $(".html-toggle.section > h2, .html-toggle.section > h3, .html-toggle.section > h4, .html-toggle.section > h5, .html-toggle.section > h6").each(init);
 
 });
