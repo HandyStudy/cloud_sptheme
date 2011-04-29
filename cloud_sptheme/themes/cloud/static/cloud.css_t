@@ -410,6 +410,14 @@ table.docutils.footnote
     margin: 1em 0 0 1em;
 }
 
+ /* join separate ULs together */
+ul + ul,
+ul + div > ul:only-child,
+div.toctree-wrapper + ul
+{
+ margin-top: -1em;
+}
+
 /*****************************************************
  * document - quoted text
  *****************************************************/
