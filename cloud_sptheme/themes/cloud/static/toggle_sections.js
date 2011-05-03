@@ -32,16 +32,21 @@ $(document).ready(function (){
 
     /* check for hash changes - older browsers may not have this evt */
     $(window).bind("hashchange", function () {
+      var hash = document.location.hash;
+      if(!hash)
+        return;
       if(_containsHash(parent))
         _setState(jobj, true);
+      var pos = $(hash).position();
+      window.scrollTo(pos.left, pos.top);
     });
   }
 
   function _containsHash(parent){
     var hash = document.location.hash;
-    if (hash && (parent[0].id == hash.substr(1) || parent.children(hash).length>0))
-      return true;
-    return false;
+    if(!hash)
+      return false;
+    return parent[0].id == hash.substr(1) || parent.find(hash).length>0;
   }
 
   function _setState(jobj, expanded){
