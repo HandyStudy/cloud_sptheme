@@ -422,12 +422,14 @@ div.toctree-wrapper + ul
  * document - quoted text
  *****************************************************/
 
-div.highlight
+div.highlight > pre,
+div.highlight-ini > pre,
+div.highlight-python > pre
 {
     margin: 1em;
 }
 
-.highlight .c
+div.highlight .c
 {
     font-size: 90%;
 }
