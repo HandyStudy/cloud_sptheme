@@ -15,4 +15,5 @@ Table Of Contents
 
     lib/cloud_sptheme.make_helper
 
+    history
     copyright

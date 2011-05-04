@@ -22,6 +22,9 @@ Aside from being another sphinx theme, it has a few special features:
   allowing easy separation table-of-contents and front pages
   (such as used by this documentation).
 
+* Automatically enables a special "minimal" mode for small
+  displays such as mobile devices.
+
 List of Options
 ===============
 
@@ -72,4 +75,5 @@ To use the cloud theme, open your documentation's ``conf.py`` file, make the fol
     #set the theme path to point to cloud's theme data
     html_theme_path = [csp.get_theme_dir()]
 
-Additionaly you will probably want to set some of the theme options listed above.
+    #[optional] set some of the options listed above...
+    html_theme_options = { "roottarget": "index" }

@@ -1,3 +1,5 @@
+.. index:: cloud; installation
+
 ============
 Installation
 ============
@@ -21,7 +23,6 @@ Installing
 
    pip install cloud_sptheme
 
-
 Documentation
 =============
 The latest copy of this documentation should always be available at:
@@ -34,4 +35,4 @@ you will need to:
 2. download the :mod:`!cloud_sptheme` source.
 3. install :mod:`!cloud_sptheme` itself.
 4. from the source directory, run ``python docs/make.py clean html``.
-5. Once Sphinx completes it's run, point a web browser to the file ``docs/_build/html/index.html``.
+5. Once Sphinx completes it's run, point a web browser to the file :samp:``{$SOURCE}/docs/_build/html/index.html``.
