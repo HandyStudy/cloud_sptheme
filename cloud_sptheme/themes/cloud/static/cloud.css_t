@@ -418,6 +418,21 @@ div.toctree-wrapper + ul
  margin-top: -1em;
 }
 
+table.html-plain-table
+{
+    border: 0;
+}
+
+table.docutils.html-plain-table td
+{
+    border: 0;
+}
+
+h2 + table.docutils
+{
+    margin-top: 1em;
+}
+
 /*****************************************************
  * document - quoted text
  *****************************************************/

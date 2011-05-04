@@ -11,6 +11,9 @@ Aside from being another sphinx theme, it has a few special features:
   which will make the section default to being collapsed under html,
   with a "show section" toggle link to the right of the title.
 
+* You can mark tables with ``.. rst-class:: html-plain-table``
+  to remove separating lines between rows.
+
 * It adds some addtional css classes to the base sphinx layout,
   allowing more options for custom styling.
 
@@ -48,7 +51,7 @@ List of Options
     if width of device or browser page falls below this threshold,
     cloud is displayed in "minimal" mode, which hides the sidebar
     and eliminates some decorative margins. this is mainly
-    intended to ease viewing on smartphones. 
+    intended to ease viewing on smartphones.
 
 See ``cloud_sptheme/themes/cloud/theme.conf`` for a complete list of options.
 
