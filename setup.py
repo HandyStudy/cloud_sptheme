@@ -12,7 +12,14 @@ lib_path = '.'
 #=========================================================
 #imports
 #=========================================================
+import re
 from setuptools import setup, find_packages
+#=========================================================
+#inspection
+#=========================================================
+vh = file(os.path.join(lib_path, "cloud_sptheme", "__init__.py"))
+VERSION = re.search(r'^__version__\s*=\s*"(.*?)"\s*$', vh.read(), re.M).group(1)
+vh.close()
 #=========================================================
 #setup
 #=========================================================
@@ -26,7 +33,7 @@ setup(
 
     # metadata
     name = "cloud_sptheme",
-    version = "1.0",
+    version = VERSION,
     author = "Eli Collins",
     author_email = "elic@assurancetechnologies.com",
     description = "a nice sphinx theme named 'Cloud', and some related extensions",
