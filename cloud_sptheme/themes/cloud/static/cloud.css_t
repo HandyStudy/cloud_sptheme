@@ -413,7 +413,7 @@ div.body dd,
 div.body li
 {
     text-align: justify;
-    line-height: 130%;
+    line-height: 140%;
 }
 
 /*dl.function,
@@ -512,7 +512,7 @@ tt.literal
 tt.samp.literal > em
 {
     font-family: {{ theme_codevarfont }};
-    font-size: 1.05em;
+    font-size: .8em;
     padding: 0 1px;
 }
 
