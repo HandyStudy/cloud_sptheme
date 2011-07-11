@@ -262,7 +262,9 @@ a.external:before
 }
 {% endif %}
 
-dt:target, .highlighted
+dt:target,
+.footnote:target,
+.highlighted
 {
     padding: 4px;
     margin: -4px;
