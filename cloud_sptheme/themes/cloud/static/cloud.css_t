@@ -358,17 +358,28 @@ a.headerlink:hover
 div.admonition
 {
     background: #f2f2f2;
-    border: 1px solid rgba(0,0,0,.1);
-    border-width: 1px 0;
-    margin: 1em;
+    border: 1px solid rgba(0,0,0,.05);
+    border-width: 0 1px 1px 0;
+    margin: 1em 0;
     padding: .5em;
+    border-radius: 10px 0 10px 0;
+    -webkit-border-radius: 10px 0 10px 0;
+    -moz-border-radius: 10px 0 10px 0;
 }
 
-div.note { background-color: #E7F0FE; }
-div.seealso { background-color: #FFF7E0; }
+div.note, div.seealso, div.warning, div.admonition-todo
+{
+    background-position: 8px center;
+    background-repeat: no-repeat;
+    padding-left: 38px;
+}
+
+div.note { background-color: #E7F0FE; background-image: url(icon-note.png); }
+
+div.seealso { background-color: #FFF7E0; background-image: url(icon-seealso.png); }
 div.topic { background-color: #eee; }
-div.warning { background-color: #ffe4e4; }
-div.admonition-todo { background-color: #f2f2f2; }
+div.warning { background-color: #ffe4e4; background-image: url(icon-warning.png); }
+div.admonition-todo { background-color: #FFF7E0; background-image: url(icon-todo.png); }
 
 div.admonition.caution { background-color: green; }
 /*div.admonition.caution { background-color: #FFF0E4; }*/
