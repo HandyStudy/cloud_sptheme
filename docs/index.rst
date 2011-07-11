@@ -1,10 +1,15 @@
 ===============================================
-Welcome to the "Cloud" Sphinx Theme v |release|
+The "Cloud" Sphinx Theme |release|
 ===============================================
 
+Welcome
+=======
 This is a small package containing a Sphinx theme named "cloud",
 along with some related Sphinx extensions.
 See next page for :doc:`installation instructions <install>`.
+
+Contents
+========
 
 Themes
 ------

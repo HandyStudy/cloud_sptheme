@@ -4,6 +4,13 @@
 Release History
 ===============
 
+**1.2** (2011-07-11)
+
+    * make section headers have colored bg
+    * added icons to admonitions
+    * changed default font
+    * other minor changes
+
 **1.1** (2011-05-04)
 
     * css media query automatically hides sidebar & trim
