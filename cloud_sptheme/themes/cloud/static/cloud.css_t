@@ -223,6 +223,24 @@ div.footer a
         display: none;
     }
 
+/*    div.body {
+        font-size: 150%;
+    }
+    
+    div.related
+    {
+       font-size: 130%;
+    }
+    
+    div.related li.right a
+    {
+      padding: .1em .2em;
+    }
+    
+    div.footer
+    {
+      font-size: 100%;
+    } */
 }
 
 /*****************************************************
@@ -252,6 +270,11 @@ a:visited
 a:hover
 {
     text-decoration: underline;
+}
+
+a.biglink
+{
+    font-size: 130%;
 }
 
 {% if theme_externalrefs|tobool %}
@@ -381,9 +404,9 @@ div.admonition
     border-width: 0 1px 1px 0;
     margin: 1em 0;
     padding: .5em;
-    border-radius: 10px 0 10px 0;
-    -webkit-border-radius: 10px 0 10px 0;
-    -moz-border-radius: 10px 0 10px 0;
+    border-radius: 0 10px 0 10px;
+    -webkit-border-radius: 0 10px 0 10px;
+    -moz-border-radius: 0 10px 0 10px;
 }
 
 div.note, div.seealso, div.warning, div.admonition-todo
@@ -683,6 +706,12 @@ td.field-body > p.first
 {
     margin-bottom: 1em;
 }
+
+td.field-body > p.first:only-child
+{
+    margin: 0; /* work around Chrome bug */
+}
+
 
 td.field-body > ul.first.simple > li > em,
 td.field-body > em
