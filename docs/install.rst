@@ -1,8 +1,8 @@
 .. index:: cloud; installation
 
-============
-Installation
-============
+=========================
+Installation Instructions
+=========================
 
 Requirements
 ============

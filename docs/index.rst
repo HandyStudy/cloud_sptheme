@@ -1,15 +1,23 @@
 ===============================================
-The "Cloud" Sphinx Theme |release|
+The Cloud Sphinx Theme
 ===============================================
 
-Welcome
-=======
-This is a small package containing a Sphinx theme named "cloud",
-along with some related Sphinx extensions.
-See next page for :doc:`installation instructions <install>`.
+.. rst-class:: dimmed
+
+This is release |release| of a small Python package named
+:mod:`cloud_sptheme`. It contains a `Sphinx <http://sphinx.pocoo.org/>`_ theme
+named "Cloud", and some related Sphinx extensions. Cloud and it's extensions
+are primarily oriented towards generating html documentation for Python libraries.
+They provide numerous small enhancements to make the content html more interactive,
+improve the layout on mobile devices, and other enhancements.
 
 Contents
 ========
+
+Documentation
+-------------
+* :doc:`install`
+* :doc:`history`
 
 Themes
 ------
@@ -25,8 +33,17 @@ Utilities
 ---------
 * :mod:`cloud_sptheme.make_helper` - a sphinx-build Makefile replacement
 
+.. rst-class:: dimmed
+
 Online Resources
 ================
-* **Homepage & Source:** `<https://bitbucket.org/ecollins/cloud_sptheme>`_
-* **Docs:** `<http://packages.python.org/cloud_sptheme>`_
-* **Download & PyPI:** `<http://pypi.python.org/pypi/cloud_sptheme>`_
+
+    .. rst-class:: html-plain-table
+
+    ====================== ===================================================
+    **Homepage & Source**: `<https://bitbucket.org/ecollins/cloud_sptheme>`_
+    **Online Docs**:       `<http://packages.python.org/cloud_sptheme>`_
+    ---------------------- ---------------------------------------------------
+    ---------------------- ---------------------------------------------------
+    **Download & PyPI**:    `<http://pypi.python.org/pypi/cloud_sptheme>`_
+    ====================== ===================================================

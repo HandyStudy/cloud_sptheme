@@ -226,17 +226,17 @@ div.footer a
 /*    div.body {
         font-size: 150%;
     }
-    
+
     div.related
     {
        font-size: 130%;
     }
-    
+
     div.related li.right a
     {
       padding: .1em .2em;
     }
-    
+
     div.footer
     {
       font-size: 100%;
@@ -278,7 +278,7 @@ a.biglink
 }
 
 {% if theme_externalrefs|tobool %}
-a.external:before
+a.external:not(.issue):before
 {
     content: {{ theme_externalicon }};
     padding-right: .1em;
@@ -299,7 +299,7 @@ dt:target,
 
     border-radius: 4px;
     -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;    
+    -moz-border-radius: 4px;
 }
 
 /*****************************************************
@@ -336,23 +336,24 @@ div.body p.rubric
 {
      margin: 1em -10px 0 -10px;
      padding: 10px;
-     
+
      background: {{ theme_sectionbgcolor }};
      border: 1px solid {{ theme_sectiontrimcolor }};
      border-width: 0 1px 1px 0;
-     
+
      border-radius: 10px;
      -moz-border-radius: 10px;
      -webkit-border-radius: 10px;
-     
+
      font-size: 160%;
      color: {{ theme_sectiontextcolor }};
      text-shadow: 1px 1px 0 rgba(0,0,0,.1);
 }
 
-div.body p.rubric
+div.body p.rubric,
+div.body div.section.dimmed h2
 {
-     background: {{ theme_rubricbgcolor }}; 
+     background: {{ theme_rubricbgcolor }};
 }
 
 div.body h3 { font-size: 140%; }
