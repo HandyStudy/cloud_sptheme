@@ -12,11 +12,6 @@ improve the layout on mobile devices, and other enhancements.
 Contents
 ========
 
-Documentation
--------------
-* :doc:`install`
-* :doc:`history`
-
 Themes
 ------
 * :doc:`Cloud <cloud_theme>` - a Sphinx theme, used by this documentation
@@ -31,7 +26,27 @@ Utilities
 ---------
 * :mod:`cloud_sptheme.make_helper` - a sphinx-build Makefile replacement
 
-.. rst-class:: dimmed
+Quick Links
+===========
+
+.. raw:: html
+
+    <table class="contentstable" align="center">
+    <tr>
+        <td width="50%" valign="top">
+            <p class="biglink" style="text-align: left">
+                <a class="biglink" href="install.html">Installation</a><br>
+                <span class="linkdescr">requirements and installation instructions</span>
+            </p>
+        </td>
+        <td width="50%" valign="top">
+            <p class="biglink" style="text-align: left">
+                <a class="biglink" href="history.html">Changelog</a><br>
+                <span class="linkdescr">history of current and past releases</span>
+            </p>
+        </td>
+    </tr>
+    </table>
 
 Online Resources
 ================
@@ -40,6 +55,8 @@ Online Resources
 
     ====================== ===================================================
     **Homepage & Source**: `<https://bitbucket.org/ecollins/cloud_sptheme>`_
+    ---------------------- ---------------------------------------------------
+    ---------------------- ---------------------------------------------------
     **Online Docs**:       `<http://packages.python.org/cloud_sptheme>`_
     ---------------------- ---------------------------------------------------
     ---------------------- ---------------------------------------------------
