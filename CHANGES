@@ -9,6 +9,26 @@ Release History
 
     * Cleaned up documentation [WIP].
 
+    * Redid Cloud's css layouts.
+      Cloud now has three layouts, controlled by css media queries:
+
+        - "Normal" mode displays the document as a center-aligned
+          box within the browser window. It will not grow
+          to be larger than ``max_width`` (default 11 inches) in size.
+          (This theme parameter was previously named ``docwidth``).
+
+        - "Compact" mode strips the body padding to fill the whole window,
+          but otherwise looks "Normal" mode. It will be used
+          when the browser is less than ``compact_width`` (default 960 pixels)
+          in size. This layout is new in 1.3.
+
+        - "Minimal" mode strips excess padding, hides the sidebar,
+          and does other things to reduce it's footprint as much as possible.
+          This mode will be used if the browser is less than
+          ``minimal_width`` in size (currently 700px), or if it
+          uses the ``"handheld"`` css media type.
+          (This theme parameter was previously named ``smallwidth``).
+
     * Added :mod:`~cloud_sptheme.ext.issue_tracker` extension,
       for auto-creating links to a project's issue tracker.
 

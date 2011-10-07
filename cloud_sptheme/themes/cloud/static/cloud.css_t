@@ -32,7 +32,7 @@ body
 div.related
 {
     margin: 0 auto;
-    max-width: {{ theme_docwidth }};
+    max-width: {{ theme_max_width }};
     background-color: {{ theme_relbarbgcolor }};
     line-height: 30px;
     color: {{ theme_relbartextcolor }};
@@ -64,7 +64,7 @@ div.related a
 div.document
 {
     margin: 0 auto;
-    max-width: {{ theme_docwidth }};
+    max-width: {{ theme_max_width }};
     background-color: {{ theme_sidebarbgcolor }};
 }
 
@@ -81,7 +81,7 @@ div.bodywrapper
 
 div.body
 {
-    min-height: {{ theme_docheight }};
+    min-height: {{ theme_min_height }};
     /* note: this ^ is just a hack to prevent body from being shorter than sidebar */
 
     background-color: {{ theme_bgcolor }};
@@ -192,8 +192,10 @@ div.footer a
  * adaptive page layout - if too small, hide some things
  *****************************************************/
 
-@media only screen and (max-width: {{ theme_smallwidth }}),
-       only screen and (max-device-width: {{ theme_smallwidth }})
+@media only screen and (max-width: {{ theme_compact_width }}),
+       only screen and (max-width: {{ theme_minimal_width }}),
+       only screen and (max-device-width: {{ theme_minimal_width }}),
+       handheld
 {
     body {
         margin: 0;
@@ -206,7 +208,13 @@ div.footer a
         -moz-border-radius: 0;
         -webkit-border-radius: 0;
     }
+}
 
+@media only screen and (max-width: {{ theme_minimal_width }}),
+       only screen and (max-device-width: {{ theme_minimal_width }}),
+       handheld
+{
+    /* hide the sidebar */
     div.sphinxsidebar
     {
         display: none;
@@ -223,24 +231,18 @@ div.footer a
         display: none;
     }
 
-/*    div.body {
-        font-size: 150%;
+    /* remove spacing on headers and reduce body padding */
+    body div.body h2, body div.body p.rubric
+    {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
     }
 
-    div.related
+    div.body
     {
-       font-size: 130%;
+        padding: 0 10px 30px;
     }
-
-    div.related li.right a
-    {
-      padding: .1em .2em;
-    }
-
-    div.footer
-    {
-      font-size: 100%;
-    } */
 }
 
 /*****************************************************
