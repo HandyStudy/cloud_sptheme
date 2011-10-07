@@ -283,6 +283,11 @@ a.external:before
     content: {{ theme_externalicon }};
     padding-right: .1em;
 }
+a.issue:before
+{
+    content: {{ theme_issueicon }};
+    padding-right: .1em;
+}
 {% endif %}
 
 dt:target,
