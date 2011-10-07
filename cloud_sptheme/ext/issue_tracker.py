@@ -1,17 +1,4 @@
-"""
-===================================================================================
-:mod:`cloud_sptheme.ext.issue_tracker` - support for `issue` text role
-===================================================================================
-
-This Sphinx extension adds a new text role, ``:issue:``, which will automatically
-be converted into links to a project's issue tracker.
-It requires ``conf.py`` specify the template to use when generating issue tracker urls.
-
-.. todo::
-
-    Document how to use this extension.
-
-"""
+"""cloud_sptheme.ext.issue_tracker - added ":issue:" text role to link to issue tracker"""
 #===========================================================================
 # imports
 #===========================================================================

@@ -17,15 +17,13 @@ from setuptools import setup, find_packages
 #=========================================================
 #inspection
 #=========================================================
-vh = file(os.path.join(lib_path, "cloud_sptheme", "__init__.py"))
-VERSION = re.search(r'^__version__\s*=\s*"(.*?)"\s*$', vh.read(), re.M).group(1)
-vh.close()
+from cloud_sptheme import __version__ as VERSION
 #=========================================================
 #setup
 #=========================================================
 setup(
     #package info
-    packages = find_packages(where=lib_path),
+    packages = find_packages(),
     package_data = { "cloud_sptheme": ["themes/*/*.*", "themes/*/static/*.*"] },
     zip_safe=False,
 

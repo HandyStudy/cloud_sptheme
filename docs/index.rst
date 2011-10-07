@@ -2,13 +2,11 @@
 The Cloud Sphinx Theme
 ===============================================
 
-.. rst-class:: dimmed
-
 This is release |release| of a small Python package named
 :mod:`cloud_sptheme`. It contains a `Sphinx <http://sphinx.pocoo.org/>`_ theme
-named "Cloud", and some related Sphinx extensions. Cloud and it's extensions
+named "Cloud", and some related Sphinx extensions. Cloud and its extensions
 are primarily oriented towards generating html documentation for Python libraries.
-They provide numerous small enhancements to make the content html more interactive,
+It provides numerous small enhancements to make the content html more interactive,
 improve the layout on mobile devices, and other enhancements.
 
 Contents
