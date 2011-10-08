@@ -530,6 +530,12 @@ h2 + table.docutils
     margin-top: 1em;
 }
 
+/* styling for OLs */
+dd ol
+{
+ margin-bottom: 10px;
+}
+
 /*****************************************************
  * document - quoted text
  *****************************************************/
