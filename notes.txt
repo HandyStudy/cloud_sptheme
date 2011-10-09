@@ -1,8 +1,6 @@
 TODO
 ----
-* ability to use per-page google analytics by settings GA identifier in conf.py
 * button to toggle sidebar
-* 'mid range' styling - for smaller screens that are "just right" - remove border and padding around doc.
 * try and clean up rendering of relbar menu - maybe w/ optional icons
 * way to specify "redirects" from old pages - would probably have to be javascript based.
 * offer alias cloud_sptheme.all_exts

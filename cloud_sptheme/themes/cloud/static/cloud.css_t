@@ -177,15 +177,38 @@ div.footer
 {
     color: {{ theme_footertextcolor }};
     width: 100%;
-    padding: 9px 0 9px 0;
+    padding: 9px 0;
     text-align: center;
     font-size: 75%;
 }
 
-div.footer a
+div.footer button.link
+{
+ margin: 0 -1px;
+ padding: 0;
+ background: none;
+ border: none;
+ font-size: inherit;
+ font-family: inherit;
+}
+
+div.footer a,
+div.footer button.link
 {
     color: {{ theme_footertextcolor }};
     text-decoration: underline;
+}
+
+div.footer a:hover,
+div.footer button.link:hover
+{
+   color: white;
+}
+
+div.footer + div.footer,
+div.footer + script + div.footer
+{
+    margin-top: -12px;
 }
 
 /*****************************************************
