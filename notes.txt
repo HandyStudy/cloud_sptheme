@@ -3,4 +3,13 @@ TODO
 * button to toggle sidebar
 * try and clean up rendering of relbar menu - maybe w/ optional icons
 * way to specify "redirects" from old pages - would probably have to be javascript based.
-* offer alias cloud_sptheme.all_exts
+
+* improve documentation
+    * document package-level helper routines
+    * expand docs for theme
+            - how to use it
+            - how the layout modes work
+            - what the options are
+            - how to use analytics integration
+    * better overall flow
+    * better docs for the extensions

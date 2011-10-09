@@ -16,3 +16,16 @@ def get_theme_dir():
 def get_version(release):
     "derive short version string from longer release"
     return re.match("(\d+\.\d+)", release).group(1)
+
+# names of standard cloud extensions
+# used by most cloud themes
+std_exts = [
+    'cloud_sptheme.ext.autodoc_sections', 
+    'cloud_sptheme.ext.index_styling', 
+    'cloud_sptheme.ext.relbar_toc', 
+]
+
+# names of all cloud extensions
+all_exts = std_exts + [
+    'cloud_sptheme.ext.issue_tracker',
+]
