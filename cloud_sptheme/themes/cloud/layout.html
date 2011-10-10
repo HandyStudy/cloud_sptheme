@@ -12,9 +12,12 @@
     googleanalytics_id - if set, enabled google analytics snippet & footer
     googleanalytics_path - optional subpatch for GA cookie
     collapsiblesidebar - enable collapsible sidebar support
+
 #}
 
 {% extends "basic/layout.html" %}
+
+{% set reldelim2 = '&nbsp; &nbsp;' %}
 
 {# add script file to instrument collapsable sections  and other features #}
 {% set script_files = script_files + ['_static/jquery.cookie.js',
@@ -72,7 +75,7 @@ if(ga_enabled){
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 }
-</script>            
+</script>
         {%- endif %}
 {%- endblock %}
 
@@ -86,7 +89,7 @@ if(ga_enabled){
         document.write("</div>");
     }else{
         document.write("<div class=\"footer\">Google Analytics has been disabled. ");
-        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '{{ theme_googleanalytics_path }}'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");        
+        document.write("Click <button title=\"set cookie to re-enable analytics for this site\" class=\"link\" onclick=\"$.cookie('disable-ga', null, {path: '{{ theme_googleanalytics_path }}'}); window.location.reload(); return false; \">here</button> to re-enable analytics for this site.");
     };
 </script>
     {%- endif %}
