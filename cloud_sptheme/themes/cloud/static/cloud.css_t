@@ -399,7 +399,7 @@ a.external:not(.issue):before
 a.issue:before
 {
     content: {{ theme_issueicon }};
-    padding-right: .1em;
+    padding-right: .2em;
 }
 {% endif %}
 
