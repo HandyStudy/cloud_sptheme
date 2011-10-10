@@ -34,7 +34,7 @@ $(document).ready(function (){
   });
   
   var state = $.cookie("sidebar");
-  if(!state && {{ theme_defaultcollapsed | tobool }}){
+  if(!state && {{ theme_defaultcollapsed | tobool | lower }}){
    state = "collapsed";
   }  
 
