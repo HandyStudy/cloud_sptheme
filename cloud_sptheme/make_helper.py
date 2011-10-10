@@ -124,6 +124,13 @@ class SphinxMaker(object):
                         value = " ".split(value)
                 setattr(self, key, value)
 
+        # make all relative paths relative to root dir
+        for name in ("BUILD", "SOURCE"):
+            value = getattr(self, name)
+            if not os.path.isabs(value):
+                value = abspath(self.root_dir, value)
+                setattr(self, name, value)
+
         if kwds:
             raise TypeError, "unknown keywords: %r" % (kwds,)
 
@@ -164,11 +171,20 @@ class SphinxMaker(object):
 
     def target_servehtml(self):
         path = realpath(self.BUILD, "html")
-        os.chdir(path)
         port = self.SERVEHTML_PORT
-        print "Serving files from %r on port %r" % (path, port)
-        import SimpleHTTPServer as s
-        s.BaseHTTPServer.HTTPServer(('',port), s.SimpleHTTPRequestHandler).serve_forever()
+
+        # try to use paste
+        try:
+            from paste.httpserver import serve
+            from paste.urlparser import StaticURLParser
+        except ImportError:
+            # fall back to stdlib server
+            import SimpleHTTPServer as s
+            os.chdir(path)
+            print "Serving files from %r on port %r" % (path, port)
+            s.BaseHTTPServer.HTTPServer(('',port), s.SimpleHTTPRequestHandler).serve_forever()
+        else:
+            serve(StaticURLParser(path), host="0.0.0.0", port=port)
 
     #TODO: support latex, pdf, etc...
 
