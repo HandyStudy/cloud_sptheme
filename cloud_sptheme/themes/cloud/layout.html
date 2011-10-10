@@ -9,13 +9,19 @@
 
     roottarget - optional target for root link (default to toc)
     logotarget - optional target for logo link (defaults to root target)
+    googleanalytics_id - if set, enabled google analytics snippet & footer
+    googleanalytics_path - optional subpatch for GA cookie
+    collapsiblesidebar - enable collapsible sidebar support
 #}
 
 {% extends "basic/layout.html" %}
 
-{# add script file to instrument collapsable sections #}
+{# add script file to instrument collapsable sections  and other features #}
 {% set script_files = script_files + ['_static/jquery.cookie.js',
                                       '_static/toggle_sections.js'] %}
+{% if theme_collapsiblesidebar|tobool %}
+{% set script_files = script_files + ['_static/toggle_sidebar.js'] %}
+{% endif %}
 
 {# add font stylesheets #}
 {% set css_files = css_files + [theme_fontcssurl] %}

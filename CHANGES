@@ -32,6 +32,11 @@ Release History
     * Added :mod:`~cloud_sptheme.ext.issue_tracker` extension,
       for auto-creating links to a project's issue tracker.
 
+    * Added optional Google Analytics integration.
+    
+    * Added ``collapsiblesidebar`` option, as well as ``defaultcollapsed`` option.
+      Though sidebar is still always hidden under minimal mode.
+
 **1.2** (2011-07-11)
 ====================
 
