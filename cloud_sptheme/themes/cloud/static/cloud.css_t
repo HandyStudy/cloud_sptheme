@@ -501,24 +501,49 @@ a.headerlink:hover
  * document - toggleable h1/h2 sections
  *****************************************************/
 
+.html-toggle-button
+{
+    position: relative;
+}
+
+.html-toggle-button:hover
+{
+    /* give a little bit of hint that this is clickable */
+    cursor: pointer;
+    box-shadow: 2px 2px 2px {{ theme_headlinkcolor }};
+    -moz-box-shadow: 2px 2px 2px {{ theme_headlinkcolor }};
+    -webkit-box-shadow: 2px 2px 2px {{ theme_headlinkcolor }};
+}
+
 .html-toggle.collapsed > .html-toggle-button
 {
-    margin-bottom: .5em;
-    cursor: pointer;
+    margin-bottom: 1em;
 }
 
 .html-toggle.collapsed > .html-toggle-button:after
 {
-    content: "[show section]";
+    content: "[+ show section]";
+    position: absolute;
+    right: 1em;
+    margin: 0;
+    padding: .15em 0 0 0;
+    text-shadow: none;
     color: {{ theme_linkcolor }};
-    font-size: 70%;
+    font-size: 65%;
+    font-style: italic;
 }
 
 .html-toggle.expanded > .html-toggle-button:after
 {
-    content: "[hide section]";
+    content: "[- hide section]";
+    position: absolute;
+    right: 1em;
+    margin: 0;
+    padding: .15em 0 0 0;
+    text-shadow: none;
     color: {{ theme_linkcolor }};
-    font-size: 70%;
+    font-size: 65%;
+    font-style: italic;
 }
 
 /*****************************************************
