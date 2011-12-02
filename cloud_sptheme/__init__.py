@@ -20,12 +20,13 @@ def get_version(release):
 # names of standard cloud extensions
 # used by most cloud themes
 std_exts = [
-    'cloud_sptheme.ext.autodoc_sections', 
-    'cloud_sptheme.ext.index_styling', 
-    'cloud_sptheme.ext.relbar_toc', 
+    'cloud_sptheme.ext.autodoc_sections',
+    'cloud_sptheme.ext.index_styling',
+    'cloud_sptheme.ext.relbar_toc',
 ]
 
 # names of all cloud extensions
 all_exts = std_exts + [
     'cloud_sptheme.ext.issue_tracker',
+    'cloud_sptheme.ext.escaped_samp_literals',
 ]

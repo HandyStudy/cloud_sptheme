@@ -41,6 +41,7 @@ extensions = [
     'cloud_sptheme.ext.autodoc_sections',
     'cloud_sptheme.ext.index_styling',
     'cloud_sptheme.ext.relbar_toc',
+    'cloud_sptheme.ext.escaped_samp_literals',
     ]
 
 # Add any paths that contain templates here, relative to this directory.

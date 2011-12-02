@@ -9,7 +9,7 @@ Release History
 
     * Cleaned up documentation [WIP].
 
-    * Redid Cloud's css layouts.
+    * Redid css layouts.
       Cloud now has three layouts, controlled by css media queries:
 
         - "Normal" mode displays the document as a center-aligned
@@ -32,8 +32,11 @@ Release History
     * Added :mod:`~cloud_sptheme.ext.issue_tracker` extension,
       for auto-creating links to a project's issue tracker.
 
+    * Added :mod:`~cloud_sptheme.ext.escaped_samp_literals` extension,
+      which patches Sphinx to allow literal ``{`` characters in *samp* roles.
+
     * Added optional Google Analytics integration.
-    
+
     * Added ``collapsiblesidebar`` option, as well as ``defaultcollapsed`` option.
       Though sidebar is still always hidden under minimal mode.
 
