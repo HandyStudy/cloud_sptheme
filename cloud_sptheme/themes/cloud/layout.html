@@ -17,7 +17,7 @@
 
 {% extends "basic/layout.html" %}
 
-{% set reldelim2 = '&nbsp; &nbsp;' %}
+{% set reldelim2 = reldim2 is not defined and ' &nbsp; &nbsp;' or reldelim2 %}
 
 {# add script file to instrument collapsable sections  and other features #}
 {% set script_files = script_files + ['_static/jquery.cookie.js',

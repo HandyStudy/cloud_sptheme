@@ -197,7 +197,7 @@ div.sidebartoggle button:active
 
 div.sphinxsidebar p.logo
 {
-    margin: 8px 0 0 0;
+    margin: 16px 0 0 0;
     text-align: center;
 }
 
@@ -229,6 +229,9 @@ div.sidebartoggle button
    position: absolute;
    right: -1px;
    top: 0;
+
+   margin: 0;
+   padding: 0 6px;
 
    background: {{ theme_sidebarbgcolor }};
    border: 1px solid {{ theme_sidebartrimcolor }};
@@ -800,7 +803,7 @@ table.indextable td > dl > dd > dl
 }
 
 /*#################################################################
-    unorganized code
+    unorganized bits
   #################################################################*/
 
 
