@@ -541,12 +541,10 @@ div.body h4.html-toggle-button:hover
 .html-toggle.collapsed > .html-toggle-button:after
 {
     content: "[+ show section]";
-    position: absolute;
-    right: 1em;
     margin: 0;
     padding: .15em 0 0 0;
     text-shadow: none;
-    color: {{ theme_linkcolor }};
+    color: inherit;
     font-size: 65%;
     font-style: italic;
 }
@@ -554,15 +552,15 @@ div.body h4.html-toggle-button:hover
 .html-toggle.expanded > .html-toggle-button:after
 {
     content: "[- hide section]";
-    position: absolute;
-    right: 1em;
     margin: 0;
     padding: .15em 0 0 0;
     text-shadow: none;
-    color: {{ theme_linkcolor }};
+    color: inherit;
     font-size: 65%;
     font-style: italic;
 }
+
+.html-toggle-button:hover a.headerlink:not(:hover) { opacity: 0; }
 
 /*****************************************************
  * document - admonitions
