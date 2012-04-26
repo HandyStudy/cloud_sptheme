@@ -10,11 +10,19 @@ import os.path
 __version__ = "1.3.dev0"
 
 def get_theme_dir():
-    "return path to directory containing sphinx themes in this package"
+    """Returns path to directory containing this package's Sphinx themes.
+
+    This is designed to be used when setting the ``html_theme_path``
+    option within Sphinx's ``conf.py`` file.
+    """
     return os.path.abspath(os.path.join(__file__,os.path.pardir, "themes"))
 
 def get_version(release):
-    "derive short version string from longer release"
+    """Derive short version string from longer release.
+
+    This is designed to be a cheap helper to take the ``release`` string,
+    and generate the shorted ``version`` string also required by ``conf.py``.
+    """
     return re.match("(\d+\.\d+)", release).group(1)
 
 # names of standard cloud extensions

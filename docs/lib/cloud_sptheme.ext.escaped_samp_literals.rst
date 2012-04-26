@@ -6,7 +6,7 @@
     :synopsis: support escaped bracket characters in SAMP role
 
 This extension modifies how ``:samp:`` literals are parsed, replacing
-the default Sphinx parse with an alternate one that allows embedding
+the default Sphinx parser with an alternate one that allows embedding
 literal ``{`` and ``}`` characters within the content, as well as validating
 the input more strictly. To embed a literal ``{``, just use a double-backslash, e.g::
 
@@ -22,4 +22,3 @@ the input more strictly. To embed a literal ``{``, just use a double-backslash, 
     `issue tracker <http://bitbucket.org/birkenfeld/sphinx/issue/789/samp-text-role-lacks-ability-to-escape>`_.
     When and if the patch is accepted, or an alternative is added to Sphinx,
     this extension will be disabled, deprecated, and eventually removed.
-

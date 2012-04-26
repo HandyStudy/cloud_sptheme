@@ -13,3 +13,6 @@ TODO
             - how to use analytics integration
     * better overall flow
     * better docs for the extensions
+
+* remove table lines, add alternating bg bands
+* change html-toggle to be left-aligned again.

@@ -6,47 +6,49 @@ This is release |release| of a small Python package named
 :mod:`cloud_sptheme`. It contains a `Sphinx <http://sphinx.pocoo.org/>`_ theme
 named "Cloud", and some related Sphinx extensions. Cloud and its extensions
 are primarily oriented towards generating html documentation for Python libraries.
-It provides numerous small enhancements to make the content html more interactive,
+It provides numerous small enhancements to make the html documentation html more interactive,
 improve the layout on mobile devices, and other enhancements.
 
 Contents
 ========
 
-Themes
-------
-* :doc:`Cloud <cloud_theme>` - a Sphinx theme, used by this documentation
+Sphinx Themes
+-------------
+    :doc:`Cloud <cloud_theme>`
+        the main Sphinx theme provided by this package,
+        and used by this documentation.
 
 Sphinx Extensions
 -----------------
-* :mod:`cloud_sptheme.ext.autodoc_sections` - allows autodoc to handle RST section headers inside class/method docstrings
-* :mod:`cloud_sptheme.ext.index_styling` - adds css styling to the general index
-* :mod:`cloud_sptheme.ext.relbar_toc` - adds a TOC link to the right in the relbar
+The following extensions provide features used by the Cloud theme,
+and should be enabled for most documentation that uses it:
 
-Utilities
+    :mod:`cloud_sptheme.ext.index_styling`
+        Adds additional css styling classes to the index page.
+
+    :mod:`cloud_sptheme.ext.relbar_toc`
+        Adds a TOC link to the top navigation controls.
+
+This package also provides a few extra extensions, which may be useful
+when documenting Python projects; and should be theme-agnostic:
+
+    :mod:`cloud_sptheme.ext.autodoc_sections`
+        Patches the :mod:`sphinx.ext.autodoc` to handle RST section headers
+        embedded inside class and method docstrings.
+
+    :mod:`cloud_sptheme.ext.issue_tracker`
+        Adds a special ``:issue:`` role for quickly linking to a project's issue tracker.
+
+    :mod:`cloud_sptheme.ext.escaped_samp_literals`
+        Patches Sphinx to permit escaped ``{}`` characters within a ``:samp:`` role.
+
+Reference
 ---------
-* :mod:`cloud_sptheme.make_helper` - a sphinx-build Makefile replacement
+:doc:`install`
+    requirements and installations instructions
 
-Quick Links
-===========
-
-.. raw:: html
-
-    <table class="contentstable" align="center">
-    <tr>
-        <td width="50%" valign="top">
-            <p class="biglink" style="text-align: left">
-                <a class="biglink" href="install.html">Installation</a><br>
-                <span class="linkdescr">requirements and installation instructions</span>
-            </p>
-        </td>
-        <td width="50%" valign="top">
-            <p class="biglink" style="text-align: left">
-                <a class="biglink" href="history.html">Changelog</a><br>
-                <span class="linkdescr">history of current and past releases</span>
-            </p>
-        </td>
-    </tr>
-    </table>
+:doc:`history`
+    history of current and past releases
 
 Online Resources
 ================
@@ -54,11 +56,11 @@ Online Resources
     .. rst-class:: html-plain-table
 
     ====================== ===================================================
-    **Homepage & Source**: `<https://bitbucket.org/ecollins/cloud_sptheme>`_
+    Homepage & Source:     `<https://bitbucket.org/ecollins/cloud_sptheme>`_
     ---------------------- ---------------------------------------------------
     ---------------------- ---------------------------------------------------
-    **Online Docs**:       `<http://packages.python.org/cloud_sptheme>`_
+    Online Docs:           `<http://packages.python.org/cloud_sptheme>`_
     ---------------------- ---------------------------------------------------
     ---------------------- ---------------------------------------------------
-    **Download & PyPI**:    `<http://pypi.python.org/pypi/cloud_sptheme>`_
+    Download & PyPI:       `<http://pypi.python.org/pypi/cloud_sptheme>`_
     ====================== ===================================================
