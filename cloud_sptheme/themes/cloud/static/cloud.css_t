@@ -94,6 +94,8 @@ div.body
     background-color: {{ theme_bgcolor }};
     border-left: 1px solid {{theme_bodytrimcolor}};
 
+    line-height: 140%;
+
     color: {{ theme_textcolor }};
     padding: 0 20px 30px 20px;
 }
@@ -467,7 +469,7 @@ div.section.emphasized > h3
 
     background: {{ theme_sectionbgcolor }};
     border: 1px solid {{ theme_sectiontrimcolor }};
-    border-width: 1px;
+    border-width: 0 1px 1px 0;
 
     border-radius: 10px;
     -moz-border-radius: 10px;
@@ -547,6 +549,7 @@ div.body h4.html-toggle-button:hover
     color: inherit;
     font-size: 65%;
     font-style: italic;
+    font-weight: bold;
 }
 
 .html-toggle.expanded > .html-toggle-button:after
@@ -558,6 +561,7 @@ div.body h4.html-toggle-button:hover
     color: inherit;
     font-size: 65%;
     font-style: italic;
+    font-weight: bold;
 }
 
 .html-toggle-button:hover a.headerlink:not(:hover) { opacity: 0; }
@@ -637,27 +641,24 @@ dl div.admonition
  * document - misc body styles
  *****************************************************/
 
+div.body hr {
+    margin: 0 10px;
+    background: none;
+    border: 1px dashed {{theme_sidebartrimcolor}};
+    border-width: 1px 0 0 0;
+}
+
 div.body p,
 div.body dd,
 div.body li
 {
     text-align: justify;
-    line-height: 140%;
+    line-height: 133%;
 }
 
-/*dl.function,
-dl.method,
-dl.attribute,
-dl.class,
-dl.exception,
-dl.data */
-
-dl
-{
-    margin-bottom: 1.5em;
-}
-
-li > dl:only-child { margin-bottom: 0; }
+    /*------------------------------------
+     * footnotes
+     *------------------------------------*/
 
 a.footnote-reference
 {
@@ -666,12 +667,16 @@ a.footnote-reference
     top: -.75em;
 }
 
-table.docutils.footnote
-{
-    margin: 1em 0 0 1em;
-}
+table.docutils.footnote {  margin: 1em 0 0 1em; }
 
- /* join separate ULs together */
+    /*------------------------------------
+     * list & definition lists
+     *------------------------------------*/
+
+dl { margin-bottom: 1.5em; }
+li > dl:only-child { margin-bottom: 0; }
+
+/* join separate ULs together */
 ul + ul,
 ul + div > ul:only-child,
 div.toctree-wrapper + ul
@@ -679,36 +684,22 @@ div.toctree-wrapper + ul
  margin-top: -1em;
 }
 
-table.html-plain-table
-{
-    border: 0;
-}
+dd ol {  margin-bottom: 10px; }
 
-table.docutils.html-plain-table td
-{
-    border: 0;
-}
+.field-list p { margin-bottom: 16px; }
 
-h2 + table.docutils
-{
-    margin-top: 1em;
-}
+    /*------------------------------------
+     * table styles
+     *------------------------------------*/
 
-/* styling for OLs */
-dd ol
-{
-    margin-bottom: 10px;
-}
+h2 + table.docutils { margin-top: 1em; }
 
-.field-list p {
-    margin-bottom: 16px;
-}
+table.docutils th { border: 0; padding: 5px 10px 5px 5px; }
+table.docutils td { border: 0; padding: 5px; }
+table.docutils tr.row-odd th { background: rgba(0,0,0,.1); }
+table.docutils tr.row-odd td { background: rgba(0,0,0,.05); }
 
-div.body hr {
-    background: none;
-    border: 1px dashed {{theme_sidebartrimcolor}};
-    border-width: 1px 0 0 0;
-}
+table.docutils.html-plain-table tr.row-odd > * { background: none; }
 
 /*****************************************************
  * document - quoted text
@@ -738,6 +729,18 @@ div.highlight-python pre
     color: {{ theme_codetextcolor }};
 }
 
+table.highlighttable td { padding: 0; }
+table.highlighttable td.code { width: 100%; }
+table.highlighttable div.linenodiv pre
+{
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    padding-right: .5em;
+    opacity: 0.3;
+}
+
 tt
 {
     font-family: {{ theme_codeblockfont }};
@@ -748,8 +751,8 @@ tt.literal
 {
     background-color: {{ theme_quotebgcolor }};
     border: 1px solid {{ theme_quotetrimcolor }};
-    padding: 1px 2px;
-    margin: 0 1px;
+    padding: 0px 4px;
+    margin: 1px;
 
     border-radius: 4px;
     -moz-border-radius: 4px;
@@ -773,7 +776,7 @@ h1 tt.literal
 {
     background-color: inherit;
     border: 0;
-    font-weight: bold;
+    font-size: 80%;
 }
 
 h1 tt.samp.literal > em
