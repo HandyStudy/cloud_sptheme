@@ -41,7 +41,7 @@ def format_index_name(name):
     if sub:
         sub = literal('<span class="subject">') + escape(sub) + literal("</span>")
     cat = left + sub + right
-    return escape(name) + literal('<span class="category ' + type + '">(') + escape(cat) + literal(")</span>")
+    return escape(name) + literal('<span class="category ' + type + '">') + escape(cat) + literal("</span>")
 
 def mangle_index(app, pagename, templatename, ctx, event_arg):
     if pagename != "genindex":
