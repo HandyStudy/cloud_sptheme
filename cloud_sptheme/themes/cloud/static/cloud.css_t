@@ -323,6 +323,9 @@ div.footer + script + div.footer
         -moz-border-radius: 0;
         -webkit-border-radius: 0;
     }
+
+    /* hide extra info */
+    div.admonition.floater { display: none; }
 }
 
 @media only screen and (max-width: {{ theme_minimal_width }}),
@@ -607,6 +610,12 @@ div.admonition ul,
 div.admonition ol
 {
     margin-bottom: 5px;
+}
+
+div.admonition.floater
+{
+    float: right;
+    max-width: 40%;
 }
 
 /* next 3 rules merge the title into the first paragraph */
