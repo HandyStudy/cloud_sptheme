@@ -231,6 +231,11 @@ class SphinxMaker(object):
     #eoc
     #===============================================================
 
+class ProjectSphinxMaker(SphinxMaker):
+    "SphinxMaker variant which more usefully integrates into setup.py of a python project"
+    #TODO: make this read setup.cfg etc to see where build_sphinx *actually* puts things
+    BUILD = os.path.join(os.pardir, "build", "sphinx")
+
 #===============================================================
 #eof
 #===============================================================

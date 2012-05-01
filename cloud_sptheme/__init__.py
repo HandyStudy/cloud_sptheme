@@ -7,7 +7,7 @@ use them as well, so they are kept here.
 import re
 import os.path
 
-__version__ = "1.3.dev0"
+__version__ = "1.3"
 
 def get_theme_dir():
     """Returns path to directory containing this package's Sphinx themes.

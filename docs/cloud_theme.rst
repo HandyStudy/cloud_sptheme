@@ -102,7 +102,7 @@ make the following changes::
 
     # set the html theme
     html_theme = "cloud"
-        # there is also a red-colored version named "redcloud"
+        # NOTE: there is also a red-colored version named "redcloud"
 
     # ... some contents omitted ...
 
