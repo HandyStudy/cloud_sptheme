@@ -617,6 +617,7 @@ div.admonition.floater
 {
     float: right;
     max-width: 40%;
+    margin: 1em 0 1.5em 1.5em;
 }
 
 /* next 3 rules merge the title into the first paragraph */
