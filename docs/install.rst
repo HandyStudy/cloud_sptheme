@@ -6,6 +6,7 @@ Installation Instructions
 
 Requirements
 ============
+* Python >= 2.5 or Python 3
 * `Sphinx <http://sphinx.pocoo.org/>`_ 1.0 or newer.
 
 Installing

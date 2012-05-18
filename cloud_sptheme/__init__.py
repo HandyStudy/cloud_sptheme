@@ -6,6 +6,7 @@ use them as well, so they are kept here.
 """
 import re
 import os.path
+import sys
 
 __version__ = "1.3"
 
@@ -38,3 +39,11 @@ all_exts = std_exts + [
     'cloud_sptheme.ext.issue_tracker',
     'cloud_sptheme.ext.escaped_samp_literals',
 ]
+
+# py2/3 compat helpers
+if sys.version_info < (3,0):
+    def u(s):
+        return s.decode("unicode_escape")
+else:
+    def u(s):
+        return s

@@ -107,7 +107,8 @@ class SphinxMaker(object):
         self.root_dir = abspath(root_dir)
         self.conf_file = joinpath(self.root_dir, "conf.py")
         if not os.path.exists(self.conf_file):
-            raise RuntimeError, "conf file not found in root: %r" % (self.root_dir)
+            raise RuntimeError("conf file not found in root: %r" %
+                               (self.root_dir))
 
         #check environment for overrides, as well as constructor
         for key in self.env_vars:
@@ -132,7 +133,7 @@ class SphinxMaker(object):
                 setattr(self, name, value)
 
         if kwds:
-            raise TypeError, "unknown keywords: %r" % (kwds,)
+            raise TypeError("unknown keywords: %r" % (kwds,))
 
     @classmethod
     def execute(cls, args=None, **kwds):

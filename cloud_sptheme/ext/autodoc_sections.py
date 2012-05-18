@@ -88,7 +88,7 @@ def mangle_docstrings(app, what, name, obj, options, lines):
         pass
     else:
         #FIXME: handle other cases
-        raise NotImplementedError, "unknown node: %r %r" % (what, obj)
+        raise NotImplementedError("unknown node: %r %r" % (what, obj))
 
 def setup(app):
     app.connect('autodoc-process-docstring', mangle_docstrings)
