@@ -46,8 +46,8 @@ at `<http://packages.python.org/cloud_sptheme>`_.
     url = "https://bitbucket.org/ecollins/cloud_sptheme",
     download_url = "http://pypi.python.org/pypi/cloud_sptheme",
     classifiers=[
-        'Development Status :: 4 - Beta',
-        #there should be a Framework::Sphinx::Extension classifier :)
+        'Development Status :: 5 - Production/Stable',
+        # XXX: there should be a "Framework :: Sphinx :: Extension" classifier :)
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
