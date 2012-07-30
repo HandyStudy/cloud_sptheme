@@ -33,13 +33,15 @@ def get_issue_tracker_url(config):
     elif template.startswith("bb:"):
         # parse "bb:<project>", and replace with bitbucket url
         project = template[3:].strip("/")
-        return "http://bitbucket.org/" + project + "/issue/{issue}/"
+        return "http://bitbucket.org/" + project + "/issue/{issue}"
 
     elif template.startswith("gc:"):
         # parse "gc:<project>", and replace with google code url
         project = template[3:].strip("/")
         return "http://code.google.com/p/" + project + \
                     "/issues/detail?id={issue}"
+
+    # TODO: "gh:" -> github
 
     else:
         # assume it contains {issue} and possibly {title}
@@ -96,7 +98,7 @@ def issue_role(name, rawtext, text, line, inliner, options={}, content=[]):
         url = url_template.format(issue=issue, title=title)
         node = nodes.reference(rawtext, title, refuri=url, **options)
     else:
-        node = nodes.label(rawtext, title, **options)
+        node = nodes.emphasis(rawtext, title, **options)
     return [node], []
 
 #===========================================================================

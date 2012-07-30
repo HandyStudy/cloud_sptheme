@@ -404,15 +404,19 @@ a.biglink
 }
 
 {% if theme_externalrefs|tobool %}
-a.external:not(.issue):before
+a.external:before
 {
     content: {{ theme_externalicon }};
     padding-right: .1em;
 }
-a.issue:before
+a.external.issue:before
 {
-    content: {{ theme_issueicon }};
-    padding-right: .2em;
+    content: {{ theme_issueicon or theme_externalicon }};
+}
+em.issue:before
+{
+    content: {{ theme_issueicon or theme_externalicon }};
+    padding-right: .1em;
 }
 {% endif %}
 

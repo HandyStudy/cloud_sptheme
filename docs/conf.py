@@ -42,6 +42,7 @@ extensions = [
     'cloud_sptheme.ext.index_styling',
     'cloud_sptheme.ext.relbar_toc',
     'cloud_sptheme.ext.escaped_samp_literals',
+    'cloud_sptheme.ext.issue_tracker',
     ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -110,6 +111,7 @@ pygments_style = 'sphinx'
 modindex_common_prefix = [ "cloud_sptheme." ]
 
 todo_include_todos = True
+issue_tracker_url = "bb:ecollins/cloud_sptheme"
 
 # -- Options for HTML output ---------------------------------------------------
 
