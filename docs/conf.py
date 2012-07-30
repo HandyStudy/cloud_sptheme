@@ -35,9 +35,11 @@ needs_sphinx = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
+    # standard sphinx extensions
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
 
+    # cloud's extensions
     'cloud_sptheme.ext.autodoc_sections',
     'cloud_sptheme.ext.index_styling',
     'cloud_sptheme.ext.relbar_toc',
@@ -122,7 +124,7 @@ html_theme = 'cloud'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = { "roottarget": index_doc, "collapsiblesidebar": True }
+html_theme_options = { "roottarget": index_doc }
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = [csp.get_theme_dir()]
