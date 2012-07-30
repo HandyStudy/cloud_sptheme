@@ -24,6 +24,23 @@ Installing
 
    pip install cloud_sptheme
 
+.. index:: readthedocs.org; installation on
+
+ReadTheDocs
+===========
+To use this theme on `<http://readthedocs.org>`_:
+
+1. If it doesn't already exist, add a ``requirments.txt`` to your documentation (e.g. alongside ``conf.py``).
+
+2. Make sure the file contains the line ``cloud_sptheme`` (along with any other
+   build requirements your documentation has, if applicable).
+
+3. When setting up your project on ReadTheDocs, enter the path to ``requirements.txt``
+   in the *requirements file* field.
+
+4. ReadTheDocs will automatically download the latest version of this theme
+   when building your documentation.
+
 Documentation
 =============
 The latest copy of this documentation should always be available at:

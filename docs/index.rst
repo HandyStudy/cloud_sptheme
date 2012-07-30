@@ -34,10 +34,11 @@ when documenting Python projects; and should be theme-agnostic:
 
     :mod:`cloud_sptheme.ext.autodoc_sections`
         Patches the :mod:`sphinx.ext.autodoc` to handle RST section headers
-        embedded inside class and method docstrings.
+        inside docstrings.
 
     :mod:`cloud_sptheme.ext.issue_tracker`
-        Adds a special ``:issue:`` role for quickly linking to a project's issue tracker.
+        Adds a special ``:issue:`` role for quickly linking to
+        your project's issue tracker.
 
     :mod:`cloud_sptheme.ext.escaped_samp_literals`
         Patches Sphinx to permit escaped ``{}`` characters within a ``:samp:`` role.
@@ -56,11 +57,7 @@ Online Resources
     .. rst-class:: html-plain-table
 
     ====================== ===================================================
-    Homepage & Source:     `<https://bitbucket.org/ecollins/cloud_sptheme>`_
-    ---------------------- ---------------------------------------------------
-    ---------------------- ---------------------------------------------------
+    Homepage:              `<https://bitbucket.org/ecollins/cloud_sptheme>`_
     Online Docs:           `<http://packages.python.org/cloud_sptheme>`_
-    ---------------------- ---------------------------------------------------
-    ---------------------- ---------------------------------------------------
     Download & PyPI:       `<http://pypi.python.org/pypi/cloud_sptheme>`_
     ====================== ===================================================

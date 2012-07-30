@@ -15,14 +15,26 @@ def get_theme_dir():
 
     This is designed to be used when setting the ``html_theme_path``
     option within Sphinx's ``conf.py`` file.
+
+    .. seealso:: The :ref:`Cloud Sphinx Theme <cloud-theme-usage>` for a usage example.
     """
     return os.path.abspath(os.path.join(__file__,os.path.pardir, "themes"))
 
 def get_version(release):
-    """Derive short version string from longer release.
+    """Derive short version string from longer 'release' string.
 
     This is designed to be a cheap helper to take the ``release`` string,
     and generate the shorted ``version`` string also required by ``conf.py``.
+
+    Usuage example (in ``conf.py``)::
+
+        import cloud_sptheme as csp
+
+        ...
+
+        # The version info for the project you're documenting
+        from myapp import __version__ as release
+        version = csp.get_version(release)
     """
     return re.match("(\d+\.\d+)", release).group(1)
 

@@ -5,14 +5,19 @@
 .. module:: cloud_sptheme.ext.index_styling
     :synopsis: adds additional css styling to general index
 
-This sphinx extension intercepts & modifies the general index data
-before it is rendered to html; and does the following:
+This Sphinx extension intercepts & modifies the general index data
+before it is rendered to html, adding some additional css classes
+to help Sphinx themes (e.g. :doc:`/cloud_theme`)
+provide addtional per-type styling for index entries.
 
-All index entries are wrapped in ``<span>`` elements,
-where each element has the format :samp:`<span class="category {type}">`.
-:samp:`{type}` in turn is one of ``attribute``, ``method``, ``class``, ``function``, ``module``.
-The name of the entry itself is wrapped in an addtional ``<span class="subject">`` element.
-Entries which don't fit into one of the above categories are not modified.
+This extension adds the following css classes to ``genindex``:
 
-The purpose of this class is solely to allow themes (such as the :doc:`/cloud_theme`)
-to provide addtional per-type styling for index entries.
+* For all entries referencing an ``attribute``, ``method``, ``class``,
+  ``function``, or ``module``:
+
+  The type of the entry (e.g. ``attribute``) is wrapped in a
+  :samp:`<span class="category {type}">` element.
+  If the element has a location (e.g. ``myclass in module myapp``),
+  the ``myapp`` portion is wrapped in a ``<span class="location">`` element.
+
+* Entries which don't fit into one of the above categories are not modified.
