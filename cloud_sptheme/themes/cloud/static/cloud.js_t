@@ -35,6 +35,7 @@ $(document).ready(function (){
     /* bind toggle callback */
     jobj.click(function (){
       _setState(jobj, !parent.hasClass("expanded"));
+      $(window).trigger('cloud-section-toggled', parent[0]);
     });
 
     /* check for hash changes - older browsers may not have this evt */
@@ -96,6 +97,7 @@ $(document).ready(function (){
     hide_btn.show();
     show_btn.hide();
     $.cookie("sidebar", "expanded", copts);
+    $(window).trigger("cloud-sidebar-toggled", false);
   });
 
   hide_btn.click(function (){
@@ -103,6 +105,7 @@ $(document).ready(function (){
     show_btn.show();
     hide_btn.hide();
     $.cookie("sidebar", "collapsed", copts);
+    $(window).trigger("cloud-sidebar-toggled", true);
   });
 
   var state = $.cookie("sidebar");
@@ -153,7 +156,9 @@ $(document).ready(function (){
 
   // run function now, and every time window scrolls
   update_sticky();
-  $(window).scroll(update_sticky);
+  $(window).scroll(update_sticky)
+           .resize(update_sticky)
+           .bind('cloud-section-toggled', update_sticky);
 });
 
 {% endif %}
@@ -193,6 +198,6 @@ $(document).ready(function (){
 
   // run function now, and every time window is resized
   layout_header();
-  $(window).resize(layout_header);
-
+  $(window).resize(layout_header)
+           .bind('cloud-sidebar-toggled', layout_header);
 });
