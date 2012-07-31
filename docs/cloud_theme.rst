@@ -88,6 +88,10 @@ Layout
     whether the sidebar should "stick" in the current window
     (defaults to ``true``), otherwise it will scroll along with the page.
 
+``highlighttoc``
+    whether sidebar should highlight the sections which are currently
+    being viewed (defaults to ``true``).
+
 Styling
 -------
 ``externalrefs``
