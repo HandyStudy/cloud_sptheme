@@ -605,7 +605,6 @@ div.warning { background-color: #ffe4e4; background-image: url(icon-warning.png)
 div.admonition-todo { background-color: #FFF7E0; background-image: url(icon-todo.png); }
 
 div.admonition.caution { background-color: green; }
-/*div.admonition.caution { background-color: #FFF0E4; }*/
 
 p.deprecated { background-color: #fbece0; }
 
@@ -870,8 +869,6 @@ table.indextable span.category.method
 table.indextable span.category.attribute { color: #8BC38B; }
 table.indextable span.category.class { color: #9996c2; }
 
-/*table.indextable span.category.module { color: #8BC38B; }*/
-
 table.indextable span.location
 {
     font-weight: bold;
@@ -937,9 +934,6 @@ td.field-body > ul.first.simple > li > em,
 td.field-body > em
 {
    padding: 2px 4px;
-/*   border-bottom: 1px solid #DEE6ED;
-   background: #ECF0F3;
-   */
 }
 
 /*****************************************************
@@ -959,34 +953,6 @@ td.field-body > p:last-child:empty
 {
     margin-bottom: 1em;
 }
-
-/*****************************************************
- * css colorization of object definitions,
- * adds colored line underneath definition title.
- * color scheme used:
- *      functions, methods - blue
- *      classes - purple
- *      exceptions - red
- *      objects, attributes, data - green
- *****************************************************/
-/*
-dl.classmethod > dt,
-dl.function > dt,
-dl.method > dt
-{
-    background: #E2ECF3;
-}
-
-dl.exception > dt { background: #F2E3E1; }
-dl.class > dt { background: #E7E6F6; }
-
-dl.attribute > dt,
-dl.object > dt,
-dl.data > dt
-{
-    background: #E2F2E2;
-}*/
-
 
 /*****************************************************
  * EOF
