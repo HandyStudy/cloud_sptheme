@@ -600,7 +600,7 @@ div.admonition, p.deprecated
     -moz-border-radius: 0 10px 0 10px;
 }
 
-div.note, div.seealso, div.warning, div.admonition-todo
+div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
 {
     background-position: 8px 8px;
     background-repeat: no-repeat;
@@ -608,15 +608,13 @@ div.note, div.seealso, div.warning, div.admonition-todo
 }
 
 div.note { background-color: #E7F0FE; background-image: url(icon-note.png); }
-
 div.seealso { background-color: #FFF7E0; background-image: url(icon-seealso.png); }
 div.topic { background-color: #eee; }
 div.warning { background-color: #ffe4e4; background-image: url(icon-warning.png); }
 div.admonition-todo { background-color: #FFF7E0; background-image: url(icon-todo.png); }
+p.deprecated { background-color: #fbece0; background-image: url(icon-deprecated.png); }
 
 div.admonition.caution { background-color: green; }
-
-p.deprecated { background-color: #fbece0; }
 
 div.admonition p,
 div.admonition pre,
