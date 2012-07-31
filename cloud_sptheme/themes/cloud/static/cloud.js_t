@@ -131,7 +131,7 @@ $(document).ready(function (){
  */
 $(document).ready(function (){
   // grab ref to sidebar and setup static css
-  var document = $('.document');
+  var holder = $('.document');
   var sidebar = $('.sphinxsidebar');
   sidebar.css({'position': 'relative', 'left': 0});
 {%- if theme_collapsiblesidebar | tobool %}
@@ -144,16 +144,16 @@ $(document).ready(function (){
 
   // func to update sidebar position based on scrollbar & container positions
   function update_sticky(){
-    var offset = $(window).scrollTop() - document.offset().top;
-    sidebar.css({'top': clamp(offset, 0, document.height() - sidebar.height())});
+    var offset = $(window).scrollTop() - holder.offset().top;
+    sidebar.css({'top': clamp(offset, 0, holder.height() - sidebar.height())});
 {%- if theme_collapsiblesidebar | tobool %}
-    toggle.css({'top': clamp(offset, 0, document.height() - toggle.height())});
+    toggle.css({'top': clamp(offset, 0, holder.height() - toggle.height())});
 {%- endif %}
   };
 
   // run function now, and every time window scrolls
   update_sticky();
-  $(window).scroll(function() {update_sticky()});
+  $(window).scroll(update_sticky);
 });
 
 {% endif %}
