@@ -136,21 +136,30 @@ $(document).ready(function (){
   // grab ref to sidebar and setup static css
   var holder = $('.document');
   var sidebar = $('.sphinxsidebar');
-  sidebar.css({'position': 'relative', 'left': 0});
 {%- if theme_collapsiblesidebar | tobool %}
   var toggle = $('.sidebartoggle');
 {%- endif %}
 
-  function clamp(value, lower, upper){
-    return (value<lower)?lower:(value>upper)?upper:value;
+  // function to set style for given state
+  function set_style(target, value)
+  {
+    if(value <= 0){
+      target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
+    }
+    else if (value < holder.height() - target.height()){
+      target.css({marginLeft: 0, position: "fixed", top: 0, left: holder.offset().left, bottom: ""});
+    }
+    else{
+      target.css({marginLeft: 0, position: "absolute", top: "", left: "", bottom: 0});
+    }
   }
 
   // func to update sidebar position based on scrollbar & container positions
   function update_sticky(){
     var offset = $(window).scrollTop() - holder.offset().top;
-    sidebar.css({'top': clamp(offset, 0, holder.height() - sidebar.height())});
+    set_style(sidebar, offset);
 {%- if theme_collapsiblesidebar | tobool %}
-    toggle.css({'top': clamp(offset, 0, holder.height() - toggle.height())});
+    set_style(toggle, offset);
 {%- endif %}
   };
 
@@ -187,9 +196,9 @@ $(document).ready(function (){
   }
 
   // hack to determine full width of header
-  header.css({"white-space": "nowrap", "position":"absolute"});
+  header.css({whiteSpace: "nowrap", position:"absolute"});
   var header_width = header.width();
-  header.css({"white-space": null, "position":null});
+  header.css({whiteSpace: "", position: ""});
 
   // func to insert linebreaks when needed
   function layout_header(){
