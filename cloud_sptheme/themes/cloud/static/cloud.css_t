@@ -175,9 +175,9 @@ ul.sphinxtoclist a.current
 {
   display: block;
   background: {{ theme_sidebarhighcolor }};
-  box-shadow: 0 0 1em {{ theme_sidebarhighcolor }};
+/*  box-shadow: 0 0 1em {{ theme_sidebarhighcolor }};
   -webkit-box-shadow: 0 0 1em {{ theme_sidebarhighcolor }};
-  -moz-box-shadow: 0 0 1em {{ theme_sidebarhighcolor }};
+  -moz-box-shadow: 0 0 1em {{ theme_sidebarhighcolor }}; */
 }
 
 div.sphinxsidebar input

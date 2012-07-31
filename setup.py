@@ -27,7 +27,7 @@ setup(
     package_data = { "cloud_sptheme": ["themes/*/*.*", "themes/*/static/*.*"] },
     zip_safe=False,
 
-    install_requires=[ "sphinx>=1.0"],
+    install_requires=[ "sphinx>=1.1"],
 
     # metadata
     name = "cloud_sptheme",

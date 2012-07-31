@@ -3,7 +3,7 @@ The Cloud Sphinx Theme
 ===============================================
 
 This is release |release| of a small Python package named
-:mod:`cloud_sptheme`. It contains a `Sphinx <http://sphinx.pocoo.org/>`_ theme
+:mod:`!cloud_sptheme`. It contains a `Sphinx <http://sphinx.pocoo.org/>`_ theme
 named "Cloud", and some related Sphinx extensions. Cloud and its extensions
 are primarily oriented towards generating html documentation for Python libraries.
 It provides numerous small enhancements to make the html documentation html more interactive,
@@ -12,15 +12,15 @@ improve the layout on mobile devices, and other enhancements.
 Contents
 ========
 
-Sphinx Themes
--------------
-    :doc:`Cloud <cloud_theme>`
-        the main Sphinx theme provided by this package,
-        and used by this documentation.
+Themes
+------
+:doc:`Cloud Sphinx Theme <cloud_theme>`
+    the main Sphinx theme provided by this package,
+    and used by this documentation.
 
-Sphinx Extensions
------------------
-The following extensions provide features used by the Cloud theme,
+Extensions
+----------
+The following Sphinx extensions provide features used by the Cloud theme,
 and should be enabled for most documentation that uses it:
 
     :mod:`cloud_sptheme.ext.index_styling`
@@ -29,7 +29,9 @@ and should be enabled for most documentation that uses it:
     :mod:`cloud_sptheme.ext.relbar_toc`
         Adds a TOC link to the top navigation controls.
 
-This package also provides a few extra extensions, which may be useful
+Generic Extensions
+------------------
+This package also provides a few extra Sphinx extensions which may be useful
 when documenting Python projects; and should be theme-agnostic:
 
     :mod:`cloud_sptheme.ext.autodoc_sections`

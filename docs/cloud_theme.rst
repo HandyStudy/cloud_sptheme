@@ -130,6 +130,9 @@ Other
 
 Usage
 =====
+
+Using the theme
+---------------
 To use the cloud theme, open your documentation's Sphinx ``conf.py`` file,
 make the following changes::
 
@@ -150,26 +153,40 @@ make the following changes::
     # [optional] set some of the options listed above...
     html_theme_options = { "roottarget": "index" }
 
-Feature Test / Demonstration
-============================
+Toggleable Sections
+-------------------
+By adding ``.. rst-class:: html-toggle`` before a ReST section,
+it can be made toggleable::
 
-Special Features
-----------------
-The following demonstrates a few of the features listed above:
+    .. rst-class:: html-toggle
 
-* External links are be prefixed by an external link icon:
-  `<http://www.google.com>`_.
+    Toggleable Section
+    ------------------
 
-* By adding ``.. rst-class:: html-toggle`` before a ReST section,
-  it can be made toggleable::
+    This section is collapsed by default.
 
-        .. rst-class:: html-toggle
+Toggleable sections start out collapsed by default.
+You can use ``.. rst-class:: html-toggle expanded`` to override this.
 
-        Toggleable Section
-        ------------------
+.. seealso:: the `Feature Test`_ for an example of a toggleable section.
 
-        This section is collapsed by default.
+Other Styling Helpers
+---------------------
+* Adding ``.. rst-class:: emphasized`` can be used to give a solid background
+  to 3rd level sections, which are normally rendered w/ out a background
+  under this theme.
 
+* Adding ``.. rst-class:: html-plain-table`` can be used to remove
+  the alternate row shading and other styling from a RST table.
+
+Feature Test
+============
+
+Inline Styles
+-------------
+External link prefixed with an arrow: `<http://www.google.com>`_.
+
+Issue link prefixed with a star: :issue:`2718`.
 
 .. rst-class:: html-toggle emphasized
 
@@ -197,3 +214,5 @@ Admonition Styles
 .. todo::
 
     This is a todo message.
+
+.. deprecated:: XXX This is a deprecation warning.
