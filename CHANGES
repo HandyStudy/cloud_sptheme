@@ -9,6 +9,7 @@ Release History
 
     * Now natively compatible with Python 3 (:command:`2to3` no longer required)
     * Sidebar collapsible by default (:issue:`3`)
+    * Sidebar now "sticks" to window when scrolling.
     * Numerous documentation updates
     * Various minor bugfixes
 

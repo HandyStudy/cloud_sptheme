@@ -84,6 +84,10 @@ Layout
 ``defaultcollapsed``
     whether the sidebar should start collapsed (defaults to ``false``).
 
+``stickysidebar``
+    whether the sidebar should "stick" in the current window
+    (defaults to ``true``), otherwise it will scroll along with the page.
+
 Styling
 -------
 ``externalrefs``
