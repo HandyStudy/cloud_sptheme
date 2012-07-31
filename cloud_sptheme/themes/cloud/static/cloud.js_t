@@ -157,3 +157,39 @@ $(document).ready(function (){
 });
 
 {% endif %}
+
+/* ==========================================================================
+ * header breaker
+ * ==========================================================================
+ *
+ * attempts to intelligently insert linebreaks into page titles, where possible.
+ * currently only handles titles such as "module - description",
+ * adding a break after the "-".
+ */
+$(document).ready(function (){
+  // get header's content, insert linebreaks
+  var header = $("h1");
+  var orig = header[0].innerHTML;
+  var shorter = orig;
+  if($("h1 > a:first > tt > span.pre").length > 0){
+      shorter = orig.replace(/(<\/tt><\/a>\s*[-:]\s+)/im, "$1<br> ");
+  }
+  if(shorter == orig){
+    return;
+  }
+
+  // hack to determine full width of header
+  header.css({"white-space": "nowrap", "position":"absolute"});
+  var header_width = header.width();
+  header.css({"white-space": null, "position":null});
+
+  // func to insert linebreaks when needed
+  function layout_header(){
+    header[0].innerHTML = (header_width > header.parent().width()) ? shorter : orig;
+  }
+
+  // run function now, and every time window is resized
+  layout_header();
+  $(window).resize(layout_header);
+
+});
