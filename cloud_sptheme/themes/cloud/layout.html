@@ -21,10 +21,7 @@
 
 {# add script file to instrument collapsable sections  and other features #}
 {% set script_files = script_files + ['_static/jquery.cookie.js',
-                                      '_static/toggle_sections.js'] %}
-{% if theme_collapsiblesidebar|tobool %}
-{% set script_files = script_files + ['_static/toggle_sidebar.js'] %}
-{% endif %}
+                                      '_static/cloud.js'] %}
 
 {# add font stylesheets #}
 {% set css_files = css_files + [theme_fontcssurl] %}

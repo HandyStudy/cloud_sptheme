@@ -78,8 +78,14 @@ Layout
 ``min_height``
     sets the minimum height of the page body (defaults to ``6in``).
 
-Style
------
+``collapsiblesidebar``
+    whether the sidebar can be hidden or not (defaults to ``true``).
+
+``defaultcollapsed``
+    whether the sidebar should start collapsed (defaults to ``false``).
+
+Styling
+-------
 ``externalrefs``
     Boolean flag that controls whether references should be displayed with an icon.
     (defaults to ``True``).
