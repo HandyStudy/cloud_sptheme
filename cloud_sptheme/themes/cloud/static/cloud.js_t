@@ -23,55 +23,47 @@
 
 $(document).ready(function (){
   function init(){
-    var jobj = $(this);
-    var parent = jobj.parent()
+    // get header & section, and add static classes
+    var header = $(this);
+    var section = header.parent();
+    header.addClass("html-toggle-button");
 
-    /* add class for styling purposes */
-    jobj.addClass("html-toggle-button");
-
-    /* initialize state */
-    _setState(jobj, parent.hasClass("expanded") || _containsHash(parent));
-
-    /* bind toggle callback */
-    jobj.click(function (){
-      _setState(jobj, !parent.hasClass("expanded"));
-      $(window).trigger('cloud-section-toggled', parent[0]);
-    });
-
-    /* check for hash changes - older browsers may not have this evt */
-    $(window).bind("hashchange", function () {
+    // helper to test if url hash is within this section
+    function contains_hash(){
       var hash = document.location.hash;
-      if(!hash)
-        return;
-      if(_containsHash(parent))
-        _setState(jobj, true);
-      var pos = $(hash).position();
-      window.scrollTo(pos.left, pos.top);
-    });
-  }
-
-  function _containsHash(parent){
-    var hash = document.location.hash;
-    if(!hash)
-      return false;
-    return parent[0].id == hash.substr(1) || parent.find(hash).length>0;
-  }
-
-  function _setState(jobj, expanded){
-    var parent = jobj.parent();
-    if(expanded){
-      parent.addClass("expanded").removeClass("collapsed");
-      parent.children().show();
-    }else{
-      parent.addClass("collapsed").removeClass("expanded");
-      parent.children().hide();
-      parent.children("span:first-child:empty").show(); /* for :ref: span tag */
-      jobj.show();
+      return hash && (section[0].id == hash.substr(1) ||
+              section.find(hash.replace(".","\\.")).length>0);
     }
+
+    // helper to control toggle state
+    function set_state(expanded){
+      if(expanded){
+        section.addClass("expanded").removeClass("collapsed");
+        section.children().show();
+      }else{
+        section.addClass("collapsed").removeClass("expanded");
+        section.children().hide();
+        section.children("span:first-child:empty").show(); /* for :ref: span tag */
+        header.show();
+      }
+    }
+
+    // initialize state
+    set_state(section.hasClass("expanded") || contains_hash());
+
+    // bind toggle callback
+    header.click(function (){
+      set_state(!section.hasClass("expanded"));
+      $(window).trigger('cloud-section-toggled', section[0]);
+    });
+
+    // open section if user jumps to it from w/in page
+    $(window).bind("hashchange", function () {
+      if(contains_hash()) set_state(true);
+    });
   }
 
   $(".html-toggle.section > h2, .html-toggle.section > h3, .html-toggle.section > h4, .html-toggle.section > h5, .html-toggle.section > h6").each(init);
-
 });
 
 {%- if theme_collapsiblesidebar | tobool %}
