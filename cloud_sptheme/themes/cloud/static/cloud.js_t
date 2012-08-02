@@ -176,6 +176,7 @@ $(document).ready(function (){
   // function to set style for given state
   function set_style(target, value)
   {
+    // XXX: disable sticky mode if sidebar (or at least toclist) is taller than window?
     if(value <= 0){
       target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
     }
