@@ -11,6 +11,47 @@
  */
 
 /* ==========================================================================
+ * highlighter #2
+ * ==========================================================================
+ *
+ * Sphinx's highlighter marks some objects when user follows link,
+ * but doesn't include section names, etc. This catches those.
+ */
+$(document).ready(function (){
+  // helper to locate highlight target based on #fragment
+  function locate_target(){
+    // find id referenced by #fragment
+    var hash = document.location.hash;
+    if(!hash) return null;
+    var section = document.getElementById(hash.substr(1));
+    if(!section) return null;
+
+    // could be div.section, or hidden span at top of div.section
+    var name = section.nodeName.toLowerCase();
+    if(name != "div"){
+      if(name == "span" && section.innerHTML == "" &&
+         section.parentNode.nodeName.toLowerCase() == "div"){
+        section = section.parentNode;
+      }
+    }
+    // now at section div and either way we have to find title element - h2, h3, etc.
+    var children = $(section).children("h2, h3, h4, h5, h6");
+    return children.length ? children : null;
+  }
+
+  // init highlight
+  var target = locate_target();
+  if(target) target.addClass("highlighted");
+
+  // update highlight if hash changes
+  $(window).bind("hashchange", function () {
+    if(target) target.removeClass("highlighted");
+    target = locate_target();
+    if(target) target.addClass("highlighted");
+  });
+});
+
+/* ==========================================================================
  * toggleable sections
  * ==========================================================================
  *

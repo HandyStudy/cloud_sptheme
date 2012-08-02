@@ -437,6 +437,8 @@ dt:target,
     padding: 4px;
     margin: -4px;
 
+    background-color: {{theme_highlightcolor}};
+
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -496,6 +498,12 @@ div.section.emphasized > h3
     font-style: italic;
     color: {{ theme_sectiontextcolor }};
     text-shadow: 2px 2px 1px rgba(0,0,0,.1);
+}
+
+div.body h2.highlighted,
+div.section.emphasized > h3.highlighted
+{
+    border: 0.25em solid {{theme_highlightcolor}};
 }
 
 div.body p.rubric,
