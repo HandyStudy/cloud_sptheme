@@ -183,7 +183,7 @@ $(document).ready(function (){
       target.css({marginLeft: 0, position: "fixed", top: 0, left: holder.offset().left, bottom: ""});
     }
     else{
-      target.css({marginLeft: 0, position: "absolute", top: "", left: "", bottom: 0});
+      target.css({marginLeft: 0, position: "absolute", top: "", left: 0, bottom: 0});
     }
   }
 
