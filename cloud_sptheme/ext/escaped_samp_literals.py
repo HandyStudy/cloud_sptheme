@@ -1,6 +1,6 @@
 """cloud_sptheme.ext.escaped_samp_literals - allow escaping { and } in samp."""
 from docutils import nodes, utils
-from cloud_sptheme import u
+from cloud_sptheme import u, ru
 
 def emph_literal_role(typ, rawtext, text, lineno, inliner,
                       options={}, content=[]):
