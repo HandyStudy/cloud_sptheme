@@ -90,9 +90,12 @@ def is_cloud_theme(name):
 if sys.version_info < (3,0):
     def u(s):
         return s.decode("unicode_escape")
+    def ru(s):
+        return s.decode("ascii")
 else:
     def u(s):
         return s
+    ru = u
 
 #=============================================================================
 # eof

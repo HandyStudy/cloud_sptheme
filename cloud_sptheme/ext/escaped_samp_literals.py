@@ -24,12 +24,12 @@ def emph_literal_role(typ, rawtext, text, lineno, inliner,
         i += 1
         if in_escape:
             # parse escape sequence
-            if c in u(r"{}\\"):
+            if c in ru("{}\\"):
                 buffer += c
                 in_escape = False
             else:
                 return make_error(i-2, "unknown samp-escape '\\\\%s'" % (c,))
-        elif c == u(r"\\"):
+        elif c == ru("\\"):
             # begin escape sequence
             in_escape = True
             i += 1 # account for extra escape char in rawtext
