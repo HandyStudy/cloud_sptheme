@@ -167,21 +167,22 @@ $(document).ready(function (){
  */
 $(document).ready(function (){
   // grab ref to sidebar and setup static css
+  var disabled = false;
   var holder = $('.document');
   var sidebar = $('.sphinxsidebar');
+  var toc_adjust = $('.sphinxsidebar a[href=contents.html]').parent().offset().top - holder.offset().top - 8;
 {%- if theme_collapsiblesidebar | tobool %}
   var toggle = $('.sidebartoggle');
 {%- endif %}
 
   // function to set style for given state
-  function set_style(target, value)
+  function set_style(target, value, adjust)
   {
-    // XXX: disable sticky mode if sidebar (or at least toclist) is taller than window?
-    if(value <= 0){
+    if(value <= adjust || disabled){
       target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
     }
-    else if (value < holder.height() - target.height()){
-      target.css({marginLeft: 0, position: "fixed", top: 0, left: holder.offset().left, bottom: ""});
+    else if (value < holder.height() - target.height() + adjust){
+      target.css({marginLeft: 0, position: "fixed", top: -adjust, left: holder.offset().left, bottom: ""});
     }
     else{
       target.css({marginLeft: 0, position: "absolute", top: "", left: 0, bottom: 0});
@@ -191,9 +192,19 @@ $(document).ready(function (){
   // func to update sidebar position based on scrollbar & container positions
   function update_sticky(){
     var offset = $(window).scrollTop() - holder.offset().top;
-    set_style(sidebar, offset);
+    var leftover = $(window).height() - sidebar.height();
+    disabled = (leftover <= 0);
+    if(disabled && leftover + toc_adjust > 0){
+      // not enough room for full sidebar, but there is enough starting w/ toc
+      disabled = false;
+      set_style(sidebar, offset, toc_adjust);
+    }else{
+      // enough room for full sidebar
+      set_style(sidebar, offset, 0);
+    }
 {%- if theme_collapsiblesidebar | tobool %}
-    set_style(toggle, offset);
+    // collapse button should follow along as well
+    set_style(toggle, offset, 0);
 {%- endif %}
   };
 
