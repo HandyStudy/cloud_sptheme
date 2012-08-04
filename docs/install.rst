@@ -31,11 +31,12 @@ ReadTheDocs
 To use this theme on `<http://readthedocs.org>`_:
 
 1. If it doesn't already exist, add a pip ``requirments.txt`` file to your documentation (e.g. alongside ``conf.py``).
-   It should contain a minimum of the following line::
+   It should contain a minimum of the following lines::
 
+       sphinx
        cloud_sptheme
 
-   ... as well as any other build requirements your documentation has, if applicable.
+   ... as well as any other build requirements for your project's documentation.
 
 2. When setting up your project on ReadTheDocs, enter the path to ``requirements.txt``
    in the *requirements file* field on the project configuration page.

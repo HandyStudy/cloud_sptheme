@@ -170,7 +170,8 @@ $(document).ready(function (){
   var disabled = false;
   var holder = $('.document');
   var sidebar = $('.sphinxsidebar');
-  var toc_adjust = $('.sphinxsidebar a[href=contents.html]').parent().offset().top - holder.offset().top - 8;
+  var toc_header = $('.sphinxsidebar p.logo + h3');
+  var toc_adjust = toc_header.length ? toc_header.offset().top - holder.offset().top - 8 : 0;
 {%- if theme_collapsiblesidebar | tobool %}
   var toggle = $('.sidebartoggle');
 {%- endif %}
@@ -181,7 +182,7 @@ $(document).ready(function (){
     if(value <= adjust || disabled){
       target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
     }
-    else if (value < holder.height() - target.height() + adjust){
+    else if (value <= holder.height() - target.height() + adjust){
       target.css({marginLeft: 0, position: "fixed", top: -adjust, left: holder.offset().left, bottom: ""});
     }
     else{
@@ -193,8 +194,8 @@ $(document).ready(function (){
   function update_sticky(){
     var offset = $(window).scrollTop() - holder.offset().top;
     var leftover = $(window).height() - sidebar.height();
-    disabled = (leftover <= 0);
-    if(disabled && leftover + toc_adjust > 0){
+    disabled = (leftover < 0);
+    if(disabled && leftover + toc_adjust >= 0){
       // not enough room for full sidebar, but there is enough starting w/ toc
       disabled = false;
       set_style(sidebar, offset, toc_adjust);
