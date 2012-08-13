@@ -166,24 +166,29 @@ $(document).ready(function (){
  * Instrument sidebar so that it sticks in place as page is scrolled.
  */
 $(document).ready(function (){
-  // grab ref to sidebar and setup static css
-  var disabled = false;
-  var holder = $('.document');
-  var sidebar = $('.sphinxsidebar');
-  var toc_header = $('.sphinxsidebar p.logo + h3');
-  var toc_adjust = toc_header.length ? toc_header.offset().top - holder.offset().top - 8 : 0;
+  // initialize references to relevant elements
+  var holder = $('.document'); // element that sidebar sits within
+  var sidebar = $('.sphinxsidebar'); // element we're making "sticky"
+  var toc_header = $('.sphinxlocaltoc h3'); // toc header + list control position
+      if(!toc_header.length) toc_header = null;
+  var toc_list = toc_header ? toc_header.next("ul") : null;
 {%- if theme_collapsiblesidebar | tobool %}
-  var toggle = $('.sidebartoggle');
+  var toggle = $('.sidebartoggle'); // also make collapse button sticky
 {%- endif %}
+
+  // initialize internal state
+  var sticky_disabled = false; // whether sticky is disabled for given window size
+  var sidebar_adjust = 0; // vertical offset within sidebar when sticky
 
   // function to set style for given state
   function set_style(target, value, adjust)
   {
-    if(value <= adjust || disabled){
+    if(value <= adjust || sticky_disabled){
       target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
     }
     else if (value <= holder.height() - target.height() + adjust){
-      target.css({marginLeft: 0, position: "fixed", top: -adjust, left: holder.offset().left, bottom: ""});
+      target.css({marginLeft: 0, position: "fixed", top: -adjust,
+                 left: holder.offset().left, bottom: ""});
     }
     else{
       target.css({marginLeft: 0, position: "absolute", top: "", left: 0, bottom: 0});
@@ -192,28 +197,40 @@ $(document).ready(function (){
 
   // func to update sidebar position based on scrollbar & container positions
   function update_sticky(){
+    // set sidebar position
     var offset = $(window).scrollTop() - holder.offset().top;
-    var leftover = $(window).height() - sidebar.height();
-    disabled = (leftover < 0);
-    if(disabled && leftover + toc_adjust >= 0){
-      // not enough room for full sidebar, but there is enough starting w/ toc
-      disabled = false;
-      set_style(sidebar, offset, toc_adjust);
-    }else{
-      // enough room for full sidebar
-      set_style(sidebar, offset, 0);
-    }
+    set_style(sidebar, offset, sidebar_adjust);
 {%- if theme_collapsiblesidebar | tobool %}
     // collapse button should follow along as well
     set_style(toggle, offset, 0);
 {%- endif %}
   };
 
+  // func to update sidebar measurements, and then call update_sticky()
+  function update_measurements(){
+    sticky_disabled = false;
+    sidebar_adjust = 0;
+    if(toc_header){
+      // check how much room we have to display top of sidebar -> end of toc list
+      var leftover = $(window).height() - (toc_list.height() + toc_list.offset().top - sidebar.offset().top);
+      if(leftover < 0){
+        // not enough room if we align top of sidebar to window,
+        // try aligning to top of toc list instead
+        sidebar_adjust = toc_header.offset().top - sidebar.offset().top - 8;
+        if(leftover + sidebar_adjust < 0){
+          // still not enough room - disable sticky sidebar
+          sticky_disabled = true;
+        }
+      }
+    }
+    update_sticky();
+  }
+
   // run function now, and every time window scrolls
-  update_sticky();
+  update_measurements();
   $(window).scroll(update_sticky)
-           .resize(update_sticky)
-           .bind('cloud-section-toggled', update_sticky);
+           .resize(update_measurements)
+           .bind('cloud-section-toggled', update_measurements);
 });
 
 {% endif %}
