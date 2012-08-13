@@ -73,7 +73,7 @@ $(document).ready(function (){
     function contains_hash(){
       var hash = document.location.hash;
       return hash && (section[0].id == hash.substr(1) ||
-              section.find(hash.replace(".","\\.")).length>0);
+              section.find(hash.replace(/\./g,"\\.")).length>0);
     }
 
     // helper to control toggle state
@@ -297,10 +297,10 @@ $(document).ready(function (){
   var orig = header[0].innerHTML;
   var shorter = orig;
   if($("h1 > a:first > tt > span.pre").length > 0){
-      shorter = orig.replace(/(<\/tt><\/a>\s*[-:]\s+)/im, "$1<br> ");
+      shorter = orig.replace(/(<\/tt><\/a>\s*[-\u2013\u2014:]\s+)/im, "$1<br> ");
   }
   else if($("h1 > tt.literal:first").length > 0){
-      shorter = orig.replace(/(<\/tt>\s*[-:]\s+)/im, "$1<br> ");
+      shorter = orig.replace(/(<\/tt>\s*[-\u2013\u2014:]\s+)/im, "$1<br> ");
   }
   if(shorter == orig){
     return;
