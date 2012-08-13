@@ -605,7 +605,7 @@ div.body h4.html-toggle-button:hover
 div.admonition, p.deprecated
 {
     background: #f2f2f2;
-    border: 1px solid rgba(0,0,0,.05);
+    border: 1px solid {{ theme_admonition_trim_color }};
     border-width: 0 1px 1px 0;
     margin: 1em 0;
     padding: .5em;
@@ -621,12 +621,12 @@ div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
     padding-left: 38px;
 }
 
-div.note { background-color: #E7F0FE; background-image: url(icon-note.png); }
-div.seealso { background-color: #FFF7E0; background-image: url(icon-seealso.png); }
+div.note { background-color: {{ theme_admonition_note_color }}; background-image: url(icon-note.png); }
+div.seealso { background-color: {{ theme_admonition_seealso_color }}; background-image: url(icon-seealso.png); }
 div.topic { background-color: #eee; }
-div.warning { background-color: #ffe4e4; background-image: url(icon-warning.png); }
-div.admonition-todo { background-color: #FFF7E0; background-image: url(icon-todo.png); }
-p.deprecated { background-color: #fbece0; background-image: url(icon-deprecated.png); }
+div.warning { background-color: {{ theme_admonition_warning_color }}; background-image: url(icon-warning.png); }
+div.admonition-todo { background-color: {{ theme_admonition_todo_color }}; background-image: url(icon-todo.png); }
+p.deprecated { background-color: {{ theme_admonition_deprecated_color }}; background-image: url(icon-deprecated.png); }
 
 div.admonition.caution { background-color: green; }
 
@@ -873,25 +873,24 @@ dl.nested-section > dd
 }
 
 /*****************************************************
- * index page - category colorization
- * (requires css classes set by astdoc.ext.index_styles extension)
+ * index page styling
+ * (requires css classes set by cloud_sptheme.ext.index_styling)
  *****************************************************/
 
 table.indextable span.category
 {
     font-size: 80%;
-    color: #84ADBE;
+    font-style: italic;
+    color: {{ theme_index_category_color }};
 }
 
-table.indextable span.category.function,
-table.indextable span.category.classmethod,
-table.indextable span.category.method
-{ color: #9AB9CE; }
+table.indextable a,
+table.indextable a:hover span.category
+{
+    color: {{ theme_linkcolor }};
+}
 
-table.indextable span.category.attribute { color: #8BC38B; }
-table.indextable span.category.class { color: #9996c2; }
-
-table.indextable span.location
+table.indextable span.category span.location
 {
     font-weight: bold;
 }
