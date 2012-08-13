@@ -177,7 +177,7 @@ div.sphinxsidebar a:active
     color: {{ theme_sidebartextcolor }};
 }
 
-ul.sphinxtoclist a.current
+div.sphinxlocaltoc a.visible
 {
   display: block;
   background: {{ theme_sidebarhighcolor }};
