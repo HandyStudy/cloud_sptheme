@@ -120,6 +120,11 @@ div.sphinxsidebar
 div.document.collapsed-sidebar div.sphinxsidebar { display: none; }
 {% endif %}
 
+div.sphinxsidebarwrapper
+{
+   padding: 1em 0 0 10px;
+}
+
 div.sphinxsidebar h3,
 div.sphinxsidebar h4
 {
@@ -217,10 +222,9 @@ div.sidebartoggle button:active
    -moz-box-shadow: none;
 }
 
-
 div.sphinxsidebar p.logo
 {
-    margin: 16px 0 0 0;
+    margin: 1em 0 0 -10px;
     text-align: center;
 }
 
@@ -428,6 +432,11 @@ a.external:before
 a.external.issue:before
 {
     content: {{ theme_issueicon or theme_externalicon }};
+}
+
+a.external[href^=mailto:]:before
+{
+    content: "";
 }
 em.issue:before
 {
@@ -763,6 +772,14 @@ div.highlight-python pre
     line-height: 133%;
 
     color: {{ theme_codetextcolor }};
+}
+
+/* for source-view pages */
+div.body > h1 + div.highlight:last-child > pre
+{
+    padding-top: 5em;
+    margin-top: -5em;
+    margin-bottom: -10px;
 }
 
 table.highlighttable td { padding: 0; }
