@@ -390,7 +390,15 @@ div.footer + script + div.footer
  *****************************************************/
 @media print
 {
-   div.body { border: 0; }
+    div.sidebartoggle button#sidebar-show{
+        display: none;
+    }
+
+    div.sidebartoggle button#sidebar-hide{
+        display: none;
+    }
+
+    div.body { border: 0; }
 }
 
 /*****************************************************
@@ -725,8 +733,21 @@ dd ol {  margin-bottom: 10px; }
 .field-list p { margin-bottom: 16px; }
 
     /*------------------------------------
+     * width styles
+     *------------------------------------*/
+
+.fullwidth {
+    width: 90%;
+}
+
+    /*------------------------------------
      * table styles
      *------------------------------------*/
+
+table.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 h2 + table.docutils { margin-top: 1em; }
 
