@@ -168,8 +168,6 @@ it can be made toggleable::
 Toggleable sections start out collapsed by default.
 You can use ``.. rst-class:: html-toggle expanded`` to override this.
 
-.. seealso:: the `Feature Test`_ for an example of a toggleable section.
-
 Other Styling Helpers
 ---------------------
 * Adding ``.. rst-class:: emphasized`` can be used to give a solid background
@@ -184,89 +182,4 @@ Other Styling Helpers
 * Adding ``.. rst-class:: fullwidth`` can be used to expand a table
   to the full width of the page.
 
-Feature Test
-============
-
-Inline Styles
--------------
-External link prefixed with an arrow: `<http://www.google.com>`_.
-
-Issue link prefixed with a star: :issue:`2718`.
-
-.. rst-class:: html-toggle emphasized
-
-.. _toggle-test-link:
-
-Toggleable Section
-------------------
-This section is collapsed by default.
-But if a visitor follows a link to this section or something within it
-(such as :ref:`this <toggle-test-link>`), it will automatically be expanded.
-
-Admonition Styles
------------------
-.. note::
-    This is a note.
-
-.. warning::
-
-    This is warning.
-
-.. seealso::
-
-    This is a "see also" message.
-
-.. todo::
-
-    This is a todo message.
-
-.. deprecated:: XXX This is a deprecation warning.
-
-Table Styles
-------------
-
-.. table:: Normal Table
-
-    =========== =========== ===========
-    Header1     Header2     Header3
-    =========== =========== ===========
-    Row 1       Row 1       Row 1
-    Row 2       Row 2       Row 2
-    Row 3       Row 3       Row 3
-    =========== =========== ===========
-
-.. rst-class:: plain
-
-.. table:: Plain Table
-
-    =========== =========== ===========
-    Header1     Header2     Header3
-    =========== =========== ===========
-    Row 1       Row 1       Row 1
-    Row 2       Row 2       Row 2
-    Row 3       Row 3       Row 3
-    =========== =========== ===========
-
-.. rst-class:: centered
-
-.. table:: Centered Table
-
-    =========== =========== ===========
-    Header1     Header2     Header3
-    =========== =========== ===========
-    Row 1       Row 1       Row 1
-    Row 2       Row 2       Row 2
-    Row 3       Row 3       Row 3
-    =========== =========== ===========
-
-.. rst-class:: fullwidth
-
-.. table:: Full Width Table
-
-    =========== =========== ===========
-    Header1     Header2     Header3
-    =========== =========== ===========
-    Row 1       Row 1       Row 1
-    Row 2       Row 2       Row 2
-    Row 3       Row 3       Row 3
-    =========== =========== ===========
+.. seealso:: See the :doc:`cloud_theme_test` for examples of these options in action.

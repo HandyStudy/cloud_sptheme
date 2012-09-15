@@ -8,6 +8,7 @@ Table Of Contents
     install
 
     cloud_theme
+    cloud_theme_test
 
     lib/cloud_sptheme
     lib/cloud_sptheme.ext.index_styling
