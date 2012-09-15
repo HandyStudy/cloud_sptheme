@@ -176,8 +176,13 @@ Other Styling Helpers
   to 3rd level sections, which are normally rendered w/ out a background
   under this theme.
 
-* Adding ``.. rst-class:: html-plain-table`` can be used to remove
-  the alternate row shading and other styling from a RST table.
+* Adding ``.. rst-class:: plain`` can be used to remove
+  the row shading and other styling from a table.
+
+* Adding ``.. rst-class:: centered`` can be used to center a table.
+
+* Adding ``.. rst-class:: fullwidth`` can be used to expand a table
+  to the full width of the page.
 
 Feature Test
 ============
@@ -216,3 +221,52 @@ Admonition Styles
     This is a todo message.
 
 .. deprecated:: XXX This is a deprecation warning.
+
+Table Styles
+------------
+
+.. table:: Normal Table
+
+    =========== =========== ===========
+    Header1     Header2     Header3
+    =========== =========== ===========
+    Row 1       Row 1       Row 1
+    Row 2       Row 2       Row 2
+    Row 3       Row 3       Row 3
+    =========== =========== ===========
+
+.. rst-class:: plain
+
+.. table:: Plain Table
+
+    =========== =========== ===========
+    Header1     Header2     Header3
+    =========== =========== ===========
+    Row 1       Row 1       Row 1
+    Row 2       Row 2       Row 2
+    Row 3       Row 3       Row 3
+    =========== =========== ===========
+
+.. rst-class:: centered
+
+.. table:: Centered Table
+
+    =========== =========== ===========
+    Header1     Header2     Header3
+    =========== =========== ===========
+    Row 1       Row 1       Row 1
+    Row 2       Row 2       Row 2
+    Row 3       Row 3       Row 3
+    =========== =========== ===========
+
+.. rst-class:: fullwidth
+
+.. table:: Full Width Table
+
+    =========== =========== ===========
+    Header1     Header2     Header3
+    =========== =========== ===========
+    Row 1       Row 1       Row 1
+    Row 2       Row 2       Row 2
+    Row 3       Row 3       Row 3
+    =========== =========== ===========

@@ -765,29 +765,37 @@ dd ol {  margin-bottom: 10px; }
 .field-list p { margin-bottom: 16px; }
 
     /*------------------------------------
-     * width styles
-     *------------------------------------*/
-
-.fullwidth {
-    width: 90%;
-}
-
-    /*------------------------------------
      * table styles
      *------------------------------------*/
 
-table.centered {
+table.fullwidth
+{
+    width: 100%;
+}
+
+table.centered
+{
     margin-left: auto;
     margin-right: auto;
 }
 
 h2 + table.docutils { margin-top: 1em; }
 
-table.docutils th { border: 0; padding: 5px 10px 5px 5px; }
+table.docutils th {
+    border: 0;
+    padding: 5px 10px 5px 5px;
+    font-family: {{theme_headfont}};
+}
 table.docutils td { border: 0; padding: 5px; }
 table.docutils tr.row-odd th { background: rgba(0,0,0,.1); }
 table.docutils tr.row-odd td { background: rgba(0,0,0,.05); }
 
+table.docutils.plain { border: none; }
+table.docutils.plain tr.row-odd > * { background: none; }
+
+table > caption { margin: 1em 0 .5em; font-style: italic; }
+
+/* legacy alias for table.plain */
 table.docutils.html-plain-table tr.row-odd > * { background: none; }
 
 /*****************************************************
