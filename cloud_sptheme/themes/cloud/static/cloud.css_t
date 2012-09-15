@@ -282,6 +282,7 @@ div.document.collapsed-sidebar div.sidebartoggle button
 }
 
 {% endif %}
+
 /*****************************************************
  * page layout - footer
  *****************************************************/
@@ -460,15 +461,17 @@ a.external:before
     content: {{ theme_externalicon }};
     padding-right: .1em;
 }
+
 a.external.issue:before
 {
     content: {{ theme_issueicon or theme_externalicon }};
 }
 
-a.external[href^=mailto:]:before
+a.external[href^="mailto:"]:before
 {
     content: "";
 }
+
 em.issue:before
 {
     content: {{ theme_issueicon or theme_externalicon }};
@@ -555,7 +558,7 @@ div.section.emphasized > h3.highlighted
 div.body p.rubric,
 div.section.emphasized > h3
 {
-     background: {{ theme_rubricbgcolor }};
+    background: {{ theme_rubricbgcolor }};
 }
 
 div.section.emphasized > h3 { margin-left: 0; margin-right: 0; }
