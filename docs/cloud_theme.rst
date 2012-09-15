@@ -130,7 +130,6 @@ Other
 
 Usage
 =====
-
 Using the theme
 ---------------
 To use the cloud theme, open your documentation's Sphinx ``conf.py`` file,
@@ -153,9 +152,26 @@ make the following changes::
     # [optional] set some of the options listed above...
     html_theme_options = { "roottarget": "index" }
 
+.. rst-class:: floater
+
+.. seealso::
+
+    See the next page (:doc:`cloud_theme_test`) for examples of
+    these options in action.
+
+Section Styles
+--------------
+
+Emphasized Children
+...................
+Adding ``.. rst-class:: emphasize-children`` to a 2nd-level section header
+will cause the headers of all of it's child sections to be emphasized with a solid background.
+This is mainly useful for very long sections, where there needs to be
+a visual divide between 3rd-level sections.
+
 Toggleable Sections
--------------------
-By adding ``.. rst-class:: html-toggle`` before a ReST section,
+...................
+By adding ``.. rst-class:: html-toggle`` before any section header,
 it can be made toggleable::
 
     .. rst-class:: html-toggle
@@ -165,15 +181,11 @@ it can be made toggleable::
 
     This section is collapsed by default.
 
-Toggleable sections start out collapsed by default.
-You can use ``.. rst-class:: html-toggle expanded`` to override this.
+While toggleable sections start out collapsed by default,
+you can use ``.. rst-class:: html-toggle expanded`` to override this.
 
-Other Styling Helpers
----------------------
-* Adding ``.. rst-class:: emphasized`` can be used to give a solid background
-  to 3rd level sections, which are normally rendered w/ out a background
-  under this theme.
-
+Table Styles
+------------
 * Adding ``.. rst-class:: plain`` can be used to remove
   the row shading and other styling from a table.
 
@@ -181,5 +193,3 @@ Other Styling Helpers
 
 * Adding ``.. rst-class:: fullwidth`` can be used to expand a table
   to the full width of the page.
-
-.. seealso:: See the :doc:`cloud_theme_test` for examples of these options in action.

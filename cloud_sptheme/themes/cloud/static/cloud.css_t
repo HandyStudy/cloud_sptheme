@@ -531,7 +531,8 @@ div.body h6 { font-size: 11pt; }
 
 div.body h2,
 div.body p.rubric,
-div.section.emphasized > h3
+div.section.emphasized > h3, /* deprecated in favor of below: */
+div.section.emphasize-children > div.section > h3
 {
     margin: 1em -10px 0;
     padding: 12px 10px 10px;
@@ -550,18 +551,25 @@ div.section.emphasized > h3
 }
 
 div.body h2.highlighted,
-div.section.emphasized > h3.highlighted
+div.section.emphasized > h3.highlighted, /* deprecated in favor of below: */
+div.section.emphasize-children > div.section > h3.highlighted
 {
     border: 0.25em solid {{theme_highlightcolor}};
 }
 
 div.body p.rubric,
-div.section.emphasized > h3
+div.section.emphasized > h3, /* deprecated in favor of below: */
+div.section.emphasize-children > div.section > h3
 {
     background: {{ theme_rubricbgcolor }};
 }
 
-div.section.emphasized > h3 { margin-left: 0; margin-right: 0; }
+div.section.emphasized > h3, /* deprecated in favor of below: */
+div.section.emphasize-children > div.section > h3
+{
+    margin-left: 0;
+    margin-right: 0;
+}
 
 a.headerlink
 {
@@ -601,7 +609,7 @@ a.headerlink:hover
     -webkit-box-shadow: 2px 2px 2px {{ theme_headlinkcolor }};
 }
 
-div.body div.section:not(.emphasized) > h3.html-toggle-button:hover,
+div.body div.section:not(.emphasize-children) > div.section:not(.emphasized) > h3.html-toggle-button:hover,
 div.body h4.html-toggle-button:hover
 {
     background: {{ theme_rubricbgcolor }};

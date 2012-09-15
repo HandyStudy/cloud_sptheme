@@ -108,18 +108,18 @@ Toggleable Subsection
 Subsections can also be marked as toggleable.
 This one should be expanded by default.
 
+.. rst-class:: emphasize-children
+
 Section With Emphasized Children
 ================================
 Mainly useful for sections with many long subsections,
 where a second level of visual dividers would be useful.
 
-.. rst-class:: emphasized
-
 Child Section
 ----------------
 Should be have slightly lighter background, and be indented.
 
-.. rst-class:: html-toggle emphasized
+.. rst-class:: html-toggle
 
 Toggleable Subsection
 ---------------------
