@@ -394,15 +394,38 @@ div.footer + script + div.footer
  *****************************************************/
 @media print
 {
-    div.sidebartoggle button#sidebar-show{
-        display: none;
-    }
-
-    div.sidebartoggle button#sidebar-hide{
-        display: none;
-    }
-
+    div.sidebartoggle { display: none; }
     div.body { border: 0; }
+
+    /* omit "hide section" label */
+    .html-toggle.expanded > .html-toggle-button:after
+    {
+        display: none;
+    }
+
+    /* indicate collapsed sections were omitted
+       TODO: would like to auto-expand them instead, but not sure how to
+       create a reliable CSS rule given the way the JS code currently works.
+     */
+    .html-toggle.collapsed > .html-toggle-button:after
+    {
+        content: "[not printed]" !important;
+    }
+
+    /* remove styling from headers */
+    div.body h1,
+    div.body h2,
+    div.body p.rubric,
+    div.body h3,
+    div.body h4,
+    div.body h5,
+    div.body h6
+    {
+        color: {{theme_headtextcolor}} !important;
+        text-shadow: none !important;
+        border: none !important;
+        padding: 0;
+    }
 }
 
 /*****************************************************
