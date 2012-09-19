@@ -180,6 +180,13 @@ $(document).ready(function (){
   var sticky_disabled = false; // whether sticky is disabled for given window size
   var sidebar_adjust = 0; // vertical offset within sidebar when sticky
 
+  // offset() under jquery 1.4 is document-relative (sphinx 1.1), but
+  // under jquery 1.5+ it's viewport-relative (sphinx 1.2 uses jquery 1.7).
+  // since getBoundingClientRect is reasonbly cross-browser, using that instead.
+  // getBoundClientRect is always viewport-relative.
+  function left_offset($node){ return $node[0].getBoundingClientRect().left; }
+  function top_offset($node){ return $node[0].getBoundingClientRect().top; }
+
   // function to set style for given state
   function set_style(target, value, adjust)
   {
@@ -188,7 +195,7 @@ $(document).ready(function (){
     }
     else if (value <= holder.height() - target.height() + adjust){
       target.css({marginLeft: 0, position: "fixed", top: -adjust,
-                 left: holder.offset().left, bottom: ""});
+                 left: left_offset(holder), bottom: ""});
     }
     else{
       target.css({marginLeft: 0, position: "absolute", top: "", left: 0, bottom: 0});
@@ -198,7 +205,7 @@ $(document).ready(function (){
   // func to update sidebar position based on scrollbar & container positions
   function update_sticky(){
     // set sidebar position
-    var offset = $(window).scrollTop() - holder.offset().top;
+    var offset = -top_offset(holder);
     set_style(sidebar, offset, sidebar_adjust);
 {%- if theme_collapsiblesidebar | tobool %}
     // collapse button should follow along as well
@@ -212,11 +219,11 @@ $(document).ready(function (){
     sidebar_adjust = 0;
     if(toc_header){
       // check how much room we have to display top of sidebar -> end of toc list
-      var leftover = $(window).height() - (toc_list.height() + toc_list.offset().top - sidebar.offset().top);
+      var leftover = $(window).height() - (toc_list.height() + top_offset(toc_list) - top_offset(sidebar));
       if(leftover < 0){
         // not enough room if we align top of sidebar to window,
         // try aligning to top of toc list instead
-        sidebar_adjust = toc_header.offset().top - sidebar.offset().top - 8;
+        sidebar_adjust = top_offset(toc_header) - top_offset(sidebar) - 8;
         if(leftover + sidebar_adjust < 0){
           // still not enough room - disable sticky sidebar
           sticky_disabled = true;
@@ -261,11 +268,13 @@ $(document).ready(function (){
                   });
   }
 
+  // replacement for $().offset() which is always viewport relative
+  function top_offset($node){ return $node[0].getBoundingClientRect().top; }
+
   // function to update toc markers
   function update_visible_sections(){
     // determine viewable range
-    var start = $(window).scrollTop();
-    var stop = start + $(window).height();
+    var height = $(window).height();
 
     // clear flags from last pass
     links.removeClass("visible");
@@ -278,11 +287,11 @@ $(document).ready(function (){
       if(record.elem.hasClass("toggled")) continue;
 
       // if section is off-screen, don't mark it
-      var top = record.section.offset().top;
-      if(top > stop || top + record.section.height() < start) continue;
+      var top = top_offset(record.section);
+      if(top > height || top + record.section.height() < 0) continue;
 
       // if section has children, skip it once top of first subsection is offscreen
-      if(record.first_child && record.first_child.offset().top < start) continue;
+      if(record.first_child && top_offset(record.first_child) < 0) continue;
 
       // mark it as visible!
       record.elem.addClass("visible");
