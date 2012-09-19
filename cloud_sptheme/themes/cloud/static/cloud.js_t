@@ -276,25 +276,26 @@ $(document).ready(function (){
     // determine viewable range
     var height = $(window).height();
 
-    // clear flags from last pass
-    links.removeClass("visible");
+    // helper to check if record is visible
+    function is_visible(record){
+      // hack to skip elements hidden w/in a toggled section
+      if(record.elem.hasClass("toggled")) return false;
+
+      // if section is off-screen, don't mark it
+      var top = top_offset(record.section);
+      if(top > height || top + record.section.height() < 0) return false;
+
+      // if section has children, skip it once top of first subsection is offscreen
+      if(record.first_child && top_offset(record.first_child) < 0) return false;
+
+      // otherwise section is visible
+      return true;
+    }
 
     // set 'current' class for all currently viewable sections in toc
     for(var i=0; i < records.length; ++i){
       var record = records[i];
-
-      // hack to skip elements hidden w/in a toggled section
-      if(record.elem.hasClass("toggled")) continue;
-
-      // if section is off-screen, don't mark it
-      var top = top_offset(record.section);
-      if(top > height || top + record.section.height() < 0) continue;
-
-      // if section has children, skip it once top of first subsection is offscreen
-      if(record.first_child && top_offset(record.first_child) < 0) continue;
-
-      // mark it as visible!
-      record.elem.addClass("visible");
+      record.elem.toggleClass("visible", is_visible(record));
     }
   }
 
