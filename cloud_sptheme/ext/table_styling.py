@@ -142,10 +142,12 @@ class TableStylingHTMLTranslatorMixin(HTMLTranslator):
 
     def _write_colspec(self, idx, node, twidth):
         "write single <col> entry"
-        try:
-            width = self.tabspecmap[idx]['width']
-        except KeyError:
-            width = None
+        width = None
+        if self.tabspecmap:
+            try:
+                width = self.tabspecmap[idx]['width']
+            except KeyError:
+                pass
         if width is None:
             width = '%i%%' % int(node['colwidth'] * 100.0 / twidth + 0.5)
         self.body.append(self.emptytag(node, 'col', width=width))

@@ -91,6 +91,18 @@ Table Styles
     Row 3       Row 3       Row 3
     =========== =========== ===========
 
+.. tabularcolumns:: L|C||R
+
+.. table:: Tabular Columns Extension
+
+    =========== =========== ===========
+    Header1     Header2     Header3
+    =========== =========== ===========
+    Left 1      Center 1    Right 1
+    Left 2      Center 2    Right 2
+    Left 3      Center 3    Right 3
+    =========== =========== ===========
+
 .. rst-class:: html-toggle
 
 .. _toggle-test-link:

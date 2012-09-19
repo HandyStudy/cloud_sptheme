@@ -46,6 +46,7 @@ extensions = [
     'cloud_sptheme.ext.relbar_toc',
     'cloud_sptheme.ext.escaped_samp_literals',
     'cloud_sptheme.ext.issue_tracker',
+    'cloud_sptheme.ext.table_styling',
     ]
 
 # Add any paths that contain templates here, relative to this directory.
