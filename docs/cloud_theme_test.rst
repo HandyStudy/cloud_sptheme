@@ -37,13 +37,13 @@ Admonition Styles
 
 .. deprecated:: XXX This is a deprecation warning.
 
-Table Styles
-============
-
 .. rst-class:: floater
 
 .. note::
     This is a floating note.
+
+Table Styles
+============
 
 .. table:: Normal Table
 

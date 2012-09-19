@@ -536,6 +536,7 @@ div.section.emphasize-children > div.section > h3
 {
     margin: 1em -10px 0;
     padding: 12px 10px 10px;
+    clear: both; /* for floating admonitions */
 
     background: {{ theme_sectionbgcolor }};
     border: 1px solid {{ theme_sectiontrimcolor }};
