@@ -91,12 +91,14 @@ Table Styles
     Row 3       Row 3       Row 3
     =========== =========== ===========
 
-.. tabularcolumns:: L|C||R
-
-.. table:: Tabular Columns Extension
+.. table:: Table Styling Extension
+    :widths: 1 2 3
+    :column-alignment: left center right
+    :column-dividers: none single double single
+    :column-wrapping: nnn
 
     =========== =========== ===========
-    Header1     Header2     Header3
+    Width x1    Width x2    Width x3
     =========== =========== ===========
     Left 1      Center 1    Right 1
     Left 2      Center 2    Right 2
