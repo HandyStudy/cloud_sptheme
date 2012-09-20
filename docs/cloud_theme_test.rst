@@ -16,7 +16,7 @@ External links are prefixed with an arrow: `<http://www.google.com>`_.
 
 But email links are not prefixed: bob@example.com.
 
-Issue link prefixed with a star: :issue:`2718`.
+Issue tracker link: :issue:`5`.
 
 Admonition Styles
 =================
