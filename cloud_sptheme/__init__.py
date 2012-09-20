@@ -49,6 +49,8 @@ all_exts = std_exts + [
 #=============================================================================
 # public helpers
 #=============================================================================
+_root_dir = os.path.abspath(os.path.dirname(__file__))
+
 def get_theme_dir():
     """Returns path to directory containing this package's Sphinx themes.
 
@@ -57,7 +59,7 @@ def get_theme_dir():
 
     .. seealso:: The :ref:`Cloud Sphinx Theme <cloud-theme-usage>` for a usage example.
     """
-    return os.path.abspath(os.path.join(__file__,os.path.pardir, "themes"))
+    return os.path.join(_root_dir, "themes")
 
 def get_version(release):
     """Derive short version string from longer 'release' string.

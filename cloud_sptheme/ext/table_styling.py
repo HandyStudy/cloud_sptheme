@@ -8,11 +8,35 @@ fields.
     * Document the fields and their options.
     * Have this autogenerate a tabularcolumns directive for latex.
 """
+#=============================================================================
+# imports
+#=============================================================================
+# core
 from itertools import izip_longest # FIXME: not present in py25
+import os
+from shutil import copyfile
+# site
 from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.parsers.rst.directives.tables import RSTTable
+from sphinx.builders.html import StandaloneHTMLBuilder
+# pkg
+from cloud_sptheme import _root_dir, is_cloud_theme
+# local
+__all__ = [
+    "setup",
+]
 
+#=============================================================================
+# constants
+#=============================================================================
+
+# name of key controlling whether css file is included
+EMBED_KEY = "table_styling_embed_css"
+
+#=============================================================================
+# field option parsers
+#=============================================================================
 def _split_argument_list(argument):
     if "," in argument:
         return argument.split(",")
@@ -70,6 +94,9 @@ _divider_map = {
 def divider_list(argument):
     return _parse_argument_map(argument, _divider_map, "divider style")
 
+#=============================================================================
+# replacement for table directive
+#=============================================================================
 class ExtendedRSTTable(RSTTable):
     # TODO: could have this auto-generate tabularcolumns directive for latex,
     #       based on alignment, dividers, and wrapping settings:
@@ -81,8 +108,10 @@ class ExtendedRSTTable(RSTTable):
     option_spec = RSTTable.option_spec.copy()
     option_spec.update({
         # class, name already present
-        #'header-rows': directives.nonnegative_int,
-        #'stub-columns': directives.nonnegative_int,
+        ##'header-rows': directives.nonnegative_int,
+        'header-columns': directives.nonnegative_int,
+        # TODO: column-widths: support limited set of units (em/in/%)
+        #       expressable under both css & latex
         'widths': directives.positive_int_list,
         'column-alignment': alignment_list,
         'column-wrapping': bool_list,
@@ -98,9 +127,13 @@ class ExtendedRSTTable(RSTTable):
 
     def _update_table_classes(self, table):
         assert isinstance(table, nodes.table)
+        header_cols = self.options.get("header-columns")
+##        header_rows = self.options.get("header-rows")
         widths = self.options.get("widths")
         dividers = self.options.get("column-dividers")
-        if dividers is not None:
+        if dividers is None:
+            get_divider = None
+        else:
             def get_divider(idx):
                 try:
                     return dividers[idx]
@@ -112,20 +145,21 @@ class ExtendedRSTTable(RSTTable):
             self.options.get("column-wrapping", EMPTY),
             self.options.get("column-classes", EMPTY),
         )
-        col = 0
-        group = None
-        for elem in table.children:
-            if isinstance(elem, nodes.tgroup):
-                # usually first elem, but could be title element.
-                group = elem
-                break
-        if group is None:
+        def locate(cls):
+            for child in table.children:
+                if isinstance(child, cls):
+                    return child
+            return None
+        tgroup = locate(nodes.tgroup)
+        if not tgroup:
             return
-        assert isinstance(group, nodes.tgroup)
-        for child in group:
+        col = 0
+        for child in tgroup:
             if isinstance(child, nodes.colspec):
                 if widths and col < len(widths):
                     child['colwidth'] = widths[col]
+                if col < header_cols:
+                    child['stub'] = 1
                 col += 1
                 continue
             assert isinstance(child, (nodes.thead, nodes.tbody))
@@ -146,10 +180,59 @@ class ExtendedRSTTable(RSTTable):
                         classes.append("nowrap")
                     if clist:
                         classes.extend(clist)
-                    if dividers is not None:
+                    if get_divider:
                         classes.append(get_divider(idx) + "-left-divider")
                         classes.append(get_divider(idx+1) + "-right-divider")
+        # untested - might be missing some docutils node framework bits
+        ##if header_rows > 1:
+        ##    thead = locate(nodes.thead)
+        ##    if not thead:
+        ##        thead = nodes.thead()
+        ##        idx = table.children.index(tgroup)
+        ##        table.children.insert(idx, thead)
+        ##    thead.extend(tgroup.children[:header_rows])
+        ##    del tgroup.children[:header_rows]
 
+#=============================================================================
+# patch builder to copy css file (if needed)
+#=============================================================================
+def prepare_builder(app):
+    # make sure needed css styling gets included when building html
+    builder = app.builder
+    if not isinstance(builder, StandaloneHTMLBuilder):
+        return
+    value = getattr(app.config, EMBED_KEY)
+    if value is None:
+        value = not is_cloud_theme(app.config.html_theme)
+    if not value:
+        return
+
+    # add custom css stylesheet
+    name = "table_styling.css"
+    app.add_stylesheet(name)
+
+    # monkeypatch builder to copy over css file
+    orig = builder.copy_static_files
+    def wrapper():
+        orig()
+        source = os.path.join(_root_dir, "ext", name)
+        target = os.path.join(builder.outdir, "_static", name)
+        copyfile(source, target)
+    builder.copy_static_files = wrapper
+
+#=============================================================================
+# register extension
+#=============================================================================
 def setup(app):
+    # whether it will embed raw css
+    app.add_config_value(EMBED_KEY, None, "html")
+
     # replace existing table directive with custom one
     app.add_directive("table", ExtendedRSTTable)
+
+    # add extra resources
+    app.connect("builder-inited", prepare_builder)
+
+#=============================================================================
+# eof
+#=============================================================================

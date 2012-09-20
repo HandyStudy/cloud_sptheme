@@ -93,6 +93,7 @@ Table Styles
 
 .. table:: Table Styling Extension
     :widths: 1 2 3
+    :header-columns: 1
     :column-alignment: left center right
     :column-dividers: none single double single
     :column-wrapping: nnn
@@ -100,9 +101,9 @@ Table Styles
     =========== =========== ===========
     Width x1    Width x2    Width x3
     =========== =========== ===========
-    Left 1      Center 1    Right 1
-    Left 2      Center 2    Right 2
-    Left 3      Center 3    Right 3
+    Header 1    Center 1    Right 1
+    Header 2    Center 2    Right 2
+    Header 3    Center 3    Right 3
     =========== =========== ===========
 
 .. rst-class:: html-toggle
