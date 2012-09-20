@@ -4,7 +4,7 @@
  *
  * stylesheet for "Cloud" theme for Sphinx.
  *
- * :copyright: Copyright 2011 by Assurance Technologies
+ * :copyright: Copyright 2011-2012 by Assurance Technologies
  * :license: BSD
  *
  *****************************************************/
@@ -12,7 +12,7 @@
 @import url("basic.css");
 
 /*****************************************************
- * page layout
+ * page layout - body
  *****************************************************/
 
 body
@@ -233,9 +233,9 @@ div.sphinxsidebar .searchtip
     color: {{ theme_sidebartrimcolor }};
 }
 
-/*--------------------------------------------------
- * collapsible sidebar buttons
- *--------------------------------------------------*/
+/*****************************************************
+ * page layout - collapsible sidebar buttons
+ *****************************************************/
 {% if theme_collapsiblesidebar|tobool %}
 
 div.sidebartoggle
@@ -326,175 +326,7 @@ div.footer + script + div.footer
 }
 
 /*****************************************************
- * adaptive page layout - if too small, hide some things
- *****************************************************/
-
-@media only screen and (max-width: {{ theme_compact_width }}),
-       only screen and (max-width: {{ theme_minimal_width }}),
-       only screen and (max-device-width: {{ theme_minimal_width }}),
-       handheld
-{
-    body {
-        margin: 0;
-    }
-
-    div.relbar-top div.related,
-    div.relbar-bottom div.related
-    {
-        border-radius: 0;
-        -moz-border-radius: 0;
-        -webkit-border-radius: 0;
-    }
-
-    /* hide extra info */
-    div.admonition.floater { display: none; }
-}
-
-@media only screen and (max-width: {{ theme_minimal_width }}),
-       only screen and (max-device-width: {{ theme_minimal_width }}),
-       handheld
-{
-    /* hide the sidebar */
-    div.sphinxsidebar
-    {
-        display: none;
-    }
-
-    {% if theme_collapsiblesidebar|tobool %}
-     /* FIXME: would like to make this work some how, hiding it til it works */
-      div.sidebartoggle { display: none; }
-    {% endif %}
-
-    div.bodywrapper
-    {
-        margin-left: 0;
-    }
-
-    /* hide all lefthand links but first one, to save space*/
-    div.related > ul > li:not(.right) + li
-    {
-        display: none;
-    }
-
-    /* remove spacing on headers and reduce body padding */
-    body div.body h2, body div.body p.rubric
-    {
-        border-radius: 0;
-        -moz-border-radius: 0;
-        -webkit-border-radius: 0;
-    }
-
-    div.body
-    {
-        padding: 0 10px 30px;
-    }
-}
-
-/*****************************************************
- * adapt for print media
- *****************************************************/
-@media print
-{
-    div.sidebartoggle { display: none; }
-    div.body { border: 0; }
-
-    /* omit "hide section" label */
-    .html-toggle.expanded > .html-toggle-button:after
-    {
-        display: none;
-    }
-
-    /* indicate collapsed sections were omitted
-       TODO: would like to auto-expand them instead, but not sure how to
-       create a reliable CSS rule given the way the JS code currently works.
-     */
-    .html-toggle.collapsed > .html-toggle-button:after
-    {
-        content: "[not printed]" !important;
-    }
-
-    /* remove styling from headers */
-    div.body h1,
-    div.body h2,
-    div.body p.rubric,
-    div.body h3,
-    div.body h4,
-    div.body h5,
-    div.body h6
-    {
-        color: {{theme_headtextcolor}} !important;
-        text-shadow: none !important;
-        border: none !important;
-        padding: 0;
-    }
-}
-
-/*****************************************************
- * document - link styles
- *****************************************************/
-
-a
-{
-    color: {{ theme_linkcolor }};
-    text-decoration: none;
-}
-
-a:visited
-{
-    color: {{ theme_visitedlinkcolor }};
-    text-decoration: none;
-}
-
-a:hover
-{
-    text-decoration: underline;
-}
-
-a.biglink
-{
-    font-size: 130%;
-}
-
-{% if theme_externalrefs|tobool %}
-a.external:before
-{
-    content: {{ theme_externalicon }};
-    padding-right: .1em;
-}
-
-a.external.issue:before
-{
-    content: {{ theme_issueicon or theme_externalicon }};
-}
-
-a.external[href^="mailto:"]:before
-{
-    content: "";
-}
-
-em.issue:before
-{
-    content: {{ theme_issueicon or theme_externalicon }};
-    padding-right: .1em;
-}
-{% endif %}
-
-dt:target,
-.footnote:target,
-.highlighted
-{
-    padding: 4px;
-    margin: -4px;
-
-    background-color: {{theme_highlightcolor}};
-
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-}
-
-/*****************************************************
- * document - header styles
+ * document - section headers
  *****************************************************/
 
 div.body h1,
@@ -593,7 +425,7 @@ a.headerlink:hover
 }
 
 /*****************************************************
- * document - toggleable h1/h2 sections
+ * document - toggleable sections
  *****************************************************/
 
 .html-toggle-button
@@ -651,12 +483,198 @@ div.body h4.html-toggle-button:hover
 .html-toggle-button:hover a.headerlink:not(:hover) { opacity: 0; }
 
 /*****************************************************
+ * document - misc styles
+ *****************************************************/
+
+div.body p,
+div.body dd,
+div.body li
+{
+    text-align: justify;
+    line-height: 133%;
+}
+
+div.body hr {
+    margin: 0 10px;
+    background: none;
+    border: 1px dashed {{theme_sidebartrimcolor}};
+    border-width: 1px 0 0 0;
+}
+
+    /*------------------------------------
+     * footnotes
+     *------------------------------------*/
+
+a.footnote-reference
+{
+    font-size: 70%;
+    position: relative;
+    top: -.75em;
+}
+
+table.docutils.footnote { margin: 1em 0 0 1em; }
+
+    /*------------------------------------
+     * lists (UL, OL, DL)
+     *------------------------------------*/
+
+dl { margin-bottom: 1.5em; }
+li > dl:only-child { margin-bottom: 0; }
+
+dd ol { margin-bottom: 10px; }
+
+/* join separate ULs together */
+ul + ul,
+ul + div > ul:only-child,
+div.toctree-wrapper + ul { margin-top: -1em; }
+
+/*****************************************************
+ * document - links
+ *****************************************************/
+
+a
+{
+    color: {{ theme_linkcolor }};
+    text-decoration: none;
+}
+
+a:visited
+{
+    color: {{ theme_visitedlinkcolor }};
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+a.biglink
+{
+    font-size: 130%;
+}
+
+{% if theme_externalrefs|tobool %}
+a.external:before
+{
+    content: {{ theme_externalicon }};
+    padding-right: .1em;
+}
+
+a.external.issue:before
+{
+    content: {{ theme_issueicon or theme_externalicon }};
+}
+
+a.external[href^="mailto:"]:before
+{
+    content: "";
+}
+
+em.issue:before
+{
+    content: {{ theme_issueicon or theme_externalicon }};
+    padding-right: .1em;
+}
+{% endif %}
+
+dt:target,
+.footnote:target,
+.highlighted
+{
+    padding: 4px;
+    margin: -4px;
+
+    background-color: {{theme_highlightcolor}};
+
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+/*****************************************************
+ * document - table styles
+ *****************************************************/
+
+    /*------------------------------------
+     * custom table classes
+     *------------------------------------*/
+
+table.fullwidth { width: 100%; }
+
+table.centered { margin-left: auto; margin-right: auto; }
+
+table.docutils.plain { border: none; }
+table.docutils.plain tr.row-odd > * { background: none; }
+
+/* legacy alias for table.plain */
+table.docutils.html-plain-table tr.row-odd > * { background: none; }
+
+    /*------------------------------------
+     * default table styling
+     *------------------------------------*/
+
+table.docutils th {
+    border: 0;
+    padding: 5px;
+    font-family: {{ theme_headfont }};
+    background: {{ theme_table_header_color }};
+}
+
+table.docutils td { border: 0; padding: 5px; }
+table.docutils tr.row-odd td { background: {{ theme_table_shade_color }}; }
+
+h2 + table.docutils { margin-top: 1em; }
+table > caption { margin: 1em 0 .5em; font-style: italic; }
+
+    /*------------------------------------
+     * td/th classes added by .ext.table_styling
+     *------------------------------------*/
+table.docutils .left-align { text-align: left; }
+table.docutils .center-align { text-align: center; }
+table.docutils .right-align { text-align: right; }
+table.docutils .justify-align { text-align: justify; }
+table.docutils .nowrap { white-space: nowrap; }
+
+table.docutils td { border: 0 solid {{ theme_table_header_color }}; }
+table.docutils th { border: 0 solid transparent; }
+table.docutils .single-left-divider { border-left-width: 2px; }
+table.docutils th + .single-left-divider,
+table.docutils th + .double-left-divider { border-left-width: 0; }
+table.docutils .double-left-divider { border-left-width: 6px; border-left-style: double; }
+table.docutils .single-right-divider:last-child { border-right-width: 2px; }
+table.docutils .double-right-divider:last-child { border-right-width: 6px; border-right-style: double; }
+
+/*****************************************************
+ * document - field-list tables & contents
+ *****************************************************/
+table.docutils th.field-name { background: none; }
+
+.field-list p { margin-bottom: 16px; }
+
+td.field-body > p.first,
+td.field-body > ul.first.simple > li { margin-bottom: 1em; }
+
+td.field-body > em,
+td.field-body > ul.first.simple > li > em { padding: 2px 4px; }
+
+td.field-body > p.first:empty { display: none; }
+td.field-body > p:last-child:empty { margin-bottom: 1em; }
+
+/* workaround for chrome bug */
+td.field-body > p.first:only-child { margin: 0; }
+
+/*****************************************************
  * document - admonitions
  *****************************************************/
 
+    /*------------------------------------
+     * basic admonition styling - adds colored bg & icons
+     *------------------------------------*/
+
 div.admonition, p.deprecated
 {
-    background: #f2f2f2;
+    background: {{ theme_admonition_note_color }};
     border: 1px solid {{ theme_admonition_trim_color }};
     border-width: 0 1px 1px 0;
     margin: 1em 0;
@@ -672,24 +690,23 @@ div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
     background-repeat: no-repeat;
     padding-left: 38px;
 }
-
-div.note { background-color: {{ theme_admonition_note_color }}; background-image: url(icon-note.png); }
+div.note { background-image: url(icon-note.png); }
 div.seealso { background-color: {{ theme_admonition_seealso_color }}; background-image: url(icon-seealso.png); }
 div.topic { background-color: #eee; }
 div.warning { background-color: {{ theme_admonition_warning_color }}; background-image: url(icon-warning.png); }
 div.admonition-todo { background-color: {{ theme_admonition_todo_color }}; background-image: url(icon-todo.png); }
 p.deprecated { background-color: {{ theme_admonition_deprecated_color }}; background-image: url(icon-deprecated.png); }
 
-div.admonition.caution { background-color: green; }
+    /*------------------------------------
+     * misc adjustments to admonitions
+     *------------------------------------*/
 
 div.admonition p,
 div.admonition pre,
 div.admonition ul,
-div.admonition ol
-{
-    margin-bottom: 5px;
-}
+div.admonition ol { margin-bottom: 5px; }
 
+/* allow notes to float on right side w/in document */
 div.admonition.floater
 {
     float: right;
@@ -697,140 +714,42 @@ div.admonition.floater
     margin: 1em 0 1.5em 1.5em;
 }
 
-/* next 3 rules merge the title into the first paragraph */
-p.admonition-title
-{
-    display: inline;
-    margin-right: 0;
-}
-
-p.admonition-title + p
-{
-    display: inline;
-}
-
-p.admonition-title:after
-{
-    content: ":";
-}
-
-p.admonition-title + ul
-{
-  margin-top: 0;
-}
+/* next few rules merge the title into the first paragraph */
+p.admonition-title { display: inline; margin-right: 0; }
+p.admonition-title + p { display: inline; }
+p.admonition-title:after { content: ":"; }
+p.admonition-title + ul { margin-top: 0; }
 
 /* don't indent admonitions inside definitions */
-dl div.admonition
-{
-  margin-left: 0;
-}
-
-/*****************************************************
- * document - misc body styles
- *****************************************************/
-
-div.body hr {
-    margin: 0 10px;
-    background: none;
-    border: 1px dashed {{theme_sidebartrimcolor}};
-    border-width: 1px 0 0 0;
-}
-
-div.body p,
-div.body dd,
-div.body li
-{
-    text-align: justify;
-    line-height: 133%;
-}
+dl div.admonition { margin-left: 0; }
 
     /*------------------------------------
-     * footnotes
+     * todo summary list
      *------------------------------------*/
 
-a.footnote-reference
+div#todos p.admonition-title
+{
+    font-weight: normal;
+    color: #AAA;
+    font-size: 70%;
+}
+
+div#todos div.admonition-todo + p
 {
     font-size: 70%;
-    position: relative;
-    top: -.75em;
+    text-align: right;
+    margin-top: -.5em;
+    margin-bottom: 1.5em;
+    color: #AAA;
 }
 
-table.docutils.footnote {  margin: 1em 0 0 1em; }
-
-    /*------------------------------------
-     * list & definition lists
-     *------------------------------------*/
-
-dl { margin-bottom: 1.5em; }
-li > dl:only-child { margin-bottom: 0; }
-
-/* join separate ULs together */
-ul + ul,
-ul + div > ul:only-child,
-div.toctree-wrapper + ul
+div#todos div.admonition-todo + p a
 {
- margin-top: -1em;
+    font-size: 130%;
 }
-
-dd ol {  margin-bottom: 10px; }
-
-.field-list p { margin-bottom: 16px; }
-
-    /*------------------------------------
-     * default table styling
-     *------------------------------------*/
-
-h2 + table.docutils { margin-top: 1em; }
-
-table.docutils th {
-    border: 0;
-    padding: 5px 10px 5px 5px;
-    font-family: {{theme_headfont}};
-}
-table.docutils td { border: 0; padding: 5px; }
-table.docutils tr.row-odd th { background: {{ theme_table_header_color }}; }
-table.docutils tr.row-odd td { background: {{ theme_table_shade_color }}; }
-
-table > caption { margin: 1em 0 .5em; font-style: italic; }
-
-    /*------------------------------------
-     * table styles
-     *------------------------------------*/
-
-table.fullwidth
-{
-    width: 100%;
-}
-
-table.centered
-{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-table.docutils.plain { border: none; }
-table.docutils.plain tr.row-odd > * { background: none; }
-
-/* legacy alias for table.plain */
-table.docutils.html-plain-table tr.row-odd > * { background: none; }
-
-    /*------------------------------------
-     * table cell classes added by ext.table_styling
-     *------------------------------------*/
-table.docutils .left-align { text-align: left; }
-table.docutils .center-align { text-align: center; }
-table.docutils .right-align { text-align: right; }
-table.docutils .justify-align { text-align: justify; }
-table.docutils .nowrap { white-space: nowrap; }
-
-table.docutils td { border: 0 solid {{ theme_table_header_color }}; }
-table td.single-left-divider { border-left-width: 2px; }
-table td.double-left-divider { border-left-width: 6px; border-left-style: double; }
-table td.single-right-divider:last-child { border-right-width: 2px; }
-table td.double-right-divider:last-child { border-right-width: 6px; border-right-style: double; }
 
 /*****************************************************
- * document - quoted text
+ * document - quoted text (TT & PRE)
  *****************************************************/
 
 div.highlight
@@ -931,11 +850,6 @@ tt.literal.xref
     margin: 0;
 }
 
-th
-{
-    background-color: #ede;
-}
-
 .viewcode-back
 {
     font-family: {{ theme_bodyfont }};
@@ -949,8 +863,8 @@ div.viewcode-block:target
 }
 
 /*****************************************************
- * nested sections -
- * (requires css classes set by astdoc.ext.nested_sections extension)
+ * document - nested sections
+ * requires css classes set by .ext.autodoc_sections
  *****************************************************/
 
 dl.nested-section > dt
@@ -974,7 +888,7 @@ dl.nested-section > dd
 
 /*****************************************************
  * index page styling
- * (requires css classes set by cloud_sptheme.ext.index_styling)
+ * requires classes set by .ext.index_styling
  *****************************************************/
 
 table.indextable span.category
@@ -1006,73 +920,117 @@ table.indextable td > dl > dd > dl
     margin-bottom: .5em;
 }
 
-/*#################################################################
-    unorganized bits
-  #################################################################*/
-
-
 /*****************************************************
- * provide styling for TODO
+ * adapt for various page sizes & media
  *****************************************************/
 
-div#todos p.admonition-title
+/*------------------------------------
+ * adapt for 'compact' and 'minimal' page sizes
+ *------------------------------------*/
+
+@media only screen and (max-width: {{ theme_compact_width }}),
+       only screen and (max-width: {{ theme_minimal_width }}),
+       only screen and (max-device-width: {{ theme_minimal_width }}),
+       handheld
 {
-    font-weight: normal;
-    color: #AAA;
-    font-size: 70%;
+    body {
+        margin: 0;
+    }
+
+    div.relbar-top div.related,
+    div.relbar-bottom div.related
+    {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+    }
+
+    /* hide extra info */
+    div.admonition.floater { display: none; }
 }
 
-div#todos div.admonition-todo + p
+/*------------------------------------
+ * adapt for 'minimal' page size
+ *------------------------------------*/
+
+@media only screen and (max-width: {{ theme_minimal_width }}),
+       only screen and (max-device-width: {{ theme_minimal_width }}),
+       handheld
 {
-    font-size: 70%;
-    text-align: right;
-    margin-top: -.5em;
-    margin-bottom: 1.5em;
-    color: #AAA;
+    /* hide the sidebar */
+    div.sphinxsidebar
+    {
+        display: none;
+    }
+
+    {% if theme_collapsiblesidebar|tobool %}
+     /* FIXME: would like to make this work some how, hiding it til it works */
+      div.sidebartoggle { display: none; }
+    {% endif %}
+
+    div.bodywrapper
+    {
+        margin-left: 0;
+    }
+
+    /* hide all lefthand links but first one, to save space*/
+    div.related > ul > li:not(.right) + li
+    {
+        display: none;
+    }
+
+    /* remove spacing on headers and reduce body padding */
+    body div.body h2, body div.body p.rubric
+    {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+    }
+
+    div.body
+    {
+        padding: 0 10px 30px;
+    }
 }
 
-div#todos div.admonition-todo + p a
+/*------------------------------------
+ * adapt for printing
+ *------------------------------------*/
+
+@media print
 {
-    font-size: 130%;
-}
+    div.sidebartoggle { display: none; }
+    div.body { border: 0; }
 
-/*****************************************************
- * add more whitespace to parameter lists
- *****************************************************/
-td.field-body > ul.first.simple > li,
-td.field-body > p.first
-{
-    margin-bottom: 1em;
-}
+    /* omit "hide section" label */
+    .html-toggle.expanded > .html-toggle-button:after
+    {
+        display: none;
+    }
 
-td.field-body > p.first:only-child
-{
-    margin: 0; /* work around Chrome bug */
-}
+    /* indicate collapsed sections were omitted
+       TODO: would like to auto-expand them instead, but not sure how to
+       create a reliable CSS rule given the way the JS code currently works.
+     */
+    .html-toggle.collapsed > .html-toggle-button:after
+    {
+        content: "[not printed]" !important;
+    }
 
-
-td.field-body > ul.first.simple > li > em,
-td.field-body > em
-{
-   padding: 2px 4px;
-}
-
-/*****************************************************
- * misc tweaks to parameter lists
- *****************************************************/
-
-th {
-    background: inherit;
-}
-
-td.field-body > p.first:empty
-{
-    display: none;
-}
-
-td.field-body > p:last-child:empty
-{
-    margin-bottom: 1em;
+    /* remove styling from headers */
+    div.body h1,
+    div.body h2,
+    div.body p.rubric,
+    div.body h3,
+    div.body h4,
+    div.body h5,
+    div.body h6
+    {
+        color: {{theme_headtextcolor}} !important;
+        text-shadow: none !important;
+        border: none !important;
+        padding: 0;
+    }
 }
 
 /*****************************************************
