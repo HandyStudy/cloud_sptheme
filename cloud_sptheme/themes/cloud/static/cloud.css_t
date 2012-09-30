@@ -696,7 +696,7 @@ div.admonition, p.deprecated
     -moz-border-radius: 0 .7em 0 .7em;
 }
 
-div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
+div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated, div.caution
 {
     background-position: .6em .5em;
     background-size: auto 1.58em;
@@ -714,6 +714,7 @@ div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
 {{ admonition("note", theme_admonition_note_color) }}
 {{ admonition("seealso", theme_admonition_seealso_color) }}
 {{ admonition("warning", theme_admonition_warning_color) }}
+{{ admonition("caution", theme_admonition_todo_color, image="icon-warning.png") }}
 {{ admonition("todo", theme_admonition_todo_color, "div.admonition-todo") }}
 {{ admonition("deprecated", theme_admonition_deprecated_color, "p.deprecated") }}
 
