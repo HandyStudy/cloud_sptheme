@@ -16,6 +16,7 @@ Table Of Contents
     lib/cloud_sptheme.ext.autodoc_sections
     lib/cloud_sptheme.ext.issue_tracker
     lib/cloud_sptheme.ext.escaped_samp_literals
+    lib/cloud_sptheme.ext.table_styling
 
     history
     copyright

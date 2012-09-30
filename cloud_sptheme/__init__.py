@@ -38,6 +38,7 @@ std_exts = [
     'cloud_sptheme.ext.autodoc_sections',
     'cloud_sptheme.ext.index_styling',
     'cloud_sptheme.ext.relbar_toc',
+    'cloud_sptheme.ext.table_styling',
 ]
 
 # names of all cloud extensions

@@ -1,13 +1,4 @@
-"""cloud_sptheme.ext.table_styling -- add directives for styling tables
-
-This extension is an initial attempt at doing table column styling.
-It overrides the normal ``.. table::`` directive, adding a number of additional
-fields.
-
-.. todo::
-    * Document the fields and their options.
-    * Have this autogenerate a tabularcolumns directive for latex.
-"""
+"""cloud_sptheme.ext.table_styling -- add directives for styling tables"""
 #=============================================================================
 # imports
 #=============================================================================
@@ -71,7 +62,11 @@ def alignment_list(argument):
     """
     return _parse_argument_map(argument, _alignment_map, "alignment")
 
-_bool_map = {"yes": True, "y": True, "no": False, "n": False}
+_bool_map = {"true": True, "t": True,
+             "yes": True, "y": True,
+             "false": False, "f": False,
+             "no": False, "n": False,
+             }
 
 def bool_list(argument):
     """convert to list of true/false values"""

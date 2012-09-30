@@ -45,6 +45,10 @@ when documenting Python projects; and should be theme-agnostic:
     :mod:`cloud_sptheme.ext.escaped_samp_literals`
         Patches Sphinx to permit escaped ``{}`` characters within a ``:samp:`` role.
 
+    :mod:`cloud_sptheme.ext.table_styling`
+        Enhances ``.. table`` directive to support per-column
+        text alignment and other layout features.
+
 Reference
 ---------
 :doc:`install`

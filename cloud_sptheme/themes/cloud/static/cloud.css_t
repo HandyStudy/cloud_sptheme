@@ -525,6 +525,9 @@ li > dl:only-child { margin-bottom: 0; }
 
 dd ol { margin-bottom: 10px; }
 
+dl.docutils > dt { font-size: 1.1em; margin-bottom: .5em; }
+dl.docutils > dd + dt { margin-top: 1.5em; }
+
 /* join separate ULs together */
 ul + ul,
 ul + div > ul:only-child,
