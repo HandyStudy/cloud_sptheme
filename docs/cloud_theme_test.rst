@@ -93,7 +93,7 @@ Table Styles
     Row 3       Row 3       Row 3
     =========== =========== ===========
 
-.. table:: Table Styling Extension
+.. table:: :doc:`Table Styling Extension <lib/cloud_sptheme.ext.table_styling>`
     :widths: 1 2 3
     :header-columns: 1
     :column-alignment: left center right

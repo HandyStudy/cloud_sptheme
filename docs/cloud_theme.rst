@@ -193,3 +193,8 @@ Table Styles
 
 * Adding ``.. rst-class:: fullwidth`` can be used to expand a table
   to the full width of the page.
+
+.. seealso::
+    The :mod:`~cloud_sptheme.ext.table_styling` extension
+    for additional table styling abilities, e.g. per-column text alignment.
+    

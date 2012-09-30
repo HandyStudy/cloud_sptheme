@@ -7,14 +7,28 @@ Release History
 **1.5** (NOT YET RELEASED)
 ==========================
 
-    * Added ``plain``, ``centered``, and ``fullwidth`` html classes for positioning tables.
-    * *[alpha]* Added :mod:`cloud_sptheme.ext.table_styling` extension,
-      which allows specifying html table column alignment using
-      the (LaTeX-specific) ``tabularcolumns`` directive. May change how
-      this works at some point. 
-    * Bugfix: Sticky sidebar code now more intelligent about various border cases.
-    * Bugfix: Sticky sidebar now works when logo not present (:issue:`5`)
-    * Bugfix: Sidebar toggle and other bits now print correctly (:issue:`4`)
+New Features
+------------
+    * Added ``plain``, ``centered``, and ``fullwidth`` css classes for positioning tables
+      (see the :ref:`theme options <cloud-theme-usage>`).
+    * Added new extension :mod:`cloud_sptheme.ext.table_styling`,
+      which adds some per-column styling options to the ``.. table::`` directive.
+
+Other Changes
+-------------
+    * Changed default font to Open Sans, for readability.
+
+    * Removed all hardcoded ``pt`` or ``px`` font sizes,
+      all sizes now specified as % of browser default.
+
+    * Various improvements to mobile layout, including use of "viewport" metatag.
+
+Bugfixes
+--------
+    * Now compatible with jquery 1.8 (and thus sphinx 1.2)
+    * Sticky sidebar code now more intelligent about various border cases.
+    * Sticky sidebar now works when logo not present (:issue:`5`)
+    * Sidebar toggle and headers now displayed correctly when printed (:issue:`4`)
 
 **1.4** (2012-08-02)
 ====================

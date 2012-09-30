@@ -3,7 +3,12 @@
 # imports
 #=============================================================================
 # core
-from itertools import izip_longest # FIXME: not present in py25
+from cloud_sptheme import PY3
+if PY3:
+    from itertools import zip_longest as izip_longest
+else:
+    # FIXME: not present in py25
+    from itertools import izip_longest
 import os
 from shutil import copyfile
 # site
@@ -53,7 +58,9 @@ _alignment_map = dict(
     left="left",
     right="right",
     center="center",
-    justify="justify,"
+    centered="center", # compat alias
+    justify="justify",
+    justified="justify", # compat alias
 )
 
 def alignment_list(argument):
@@ -122,7 +129,7 @@ class ExtendedRSTTable(RSTTable):
 
     def _update_table_classes(self, table):
         assert isinstance(table, nodes.table)
-        header_cols = self.options.get("header-columns")
+        header_cols = self.options.get("header-columns") or 0
 ##        header_rows = self.options.get("header-rows")
         widths = self.options.get("widths")
         dividers = self.options.get("column-dividers")

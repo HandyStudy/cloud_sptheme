@@ -65,10 +65,9 @@ def get_theme_dir():
 def get_version(release):
     """Derive short version string from longer 'release' string.
 
-    This is designed to be a cheap helper to take the ``release`` string,
-    and generate the shorted ``version`` string also required by ``conf.py``.
-
-    Usuage example (in ``conf.py``)::
+    This is quick helper which takes a project's ``release`` string,
+    and generates the shortened ``version`` string required by ``conf.py``.
+    Usage example for ``conf.py``::
 
         import cloud_sptheme as csp
 
@@ -90,7 +89,9 @@ def is_cloud_theme(name):
 #=============================================================================
 # internal py2/3 compat helpers
 #=============================================================================
-if sys.version_info < (3,0):
+PY2 = sys.version_info < (3,0)
+PY3 = not PY2
+if PY2:
     def u(s):
         return s.decode("unicode_escape")
     def ru(s):
