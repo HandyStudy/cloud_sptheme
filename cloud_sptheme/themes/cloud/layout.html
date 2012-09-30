@@ -57,6 +57,7 @@
 
 {% block extrahead -%}
         {{ super() }}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {%- if theme_googleanalytics_id -%}
 <script type="text/javascript">
 var ga_enabled = !$.cookie('disable-ga');

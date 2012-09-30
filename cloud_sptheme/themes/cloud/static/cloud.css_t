@@ -36,7 +36,8 @@ div.related
     margin: 0 auto;
     max-width: {{ theme_max_width }};
     background: {{ theme_relbarbgcolor }};
-    line-height: 30px;
+    line-height: 1.5em;
+    padding: .5em 0;
     color: {{ theme_relbartextcolor }};
 }
 
@@ -57,6 +58,7 @@ div.relbar-bottom div.related
 div.related a
 {
     color: {{ theme_relbarlinkcolor }};
+    display: inline-block;
 }
 
 /*****************************************************
@@ -939,9 +941,7 @@ table.indextable td > dl > dd > dl
        only screen and (max-device-width: {{ theme_minimal_width }}),
        handheld
 {
-    body {
-        margin: 0;
-    }
+    body { margin: 0; }
 
     div.relbar-top div.related,
     div.relbar-bottom div.related
@@ -958,11 +958,12 @@ table.indextable td > dl > dd > dl
 /*------------------------------------
  * adapt for 'minimal' page size
  *------------------------------------*/
-
 @media only screen and (max-width: {{ theme_minimal_width }}),
        only screen and (max-device-width: {{ theme_minimal_width }}),
        handheld
 {
+    body { font-size: 87.5%; }
+
     /* hide the sidebar */
     div.sphinxsidebar
     {
@@ -979,15 +980,18 @@ table.indextable td > dl > dd > dl
         margin-left: 0;
     }
 
-    /* hide all lefthand links but first one, to save space*/
-    div.related > ul > li:not(.right) + li
-    {
-        display: none;
-    }
+    /* tweak relbar - emphasize title, hide crumbs */
+    div.related > ul > li.right + li:not(.right) { font-weight: bold; }
+    div.related > ul > li:not(.right) + li { display: none; }
 
     /* remove spacing on headers and reduce body padding */
-    body div.body h2, body div.body p.rubric
+    body div.body h2,
+    body div.body p.rubric,
+    body div.section.emphasized > h3, /* deprecated in favor of below: */
+    body div.section.emphasize-children > div.section > h3
     {
+        padding-top: 0.25em;
+        padding-bottom: .25em;
         border-radius: 0;
         -moz-border-radius: 0;
         -webkit-border-radius: 0;
@@ -997,10 +1001,17 @@ table.indextable td > dl > dd > dl
     {
         padding: 0 10px 30px;
     }
+
+    /* shrink the headers */
+    div.body h1 { font-size: 160%; }
+    div.body h2, div.body p.rubric { font-size: 140%; }
+    div.body h3 { font-size: 120%; }
+    div.body h4 { font-size: 110%; }
+    div.body h5 { font-size: 100%; }
 }
 
 /*------------------------------------
- * adapt for printing
+ * adapt for print media
  *------------------------------------*/
 
 @media print
