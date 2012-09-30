@@ -4,6 +4,8 @@
 Copyright & License
 ===================
 
+Cloud Sphinx Theme
+==================
 cloud_sptheme is released under the BSD license,
 and is (c) `Assurance Technologies <http://www.assurancetechnologies.com>`_::
 
@@ -37,3 +39,9 @@ and is (c) `Assurance Technologies <http://www.assurancetechnologies.com>`_::
     THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Other Content
+=============
+Most of the icons in ``cloud_sptheme:themes/cloud/static``
+are from the `Tango Icon Project <http://tango.freedesktop.org/>`_,
+which has released them into the Public Domain.
