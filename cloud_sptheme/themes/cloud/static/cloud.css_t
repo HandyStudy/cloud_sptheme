@@ -617,13 +617,25 @@ table.docutils.html-plain-table tr.row-odd > * { background: none; }
      *------------------------------------*/
 
 table.docutils th {
-    border: 0;
+    border: 0 solid transparent;
     padding: .4em;
     font-family: {{ theme_headfont }};
     background: {{ theme_table_header_color }};
 }
 
-table.docutils td { border: 0; padding: .4em; }
+table.docutils th.head:not(.stub) {
+    border-bottom: 1px solid {{ theme_table_trim_color }};
+}
+
+table.docutils th.stub + td
+{
+    border-left: 1px solid {{ theme_table_trim_color }};
+}
+
+table.docutils td {
+    padding: .4em;
+    border: 0 solid {{ theme_table_trim_color }};
+}
 table.docutils tr.row-odd td { background: {{ theme_table_shade_color }}; }
 
 h2 + table.docutils { margin-top: 1em; }
@@ -638,8 +650,6 @@ table.docutils .right-align { text-align: right; }
 table.docutils .justify-align { text-align: justify; }
 table.docutils .nowrap { white-space: nowrap; }
 
-table.docutils td { border: 0 solid {{ theme_table_header_color }}; }
-table.docutils th { border: 0 solid transparent; }
 table.docutils .single-left-divider { border-left-width: 2px; }
 table.docutils th + .single-left-divider,
 table.docutils th + .double-left-divider { border-left-width: 0; }
