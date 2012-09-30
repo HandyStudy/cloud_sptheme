@@ -35,6 +35,8 @@ Admonition Styles
 
     This is a todo message.
 
+    With some additional next on another line.
+
 .. deprecated:: XXX This is a deprecation warning.
 
 .. rst-class:: floater

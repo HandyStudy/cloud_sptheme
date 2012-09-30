@@ -688,16 +688,24 @@ div.admonition, p.deprecated
 
 div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
 {
-    background-position: 8px 8px;
+    background-position: .6em .5em;
+    background-size: auto 1.58em;
     background-repeat: no-repeat;
-    padding-left: 38px;
+    padding-left: 2.65em;
 }
-div.note { background-image: url(icon-note.png); }
-div.seealso { background-color: {{ theme_admonition_seealso_color }}; background-image: url(icon-seealso.png); }
-div.topic { background-color: #eee; }
-div.warning { background-color: {{ theme_admonition_warning_color }}; background-image: url(icon-warning.png); }
-div.admonition-todo { background-color: {{ theme_admonition_todo_color }}; background-image: url(icon-todo.png); }
-p.deprecated { background-color: {{ theme_admonition_deprecated_color }}; background-image: url(icon-deprecated.png); }
+
+{% macro admonition(name, color, selector=None, image=None) %}
+{{selector or ("div." + name)}} {
+    background-color: {{ color }};
+    background-image: url("{{ image or ("icon-" + name + ".png")}}");
+}
+{% endmacro %}
+
+{{ admonition("note", theme_admonition_note_color) }}
+{{ admonition("seealso", theme_admonition_seealso_color) }}
+{{ admonition("warning", theme_admonition_warning_color) }}
+{{ admonition("todo", theme_admonition_todo_color, "div.admonition-todo") }}
+{{ admonition("deprecated", theme_admonition_deprecated_color, "p.deprecated") }}
 
     /*------------------------------------
      * misc adjustments to admonitions
