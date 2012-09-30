@@ -23,7 +23,7 @@ body
     background-attachment: fixed;
     color: #000;
     font-family: {{ theme_bodyfont }};
-    font-size: 11pt;
+    font-size: 100%;
     line-height: 1em;
 }
 
@@ -352,14 +352,14 @@ div.body h1 {
     margin: 0 0 .5em 0;
     padding: .9em 0 0 0;
     text-align: center;
-    font-size: 24pt;
+    font-size: 200%;
 }
 
-div.body h2, div.body p.rubric { font-size: 18pt; }
-div.body h3 { font-size: 16pt; }
-div.body h4 { font-size: 14pt; }
-div.body h5 { font-size: 12pt; }
-div.body h6 { font-size: 11pt; }
+div.body h2, div.body p.rubric { font-size: 160%; }
+div.body h3 { font-size: 140%; }
+div.body h4 { font-size: 120%; }
+div.body h5 { font-size: 110%; }
+div.body h6 { font-size: 100%; }
 
 div.body h2,
 div.body p.rubric,
@@ -616,12 +616,12 @@ table.docutils.html-plain-table tr.row-odd > * { background: none; }
 
 table.docutils th {
     border: 0;
-    padding: 5px;
+    padding: .4em;
     font-family: {{ theme_headfont }};
     background: {{ theme_table_header_color }};
 }
 
-table.docutils td { border: 0; padding: 5px; }
+table.docutils td { border: 0; padding: .4em; }
 table.docutils tr.row-odd td { background: {{ theme_table_shade_color }}; }
 
 h2 + table.docutils { margin-top: 1em; }
@@ -679,9 +679,9 @@ div.admonition, p.deprecated
     border-width: 0 1px 1px 0;
     margin: 1em 0;
     padding: .5em;
-    border-radius: 0 10px 0 10px;
-    -webkit-border-radius: 0 10px 0 10px;
-    -moz-border-radius: 0 10px 0 10px;
+    border-radius: 0 .7em 0 .7em;
+    -webkit-border-radius: 0 .7em 0 .7em;
+    -moz-border-radius: 0 .7em 0 .7em;
 }
 
 div.note, div.seealso, div.warning, div.admonition-todo, p.deprecated
@@ -770,7 +770,7 @@ div.highlight-python pre
     -webkit-border-radius: 8px;
 
     font-family: {{ theme_codeblockfont }};
-    font-size: 9pt;
+    font-size: 85%;
     line-height: 133%;
 
     color: {{ theme_codetextcolor }};
@@ -813,8 +813,6 @@ tt.literal
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
 }
-
-tt.descname { font-size: 100%; }
 
 p tt.literal { white-space: nowrap; }
 
@@ -923,6 +921,14 @@ table.indextable td > dl > dd > dl
 /*****************************************************
  * adapt for various page sizes & media
  *****************************************************/
+
+/*------------------------------------
+ * adapt for larger displays
+ *------------------------------------*/
+@media only screen and (min-device-width: 16in)
+{
+    body { font-size: 87.5%; }
+}
 
 /*------------------------------------
  * adapt for 'compact' and 'minimal' page sizes
