@@ -246,6 +246,7 @@ div.sidebartoggle
    width: {{ theme_sidebarwidth }};
    top: 0;
    left: 0;
+   z-index: 1;
 }
 
 div.document.collapsed-sidebar div.sidebartoggle
