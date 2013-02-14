@@ -5,6 +5,8 @@
 .. module:: cloud_sptheme.ext.escaped_samp_literals
     :synopsis: support escaped bracket characters in SAMP role
 
+Overview
+========
 This extension modifies how ``:samp:`` literals are parsed, replacing
 the default Sphinx parser with an alternate one that allows embedding
 literal ``{`` and ``}`` characters within the content, as well providing
@@ -18,6 +20,8 @@ To embed a literal ``{``, just use a double-backslash, e.g::
 
     :samp:`this is a {variable}, these are a literal \\{ and \\}`
 
+Internals
+=========
 .. note::
 
     This feature has been submitted to the Sphinx

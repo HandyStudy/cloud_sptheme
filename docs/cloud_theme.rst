@@ -21,7 +21,7 @@ Aside from being just another Sphinx theme, it has a few special features:
     * You can mark tables with ``.. rst-class:: html-plain-table``
       to remove separating lines between rows.
 
-    * You can mark ``<h3>`` sections with ``.. rst-class:: emphasized``
+    * You can mark ``<h2>`` sections with ``.. rst-class:: emphasize-children``
       to provide addition visual dividers between large numbers of sub-sub-sections.
 
 *Navigation enhancements*
@@ -197,4 +197,3 @@ Table Styles
 .. seealso::
     The :mod:`~cloud_sptheme.ext.table_styling` extension
     for additional table styling abilities, e.g. per-column text alignment.
-    

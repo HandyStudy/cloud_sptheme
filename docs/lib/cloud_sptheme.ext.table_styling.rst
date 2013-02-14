@@ -11,8 +11,6 @@ This Sphinx extension replaces the default ``.. table::`` directive
 with a custom one, that supports a number of extra options for controlling
 table layout on a per-column basis.
 
-Usage
-=====
 For example, the following snippet specifies relative widths for the
 three columns, changes the text alignment for each column,
 disables text-wrapping for the third column, and inserts
@@ -46,7 +44,7 @@ This will then result in the following table:
     :column-dividers: none single double single
 
     =========== =========== ===========
-    Width 3     Width 2     Width 1
+    Width 50%   Width 33%   Width 16%
     =========== =========== ===========
     Line 1      This text   This text
                 should wrap will always
