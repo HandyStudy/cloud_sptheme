@@ -5,15 +5,40 @@
 .. module:: cloud_sptheme.ext.issue_tracker
     :synopsis: quickly create links to project's issue tracker with ``:issue:`` role
 
+Overview
+========
 This Sphinx extension adds a new text role, ``:issue:``, which will automatically
-be converted into links to a project's issue tracker.
+be converted into links to your project's issue tracker.
 
 Issue roles should have the format ``:issue:`5``` or ``:issue:`Custom Title <5>```.
 They will be converted into external references to the appropriate issue number
-in your project's issue tracker. For themeing purposes, the generated ``<a>`` tag
-will have an ``issue`` CSS class added to it.
+in your project's issue tracker.
 
-``conf.py`` usage example::
+Configuration
+=============
+This extension reads the following ``conf.py`` options:
+
+    ``issue_tracker_url``
+
+        This should provide a path to the project's issue tracker.
+        It should have one of the following formats:
+
+        * :samp:`bb:{user}/{project}` -- link to BitBucket issue tracker for specified project
+        * :samp:`gh:{user}/{project}` -- link to GitHub issue tracker for specified project
+        * :samp:`gc:{project}` -- link to Google Code issue tracker for specified project
+        * string containng arbitrary url, the substring ``{issue}`` will be replaced with the relevant issue number,
+          and ``{title}`` with the link title.
+
+        If this option is not specified, all issue references will be converted
+        into labels instead of links.
+
+    ``issue_tracker_title``
+
+        Template for generating default title for references that only
+        specify the issue number (e.g. ``:issue:`5```). This defaults
+        to ``Issue {issue}``.
+
+``conf.py`` Usage Example::
 
     # add to list of extensions:
     extensions = [
@@ -26,23 +51,9 @@ will have an ``issue`` CSS class added to it.
     # set path to issue tracker:
     issue_tracker_url = "https://example.org/tracker/{issue}"
 
-This extension reads the following ``conf.py`` options:
+Internals
+=========
+.. note::
 
-    ``issue_tracker_url``
-
-        This should provide a path to the project's issue tracker.
-
-        If present, the substring ``{issue}`` will be replaced with the relevant issue number,
-        and ``{title}`` with the title of the issue.
-        The string can also have the format :samp:`gc:{project}`
-        or :samp:`bb:{author}/{project}`, which will be converted into
-        appropriate Google Code or BitBucket links, respectively.
-
-        If this is not specified, all issue references will be converted
-        into labels instead of links.
-
-    ``issue_tracker_title``
-
-        Template for generating default title for references that only
-        specify the issue number (e.g. ``:issue:`5```). This defaults
-        to ``Issue {issue}``.
+    For themeing purposes, the generated ``<a>`` tag
+    will have an ``issue`` CSS class added to it.

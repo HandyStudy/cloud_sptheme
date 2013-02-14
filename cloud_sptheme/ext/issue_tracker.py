@@ -33,15 +33,18 @@ def get_issue_tracker_url(config):
     elif template.startswith("bb:"):
         # parse "bb:<project>", and replace with bitbucket url
         project = template[3:].strip("/")
-        return "http://bitbucket.org/" + project + "/issue/{issue}"
+        return "https://bitbucket.org/" + project + "/issue/{issue}"
 
     elif template.startswith("gc:"):
         # parse "gc:<project>", and replace with google code url
         project = template[3:].strip("/")
-        return "http://code.google.com/p/" + project + \
+        return "https://code.google.com/p/" + project + \
                     "/issues/detail?id={issue}"
 
-    # TODO: "gh:" -> github
+    elif template.startswith("gh:"):
+        # parse "gh:<project>", and replace with github url
+        project = template[3:].strip("/")
+        return "https://github.com/" + project + "/issues/{issue}"
 
     else:
         # assume it contains {issue} and possibly {title}
