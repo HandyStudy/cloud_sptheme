@@ -1,17 +1,11 @@
 {#
-    basic/localtoc.html
+    cloud/localtoc.html
     ~~~~~~~~~~~~~~~~~~~
-
-    Sphinx sidebar template: local table of contents.
-
-    * Modified for cloud_sptheme: added #sphinxlocaltoc to h3 tag
-
-    :copyright: Copyright 2007-2011 by the Sphinx team, see AUTHORS.
-    :license: BSD, see LICENSE for details.
+    Wraps <basic/localtoc.html> with an identifiable div,
+    so the section highlight code has a reliable selector to lock onto.
 #}
-{%- if display_toc %}
+{%- if display_toc -%}
   <div class="sphinxlocaltoc">
-  <h3><a href="{{ pathto(master_doc) }}">{{ _('Table Of Contents') }}</a></h3>
-  {{ toc }}
+    {%- include "basic/localtoc.html" -%}
   </div>
-{%- endif %}
+{%- endif -%}

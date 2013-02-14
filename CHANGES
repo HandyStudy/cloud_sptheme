@@ -7,6 +7,10 @@ Release History
 **1.6** (NOT YET RELEASED)
 ==========================
 
+Bugfixes
+--------
+    * TOC highlighter now works with global toc (:issue:`7`)
+
 **1.5** (2012-10-01)
 ====================
 

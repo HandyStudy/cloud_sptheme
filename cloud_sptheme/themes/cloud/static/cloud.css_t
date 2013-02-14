@@ -184,7 +184,8 @@ div.sphinxsidebar a:active
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxlocaltoc a.visible
+div.sphinxlocaltoc a.visible,
+div.sphinxglobaltoc a.visible
 {
   display: block;
   background: {{ theme_sidebarhighcolor }};
