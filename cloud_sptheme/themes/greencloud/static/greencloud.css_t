@@ -9,16 +9,27 @@
  *
  *****************************************************/
 
+{% from 'static/cloud.css_t' import border_radius, box_shadow, box_sizing with context %}
+
+{% macro vert_gradient(stops) %}
+  background-image: -moz-linear-gradient({{stops}});
+  background-image: -webkit-linear-gradient({{stops}});
+  background-image: linear-gradient({{stops}});
+{% endmacro %}
+
+{% macro horiz_gradient(stops) %}
+  background-image: -moz-linear-gradient(left, {{stops}});
+  background-image: -webkit-linear-gradient(left, {{stops}});
+  background-image: linear-gradient(left, {{stops}});
+  background-image: linear-gradient(to right, {{stops}});
+{% endmacro %}
+
 @import url("cloud.css");
 
 div.related
 {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  background-image: linear-gradient(from top, rgba(255,255,255,.2), rgba(255,255,255,0));
-  background-image: -webkit-linear-gradient(from top, rgba(255,255,255,.2), rgba(255,255,255,0));
-  background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+  {{box_sizing("border-box")}}
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
   border: 1px solid rgba(0,0,0,.15);
   border-width: 0 3px;
 }
@@ -48,9 +59,7 @@ div.body p.rubric,
 div.section.emphasized > h3,
 div.section.emphasize-children > div.section > h3
 {
-  background-image: linear-gradient(from top, rgba(255,255,255,.2), rgba(255,255,255,0));
-  background-image: -webkit-linear-gradient(from top, rgba(255,255,255,.2), rgba(255,255,255,0));
-  background-image: -moz-linear-gradient(top, rgba(255,255,255,.2), rgba(255,255,255,0));
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
   border-width: 0 3px 3px 0;
 }
 
@@ -74,9 +83,7 @@ div.highlight-python pre
 
 div.admonition, p.deprecated
 {
-  border-radius: 0 .7em 0 .7em;
-  -webkit-border-radius: 0 .7em 0 .7em;
-  -moz-border-radius: 0 .7em 0 .7em;
+  {{border_radius("0 0.7em 0 0.7em")}}
 }
 
 div.sphinxsidebar input
