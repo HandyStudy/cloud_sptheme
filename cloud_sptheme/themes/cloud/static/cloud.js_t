@@ -129,13 +129,13 @@ $(document).ready(function (){
 $(document).ready(function (){
   {% if theme_rightsidebar|tobool %}
     var close_arrow = '&raquo;';
-    var open_arrow = '&laquo;';
+    var open_arrow = '&laquo; sidebar';
   {% else %}
     var close_arrow = '&laquo;';
-    var open_arrow = '&raquo;';
+    var open_arrow = 'sidebar &raquo;';
   {% endif %}
   var holder = $('<div class="sidebartoggle"><button id="sidebar-hide" title="click to hide the sidebar">' +
-                 close_arrow + '</button><button id="sidebar-show" style="display: none" title="click to show the sidebar">sidebar ' +
+                 close_arrow + '</button><button id="sidebar-show" style="display: none" title="click to show the sidebar">' +
                  open_arrow + '</button></div>');
   var doc = $('div.document');
 
