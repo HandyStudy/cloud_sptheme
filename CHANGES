@@ -7,6 +7,10 @@ Release History
 **1.6** (NOT YET RELEASED)
 ==========================
 
+New Features
+------------
+    * Added ``rightsidebar`` option to base theme, ala the Sphinx default theme.
+
 Bugfixes
 --------
     * TOC highlighter now works with global toc (:issue:`7`)

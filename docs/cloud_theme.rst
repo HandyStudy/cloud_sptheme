@@ -78,6 +78,10 @@ Layout
 ``min_height``
     sets the minimum height of the page body (defaults to ``6in``).
 
+``rightsidebar``
+    whether the sidebar is on the right side instead of the left
+    (defaults to ``false``).
+
 ``collapsiblesidebar``
     whether the sidebar can be hidden or not (defaults to ``true``).
 

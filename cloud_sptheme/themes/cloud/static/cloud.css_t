@@ -15,6 +15,15 @@
  # helper macros & vars
  #**********************************************#}
 
+{# helper based on location of sidebar #}
+{% if theme_rightsidebar | tobool %}
+  {% set sidebar_side = "right" %}
+  {% set sidebar_opp = "left" %}
+{% else %}
+  {% set sidebar_side = "left" %}
+  {% set sidebar_opp = "right" %}
+{% endif %}
+
 {# helper for semi-standard css3 keywords, e.g. border-radius #}
 {% macro experimental(keyword, value) %}
   -moz-{{keyword}}: {{value}};
@@ -103,11 +112,15 @@ div.documentwrapper
 
 div.bodywrapper
 {
+ {%- if theme_rightsidebar|tobool %}
+    margin: 0 {{ theme_sidebarwidth }} 0 0;
+ {% else %}
     margin: 0 0 0 {{ theme_sidebarwidth }};
+ {% endif %}
 }
 
 {% if theme_collapsiblesidebar|tobool %}
-div.document.collapsed-sidebar div.bodywrapper { margin-left: 0; }
+div.document.collapsed-sidebar div.bodywrapper { margin-{{sidebar_side}}: 0; }
 {% endif %}
 
 div.body
@@ -116,7 +129,7 @@ div.body
     /* note: this ^ is just a hack to prevent body from being shorter than sidebar */
 
     background-color: {{ theme_bgcolor }};
-    border-left: 1px solid {{theme_bodytrimcolor}};
+    border-{{sidebar_side}}: 1px solid {{theme_bodytrimcolor}};
 
     line-height: 140%;
 
@@ -135,12 +148,16 @@ div.sphinxsidebar
 
     width: {{ theme_sidebarwidth }};
 
+    {%- if theme_rightsidebar|tobool %}
+      float: right;
+    {%- endif %}
+
     font-size: 90%;
     line-height: 125%;
 }
 
 {% if theme_collapsiblesidebar|tobool %}
-div.document.collapsed-sidebar div.sphinxsidebar { display: none; }
+  div.document.collapsed-sidebar div.sphinxsidebar { display: none; }
 {% endif %}
 
 div.sphinxsidebarwrapper
@@ -259,7 +276,7 @@ div.sidebartoggle
    position: absolute;
    width: {{ theme_sidebarwidth }};
    top: 0;
-   left: 0;
+   {{sidebar_side}}: 0;
    z-index: 1;
 }
 
@@ -271,7 +288,7 @@ div.document.collapsed-sidebar div.sidebartoggle
 div.sidebartoggle button
 {
    position: absolute;
-   right: -1px;
+   {{sidebar_opp}}: -1px;
    top: 0;
 
    margin: 0;
@@ -282,16 +299,25 @@ div.sidebartoggle button
    border-top: 0;
    color: {{ theme_sidebartextcolor }};
 
-   {{border_radius("0 0 0 0.7em")}}
+   {%- if theme_rightsidebar|tobool %}
+     {{border_radius("0 0 0.7em 0")}}
+   {% else %}
+     {{border_radius("0 0 0 0.7em")}}
+   {% endif %}
 
    white-space: nowrap;
 }
 
 div.document.collapsed-sidebar div.sidebartoggle button
 {
-  right: auto;
-  left: 0;
-  {{border_radius("0 0 0.7em 0")}}
+  {{sidebar_side}}: 0;
+  {{sidebar_opp}}: auto;
+
+   {%- if theme_rightsidebar|tobool %}
+     {{border_radius("0 0 0 0.7em")}}
+   {% else %}
+     {{border_radius("0 0 0.7em 0")}}
+   {% endif %}
 }
 
 {% endif %}
@@ -993,7 +1019,7 @@ table.indextable td > dl > dd > dl
 
     div.bodywrapper
     {
-        margin-left: 0;
+        margin-{{sidebar_side}}: 0;
     }
 
     /* tweak relbar - emphasize title, hide crumbs */

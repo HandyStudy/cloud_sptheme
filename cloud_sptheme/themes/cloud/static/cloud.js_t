@@ -10,6 +10,15 @@
  * :license: BSD
  */
 
+{# helper vars based on location of sidebar #}
+{% if theme_rightsidebar | tobool %}
+  {% set sidebar_side = "right" %}
+  {% set sidebar_opp = "left" %}
+{% else %}
+  {% set sidebar_side = "left" %}
+  {% set sidebar_opp = "right" %}
+{% endif %}
+
 /* ==========================================================================
  * highlighter #2
  * ==========================================================================
@@ -118,7 +127,16 @@ $(document).ready(function (){
  */
 
 $(document).ready(function (){
-  var holder = $('<div class="sidebartoggle"><button id="sidebar-hide" title="click to hide the sidebar">&laquo;</button><button id="sidebar-show" style="display: none" title="click to show the sidebar">sidebar &raquo;</button></div>');
+  {% if theme_rightsidebar|tobool %}
+    var close_arrow = '&raquo;';
+    var open_arrow = '&laquo;';
+  {% else %}
+    var close_arrow = '&laquo;';
+    var open_arrow = '&raquo;';
+  {% endif %}
+  var holder = $('<div class="sidebartoggle"><button id="sidebar-hide" title="click to hide the sidebar">' +
+                 close_arrow + '</button><button id="sidebar-show" style="display: none" title="click to show the sidebar">sidebar ' +
+                 open_arrow + '</button></div>');
   var doc = $('div.document');
 
   var show_btn = $('#sidebar-show', holder);
@@ -191,14 +209,14 @@ $(document).ready(function (){
   function set_style(target, value, adjust)
   {
     if(value <= adjust || sticky_disabled){
-      target.css({marginLeft: "", position: "", top: "", left: "", bottom: ""});
+      target.css({marginLeft: "", position: "", top: "", {{sidebar_side}}: "", bottom: ""});
     }
     else if (value <= holder.height() - target.height() + adjust){
       target.css({marginLeft: 0, position: "fixed", top: -adjust,
-                 left: left_offset(holder), bottom: ""});
+                 {{sidebar_side}}: left_offset(holder), bottom: ""});
     }
     else{
-      target.css({marginLeft: 0, position: "absolute", top: "", left: 0, bottom: 0});
+      target.css({marginLeft: 0, position: "absolute", top: "", {{sidebar_side}}: 0, bottom: 0});
     }
   }
 
