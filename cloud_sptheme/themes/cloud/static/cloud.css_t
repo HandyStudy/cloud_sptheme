@@ -45,6 +45,20 @@
   {{experimental("box-sizing", value)}}
 {% endmacro %}
 
+
+{% macro vert_gradient(stops) %}
+  background-image: -moz-linear-gradient({{stops}});
+  background-image: -webkit-linear-gradient({{stops}});
+  background-image: linear-gradient({{stops}});
+{% endmacro %}
+
+{% macro horiz_gradient(stops) %}
+  background-image: -moz-linear-gradient(left, {{stops}});
+  background-image: -webkit-linear-gradient(left, {{stops}});
+  background-image: linear-gradient(left, {{stops}});
+  background-image: linear-gradient(to right, {{stops}});
+{% endmacro %}
+
 /*****************************************************
  * page layout - body
  *****************************************************/
@@ -296,7 +310,7 @@ div.sidebartoggle button
 
    background: {{ theme_sidebarbgcolor }};
    border: 1px solid {{ theme_sidebartrimcolor }};
-   border-top: 0;
+   border-width: 0 1px 1px 1px;
    color: {{ theme_sidebartextcolor }};
 
    {%- if theme_rightsidebar|tobool %}
@@ -1089,6 +1103,128 @@ table.indextable td > dl > dd > dl
         padding: 0;
     }
 }
+
+{% if theme_borderless_decor | tobool %}
+/*****************************************************
+ * borderless mode - restyle basic appearance a little
+ *****************************************************/
+
+/*------------------------------------
+ * body
+ *------------------------------------*/
+body
+{
+  margin-top: 0;
+  background: {{theme_bgcolor}};
+}
+
+/*------------------------------------
+ * relbars
+ *------------------------------------*/
+div.related
+{
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+body div.relbar-bottom div.related
+{
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0.1)")}}
+  border-bottom: 0;
+}
+
+@media only screen and (min-width: {{ theme_compact_width }})
+{
+ div.relbar-top div.related
+ {
+   padding: 1.5em 0 1em;
+   {{border_radius("0 0 0.7em 0.7em")}}
+ }
+
+ div.relbar-bottom div.related
+ {
+   {{border_radius("0.7em 0.7em 0 0")}}
+ }
+}
+
+/*------------------------------------
+ * sidebar
+ *------------------------------------*/
+div.sphinxsidebar
+{
+  margin-top: 16px;
+  margin-bottom: 16px;
+  {{box_sizing("border-box")}}
+  background: {{theme_sidebarbgcolor}};
+  border: 1px solid {{theme_bodytrimcolor}};
+  {{border_radius("0.7em")}}
+}
+
+div.sidebartoggle button
+{
+  {{box_sizing("border-box")}}
+  top: 16px;
+ {% if theme_rightsidebar|tobool %}
+  left: 0;
+  {{border_radius("0.7em 0")}}
+ {% else %}
+  right: 0;
+  {{border_radius("0 0.7em")}}
+ {% endif %}
+ border-width: 1px;
+}
+
+div.document.collapsed-sidebar div.sidebartoggle button
+{
+  top: 0;
+  {{sidebar_side}}: .5em;
+  {{border_radius("0 0 0.7em 0.7em")}}
+}
+
+/*------------------------------------
+ * document
+ *------------------------------------*/
+div.document
+{
+  background: {{theme_bgcolor}};
+}
+
+div.body
+{
+  border-width: 0;
+}
+
+/*------------------------------------
+ * footer
+ *------------------------------------*/
+div.footer
+{
+  background: {{theme_relbarbgcolor}};
+  {{vert_gradient("rgba(255,255,255,.1), rgba(255,255,255,0.0)")}}
+  border: 1px solid rgba(0,0,0,.15);
+  border-top: 0;
+  max-width: {{theme_max_width}};
+  margin: auto;
+}
+
+/*------------------------------------
+ * contents
+ *------------------------------------*/
+
+div.body h2,
+div.body p.rubric,
+div.section.emphasized > h3,
+div.section.emphasize-children > div.section > h3
+{
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
+}
+
+div.admonition, p.deprecated
+{
+  {{border_radius("0 0.7em 0 0.7em")}}
+}
+
+{% endif %}
 
 /*****************************************************
  * EOF

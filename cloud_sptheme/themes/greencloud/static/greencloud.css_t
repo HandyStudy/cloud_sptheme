@@ -2,56 +2,48 @@
  * greencloud.css_t
  * ~~~~~~~~~~~
  *
- * stylesheet for "GreenCloud" theme for Sphinx.
+ * stylesheet which modifies cloud theme slightly
  *
- * :copyright: Copyright 2012 by Assurance Technologies
+ * :copyright: Copyright 2012-2013 by Assurance Technologies
  * :license: BSD
  *
  *****************************************************/
-
-{% from 'static/cloud.css_t' import border_radius, box_shadow, box_sizing with context %}
-
-{% macro vert_gradient(stops) %}
-  background-image: -moz-linear-gradient({{stops}});
-  background-image: -webkit-linear-gradient({{stops}});
-  background-image: linear-gradient({{stops}});
-{% endmacro %}
-
-{% macro horiz_gradient(stops) %}
-  background-image: -moz-linear-gradient(left, {{stops}});
-  background-image: -webkit-linear-gradient(left, {{stops}});
-  background-image: linear-gradient(left, {{stops}});
-  background-image: linear-gradient(to right, {{stops}});
-{% endmacro %}
 
 @import url("cloud.css");
 
 div.related
 {
-  {{box_sizing("border-box")}}
-  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
-  border: 1px solid rgba(0,0,0,.15);
-  border-width: 0 3px;
+  border-width: 0 3px 3px 1px;
 }
 
-div.body
+body div.relbar-bottom div.related
 {
-  border-width: 0 0 0 4px;
+  border-width: 1px 3px 0 1px;
 }
 
-div.sidebartoggle button
+div.sphinxsidebar
 {
-  border-width: 0 0 1px 3px;
-}
-
-div.document.collapsed-sidebar div.body
-{
-  border-width: 0;
+  border-width: 1px 3px 3px 1px;
 }
 
 div.document.collapsed-sidebar div.sidebartoggle button
 {
-  border-width: 0 3px 1px;
+  border-width: 0px 3px 1px;
+}
+
+div.sphinxsidebar input
+{
+  border-width: 1px 1px 1px 3px;
+}
+
+div.sphinxsidebar input[type="submit"]
+{
+  border-width: 1px 3px 1px 1px;
+}
+
+div.footer
+{
+  border-width: 0 3px 0 1px;
 }
 
 div.body h2,
@@ -59,7 +51,6 @@ div.body p.rubric,
 div.section.emphasized > h3,
 div.section.emphasize-children > div.section > h3
 {
-  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
   border-width: 0 3px 3px 0;
 }
 
@@ -81,17 +72,6 @@ div.highlight-python pre
   border-width: 1px 4px;
 }
 
-div.admonition, p.deprecated
-{
-  {{border_radius("0 0.7em 0 0.7em")}}
-}
-
-div.sphinxsidebar input
-{
-  border-width: 1px 1px 1px 3px;
-}
-
-div.sphinxsidebar input[type="submit"]
-{
-  border-width: 1px 3px 1px 1px;
-}
+/*****************************************************
+ * eof
+ *****************************************************/
