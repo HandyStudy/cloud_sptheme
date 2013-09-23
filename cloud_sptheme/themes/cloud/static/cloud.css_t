@@ -589,7 +589,9 @@ a
 
 a:visited
 {
-    color: {{ theme_visitedlinkcolor }};
+    {% if theme_visitedlinkcolor %}
+      color: {{ theme_visitedlinkcolor }};
+    {% endif %}
     text-decoration: none;
 }
 
