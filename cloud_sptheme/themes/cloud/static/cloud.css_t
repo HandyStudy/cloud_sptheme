@@ -45,6 +45,10 @@
   {{experimental("box-sizing", value)}}
 {% endmacro %}
 
+{% macro opacity(value) -%}
+ filter: progid:DXImageTransform.Microsoft.Alpha(Opacity={{value*100|round|int}});
+ opacity: {{ value }};
+{% endmacro %}
 
 {% macro vert_gradient(stops) %}
   background-image: -moz-linear-gradient({{stops}});
@@ -888,7 +892,7 @@ table.highlighttable div.linenodiv pre
     margin: 0;
     padding: 0;
     padding-right: .5em;
-    opacity: 0.3;
+    {{opacity(0.3)}}
 }
 
 tt
@@ -913,6 +917,7 @@ tt.samp.literal > em
 {
     font-family: {{ theme_codevarfont }};
     padding: 0 1px;
+    {{opacity(0.6)}}
 }
 
 tt.samp.literal > em:before { content: "<"; }
