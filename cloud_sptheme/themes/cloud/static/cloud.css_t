@@ -88,8 +88,8 @@ div.related
     margin: 0 auto;
     max-width: {{ theme_max_width }};
     background: {{ theme_relbarbgcolor }};
-    line-height: 1.5em;
-    padding: .5em 0;
+    line-height: {{ theme_bodylineheight }};
+    padding: .75em 0;
     color: {{ theme_relbartextcolor }};
 }
 
@@ -149,7 +149,7 @@ div.body
     background-color: {{ theme_bgcolor }};
     border-{{sidebar_side}}: 1px solid {{theme_bodytrimcolor}};
 
-    line-height: 140%;
+    line-height: {{ theme_bodylineheight }};
 
     color: {{ theme_textcolor }};
     padding: 0 20px 30px 20px;
@@ -171,7 +171,7 @@ div.sphinxsidebar
     {%- endif %}
 
     font-size: 90%;
-    line-height: 125%;
+    line-height: 1.25em;
 }
 
 {% if theme_popuptoc | tobool %}
@@ -433,7 +433,7 @@ div.body h6
 
     font-family: {{ theme_headfont }};
     font-weight: normal;
-    line-height: 1em;
+    line-height: {{ theme_bodylineheight }};
 }
 
 div.body h1 {
@@ -572,7 +572,7 @@ div.body dd,
 div.body li
 {
     text-align: justify;
-    line-height: 133%;
+    line-height: {{ theme_bodylineheight }};
 }
 
 div.body hr {
@@ -870,7 +870,7 @@ div.highlight-python pre
 
     font-family: {{ theme_codeblockfont }};
     font-size: 85%;
-    line-height: 133%;
+    line-height: {{ theme_bodylineheight }};
 
     color: {{ theme_codetextcolor }};
 }
