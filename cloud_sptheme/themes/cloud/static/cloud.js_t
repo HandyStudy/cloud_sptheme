@@ -127,6 +127,9 @@ $(document).ready(function (){
  */
 
 $(document).ready(function (){
+  if(!$('.sphinxsidebar').length){
+    return;
+  }
   {% if theme_rightsidebar|tobool %}
     var close_arrow = '&raquo;';
     var open_arrow = '&laquo; sidebar';
@@ -141,6 +144,8 @@ $(document).ready(function (){
 
   var show_btn = $('#sidebar-show', holder);
   var hide_btn = $('#sidebar-hide', holder);
+  /* FIXME: when url_root is a relative path, this sets cookie in wrong spot.
+     need to detect relative roots, and combine with document.location.path */
   var copts = { expires: 7, path: DOCUMENTATION_OPTIONS.url_root };
 
   show_btn.click(function (){
