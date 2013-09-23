@@ -24,6 +24,11 @@
   {% set sidebar_opp = "right" %}
 {% endif %}
 
+{# temp hack since gradient on sidebar doesn't mix well with popuptoc #}
+{% if theme_beveled_decor | tobool %}
+  {% set theme_popuptoc = false %}
+{% endif %}
+
 {# helper for semi-standard css3 keywords, e.g. border-radius #}
 {% macro experimental(keyword, value) %}
   -moz-{{keyword}}: {{value}};
@@ -67,6 +72,12 @@
  * page layout - body
  *****************************************************/
 
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
 body
 {
     margin: 1em 1em 0 1em;
@@ -91,6 +102,7 @@ div.related
     line-height: {{ theme_bodylineheight }};
     padding: .75em 0;
     color: {{ theme_relbartextcolor }};
+    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
 
 div.relbar-top div.related
@@ -105,8 +117,24 @@ div.relbar-bottom div.related
 
 div.related a
 {
-    color: {{ theme_relbarlinkcolor }};
     display: inline-block;
+    padding: 0.3em 0.6em;
+    {{ border_radius("0.5em") }}
+    font-weight: bold;
+    color: {{ theme_relbarlinkcolor }};
+}
+
+div.related li.right a
+{
+    background: {{ theme_relbar_link_bg }};
+    font-weight: normal;
+}
+
+div.related a:hover,
+div.related li.right a:hover
+{
+    background: {{ theme_relbar_link_bg_hover }};
+    text-decoration: none;
 }
 
 /*****************************************************
@@ -152,7 +180,7 @@ div.body
     line-height: {{ theme_bodylineheight }};
 
     color: {{ theme_textcolor }};
-    padding: 0 20px 30px 20px;
+    padding: 30px 20px;
 }
 
 /*****************************************************
@@ -196,8 +224,6 @@ div.sphinxsidebar h4
     padding: 0;
     margin: 24px 16px 0 0;
 
-    border-bottom: 1px dashed {{ theme_sidebartrimcolor }};
-
     font-family: {{ theme_headfont }};
     font-weight: normal;
     color: {{ theme_sidebartextcolor }};
@@ -213,7 +239,8 @@ div.sphinxsidebar h4
     font-size: 1.3em;
 }
 
-div.sphinxsidebar h3 a
+div.sphinxsidebar h3 a,
+div.sphinxsidebar h4 a
 {
     color: {{ theme_sidebartextcolor }};
 }
@@ -255,9 +282,10 @@ div.sphinxglobaltoc
     background: {{ theme_sidebarbgcolor }};
     border-right: 1px solid {{ theme_bodytrimcolor }};
     padding-right: .5em;
-    min-width: {{ theme_sidebarwidth[:-2]|int - 10 + 1 }}px; {# 10 = sidebarwrapper padding #}
+    min-width: 100%;
+    position: relative;
+    left: 1px; {# shift right 1px to account for 1px border + 100% min width #}
     overflow: hidden;
-{#    {{ box_shadow(".5em 0 .5em -.25em" + theme_bgcolor) }} #}
 }
 {% endif %}
 
@@ -288,20 +316,14 @@ div.sphinxsidebar input
 
 div#searchbox input[type="submit"]
 {
+   background: {{ theme_sidebar_button_bg }};
    {{border_radius("0 0 0.7em 0")}}
 }
 
-div.sphinxsidebar input[type="submit"]:hover,
+div#searchbox input[type="submit"]:hover,
 div.sidebartoggle button:hover
 {
-   background: {{ theme_sidebarhighcolor }};
-   {{box_shadow("0 1px 2px rgba(0,0,0,.2)")}}
-}
-
-div.sphinxsidebar input[type="submit"]:active,
-div.sidebartoggle button:active
-{
-  {{box_shadow("none")}}
+   background: {{ theme_sidebar_button_bg_hover }};
 }
 
 div.sphinxsidebar p.logo
@@ -343,7 +365,7 @@ div.sidebartoggle button
    margin: 0;
    padding: 0 6px;
 
-   background: {{ theme_sidebarbgcolor }};
+   background: {{ theme_sidebar_button_bg }};
    border: 1px solid {{ theme_sidebartrimcolor }};
    border-width: 0 1px 1px 1px;
    color: {{ theme_sidebartextcolor }};
@@ -429,7 +451,7 @@ div.body h6
     padding: 0;
 
     color: {{ theme_headtextcolor }};
-    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 
     font-family: {{ theme_headfont }};
     font-weight: normal;
@@ -437,8 +459,7 @@ div.body h6
 }
 
 div.body h1 {
-    margin: 0 0 .5em 0;
-    padding: .9em 0 0 0;
+    margin: .5em 0;
     text-align: center;
     font-size: 200%;
 }
@@ -449,6 +470,7 @@ div.body h4 { font-size: 120%; }
 div.body h5 { font-size: 110%; }
 div.body h6 { font-size: 100%; }
 
+h1#search-documentation, /* hack for search page */
 div.body h2,
 div.body p.rubric,
 div.section.emphasized > h3, /* deprecated in favor of below: */
@@ -466,7 +488,7 @@ div.section.emphasize-children > div.section > h3
 
     font-style: italic;
     color: {{ theme_sectiontextcolor }};
-    text-shadow: 2px 2px 1px rgba(0,0,0,.1);
+{#    text-shadow: 1px 1px 1px rgba(0,0,0,.3); #}
 }
 
 div.body h2.highlighted,
@@ -476,6 +498,7 @@ div.section.emphasize-children > div.section > h3.highlighted
     border: 0.25em solid {{theme_highlightcolor}};
 }
 
+div#search-results > h2, /* hack for search page */
 div.body p.rubric,
 div.section.emphasized > h3, /* deprecated in favor of below: */
 div.section.emphasize-children > div.section > h3
@@ -561,7 +584,7 @@ div.body h4.html-toggle-button:hover
     font-weight: bold;
 }
 
-.html-toggle-button:hover a.headerlink:not(:hover) { opacity: 0; }
+.html-toggle-button:hover a.headerlink:not(:hover) { {{opacity(0)}} }
 
 /*****************************************************
  * document - misc styles
@@ -920,8 +943,8 @@ tt.samp.literal > em
     {{opacity(0.6)}}
 }
 
-tt.samp.literal > em:before { content: "<"; }
-tt.samp.literal > em:after { content: ">"; }
+tt.samp.literal > em:before { content: "{"; }
+tt.samp.literal > em:after { content: "}"; }
 
 h1 tt.literal
 {
@@ -1144,7 +1167,8 @@ table.indextable td > dl > dd > dl
 
 {% if theme_borderless_decor | tobool %}
 /*****************************************************
- * borderless mode - restyle basic appearance a little
+ * borderless mode - restyle basic to remove border
+ *                   between document and rest of page
  *****************************************************/
 
 /*------------------------------------
@@ -1161,13 +1185,16 @@ body
  *------------------------------------*/
 div.related
 {
-  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
   border: 1px solid rgba(0,0,0,.15);
+}
+
+body div.relbar-top div.related
+{
+ border-top: 0;
 }
 
 body div.relbar-bottom div.related
 {
-  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0.1)")}}
   border-bottom: 0;
 }
 
@@ -1175,12 +1202,12 @@ body div.relbar-bottom div.related
 {
  div.relbar-top div.related
  {
-   padding: 1.5em 0 1em;
    {{border_radius("0 0 0.7em 0.7em")}}
  }
 
  div.relbar-bottom div.related
  {
+   padding: .75em 0 .4em;
    {{border_radius("0.7em 0.7em 0 0")}}
  }
 }
@@ -1209,7 +1236,7 @@ div.sidebartoggle button
   right: 0;
   {{border_radius("0 0.7em")}}
  {% endif %}
- border-width: 1px;
+  border-width: 1px;
 }
 
 div.document.collapsed-sidebar div.sidebartoggle button
@@ -1238,24 +1265,20 @@ div.body
 div.footer
 {
   background: {{theme_relbarbgcolor}};
-  {{vert_gradient("rgba(255,255,255,.1), rgba(255,255,255,0.0)")}}
   border: 1px solid rgba(0,0,0,.15);
   border-top: 0;
   max-width: {{theme_max_width}};
   margin: auto;
 }
 
+div.footer, div.footer a:not(:hover)
+{
+  color: {{ theme_relbartextcolor }};
+}
+
 /*------------------------------------
  * contents
  *------------------------------------*/
-
-div.body h2,
-div.body p.rubric,
-div.section.emphasized > h3,
-div.section.emphasize-children > div.section > h3
-{
-  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
-}
 
 div.admonition, p.deprecated
 {
@@ -1264,6 +1287,89 @@ div.admonition, p.deprecated
 
 {% endif %}
 
+{% if theme_beveled_decor | tobool %}
+/*****************************************************
+ * beveled mode - add some bevels to elements
+ *****************************************************/
+
+div.related
+{
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0)")}}
+  border-width: 0 2px 3px 1px;
+}
+
+body div.relbar-bottom div.related
+{
+  {{vert_gradient("rgba(255,255,255,.2), rgba(255,255,255,0.1)")}}
+  border-width: 1px 2px 0 1px;
+}
+
+div.sphinxsidebar
+{
+  {% if theme_borderless_decor | tobool %}
+    {{horiz_gradient("rgba(0,0,0,.05), rgba(255,255,255,.04), rgba(0,0,0,.05)")}}
+  {% endif %}
+  border-width: 1px 2px 3px 1px;
+}
+
+{% if not theme_rightsidebar | tobool %}
+div.sidebartoggle button
+{
+  border-width: 1px 1px 1px 2px;
+}
+{% endif %}
+
+div.document.collapsed-sidebar div.sidebartoggle button
+{
+  border-width: 0px 3px 1px;
+}
+
+div.sphinxsidebar input
+{
+  border-width: 1px;
+}
+
+div.sphinxsidebar input[type="submit"]
+{
+  border-width: 1px 3px 1px 1px;
+}
+
+{% if theme_borderless_decor | tobool %}
+  div.footer
+  {
+    {{vert_gradient("rgba(255,255,255,0.1), rgba(255,255,255,0.0)")}}
+    border-width: 0 2px 3px 1px;
+  }
+{% endif %}
+
+div.body h2,
+div.body p.rubric,
+div.section.emphasized > h3,
+div.section.emphasize-children > div.section > h3
+{
+  {{vert_gradient("rgba(255,255,255,0.2), rgba(255,255,255,0)")}}
+  border-width: 0 2px 3px 1px;
+}
+
+@media print
+{
+  div.body h2,
+  div.body p.rubric,
+  div.section.emphasized > h3,
+  div.section.emphasize-children > div.section > h3
+  {
+    border-width: 0 0 .2em 0;
+    padding-bottom: 0.1em;
+  }
+}
+
+div.highlight pre,
+div.highlight-python pre
+{
+  border-width: 1px 4px;
+}
+
+{% endif %}
 /*****************************************************
  * EOF
  *****************************************************/
