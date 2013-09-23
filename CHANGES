@@ -10,9 +10,12 @@ Release History
 New Features
 ------------
     * Added ``rightsidebar`` option to base theme, ala the Sphinx default theme.
+    * TOC entries which overflow sidebar now popup when hovered over
+      (can be disabled via ``popuptoc = false``).
 
 Bugfixes
 --------
+    * Web font url now works with HTTPS
     * TOC highlighter now works with global toc (:issue:`7`)
 
 **1.5** (2012-10-01)

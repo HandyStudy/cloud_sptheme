@@ -170,6 +170,13 @@ div.sphinxsidebar
     line-height: 125%;
 }
 
+{% if theme_popuptoc | tobool %}
+  div.sphinxsidebar:hover
+  {
+      overflow: visible;
+  }
+{% endif %}
+
 {% if theme_collapsiblesidebar|tobool %}
   div.document.collapsed-sidebar div.sphinxsidebar { display: none; }
 {% endif %}
@@ -236,10 +243,34 @@ div.sphinxsidebar a:active
     color: {{ theme_sidebartextcolor }};
 }
 
-div.sphinxlocaltoc a.visible,
-div.sphinxglobaltoc a.visible
+{% if theme_popuptoc | tobool %}
+div.sphinxlocaltoc,
+div.sphinxglobaltoc
 {
-  display: block;
+    display: inline-block; {# ensures bg color is used during overflow #}
+    background: {{ theme_sidebarbgcolor }};
+    border-right: 1px solid {{ theme_bodytrimcolor }};
+    padding-right: .5em;
+    min-width: {{ theme_sidebarwidth[:-2]|int - 10 + 1 }}px; {# 10 = sidebarwrapper padding #}
+    overflow: hidden;
+{#    {{ box_shadow(".5em 0 .5em -.25em" + theme_bgcolor) }} #}
+}
+{% endif %}
+
+div.sphinxlocaltoc ul a,
+div.sphinxglobaltoc ul a
+{
+    display: block;
+    padding: 0 .2em;
+    margin: 0 -.2em;
+    {% if theme_popuptoc | tobool %}
+        white-space: nowrap;
+    {% endif %}
+}
+
+div.sphinxlocaltoc ul a.visible,
+div.sphinxglobaltoc ul a.visible
+{
   background: {{ theme_sidebarhighcolor }};
   {{box_shadow("0 .1em .5em " + theme_sidebarhighcolor)}}
 }

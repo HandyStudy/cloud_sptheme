@@ -96,6 +96,12 @@ Layout
     whether sidebar should highlight the sections which are currently
     being viewed (defaults to ``true``).
 
+``popuptoc``
+    by default, TOC entries which overflow the sidebar will be cut off
+    until the cursor hovers over the sidebar, at which point they will
+    expand across the document. to disable this feature (and make them
+    wrap within the sidebar), set ``popuptoc=false``.
+
 Styling
 -------
 ``externalrefs``
