@@ -36,7 +36,7 @@
 {%- set theme_logotarget = (theme_logotarget == "<root>" and theme_roottarget or (theme_logotarget == "<toc>" and master_doc or theme_logotarget)) %}
 {%- block sidebarlogo %}
     {%- if logo %}
-        <p class="logo"><a href="{{ pathto(theme_logotarget) }}">
+        <p class="logo"><a href="{{ pathto(theme_logotarget) }}" title="{{ theme_logotarget }}">
           <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
         </a></p>
     {%- endif %}
