@@ -47,6 +47,7 @@ def indent_sections(lines, reference_prefix=''):
                 sections.pop()
             if not sections or sections[-1] < new_level:
                 sections.append(new_level)
+            indent_level = max(0, len(sections))
             name = line.lower().strip().replace(" ", "-").replace("--", "-")
             indent = indent_char * (indent_level-1)
             out.extend([
@@ -56,7 +57,6 @@ def indent_sections(lines, reference_prefix=''):
                 indent + "%s\n" % line.rstrip(),
                 ])
             idx += 2 #skip section header
-            indent_level = max(0, len(sections))
             lss = True
             continue
         lss = False
