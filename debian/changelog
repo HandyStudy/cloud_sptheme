@@ -1,0 +1,5 @@
+cloud-sptheme (1.5-1) saucy; urgency=low
+
+  * Initial debian package
+
+ -- Dennis Kaarsemaker <dennis@kaarsemaker.net>  Sat, 14 Dec 2013 15:13:39 +0100
